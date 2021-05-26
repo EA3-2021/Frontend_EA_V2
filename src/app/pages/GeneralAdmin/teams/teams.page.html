@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>teams</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center">
+    <button (click)="addTeam()" class="button" >Add new team</button>
+    <button (click)="adminDesk()" class="button"> Back </button>
+  </div>
+
+  <div class="teams">
+    <!-- SELECTOR DE COURSE-CARD.COMPONENT.TS -->
+    <app-team-card *ngFor="let team of teams; index as i"
+                   [team]="team" [teamIndex]="i">
+    </app-team-card>
+
+  </div>
+</ion-content>

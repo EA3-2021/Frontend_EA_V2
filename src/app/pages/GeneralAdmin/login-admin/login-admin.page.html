@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>loginAdmin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="loginAdmin">
+
+    <h2 class="loginAdmin-header">Login</h2>
+    <form [formGroup]="loginAdminForm" class="loginAdmin-container" (ngSubmit)="submitLoginAdmin()">
+      <input type="name" placeholder="Username or email*" formControlName="name" />
+      <ng-container
+        *ngIf="!formControls.name.valid &&formControls.name.touched"
+      >
+        <p *ngIf="formControls.name.errors.required">
+          Name is required
+        </p>
+      </ng-container>
+
+      <input type="password" placeholder="Password*" formControlName="password" />
+      <ng-container
+        *ngIf="!formControls.password.valid &&formControls.password.touched"
+      >
+        <p *ngIf="formControls.password.errors.required">
+          Password is required
+        </p>
+      </ng-container>
+
+      <p>
+        <input type="submit" value="Get in!" [disabled]="loginAdminForm.invalid" />
+      </p>
+    </form>
+  </div>
+  <div class="center">
+    <button (click)="admin()" class="button"> Back </button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center">
+    <button (click)="newUser()" class="button" >Add new user</button>
+    <button (click)="adminDesk()" class="button"> Back </button>
+  </div>
+
+  <div class="users">
+    <!-- SELECTOR DE COURSE-CARD.COMPONENT.TS -->
+    <app-user-card *ngFor="let user of users; index as i"
+                   [user]="user" [index]="i">
+    </app-user-card>
+  </div>
+
+  <!-- Botón delete user -->
+  <div class="center">
+    <button (click)="deleteUsers()" class="button" >Delete all users</button>
+  </div>
+</ion-content>

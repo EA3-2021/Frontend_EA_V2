@@ -1,0 +1,44 @@
+<div class="login">
+  <h2 class="login-header">New User</h2>
+  <form [formGroup]="userForm" class="login-container" (ngSubmit)="submitUser()">
+    <input type="name" placeholder="Name*" formControlName="name" />
+    <ng-container
+      *ngIf="!formControls.name.valid &&formControls.name.touched"
+    >
+      <p *ngIf="formControls.name.errors.required">
+        Name is required
+      </p>
+    </ng-container>
+
+    <input type="email" placeholder="Email*" formControlName="email" />
+    <ng-container
+      *ngIf="!formControls.email.valid &&formControls.email.touched"
+    >
+      <p *ngIf="formControls.email.errors.required">
+        Email is required
+      </p>
+    </ng-container>
+
+    <input type="phone" placeholder="Phone*" formControlName="phone" />
+    <ng-container
+      *ngIf="!formControls.phone.valid &&formControls.phone.touched"
+    >
+      <p *ngIf="formControls.phone.errors.required">
+        Phone is required
+      </p>
+    </ng-container>
+
+    <input type="password" placeholder="Password*" formControlName="password" />
+    <ng-container
+      *ngIf="!formControls.password.valid &&formControls.password.touched"
+    >
+      <p *ngIf="formControls.password.errors.required">
+        Password is required
+      </p>
+    </ng-container>
+
+    <p>
+      <input type="submit" value="Submit" [disabled]="userForm.invalid" />
+    </p>
+  </form>
+</div>

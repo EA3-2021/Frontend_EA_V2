@@ -1,0 +1,17 @@
+<div class="login">
+  <h2 class="login-header">New Team</h2>
+  <form [formGroup]="teamForm" class="login-container" (ngSubmit)="submitTeam()">
+    <input type="name" placeholder="Name*" formControlName="name" />
+    <ng-container
+      *ngIf="!formControls.name.valid &&formControls.name.touched"
+    >
+      <p *ngIf="formControls.name.errors.required">
+        Name is required
+      </p>
+    </ng-container>
+
+    <p>
+      <input type="submit" value="Submit" [disabled]="teamForm.invalid" />
+    </p>
+  </form>
+</div>

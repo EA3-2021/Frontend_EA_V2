@@ -24,6 +24,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   BrowserModule,
   IonicModule.forRoot(),
   AppRoutingModule,
+ // CalendarModule,
   SocketIoModule.forRoot(config),
   HttpClientModule
   ],

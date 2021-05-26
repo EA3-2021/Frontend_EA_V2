@@ -1,0 +1,30 @@
+.subject-title{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background-color:#CD5C5C;
+}
+
+.students {
+    margin: 15px;
+}
+
+.button {
+    background-color: #FADBD8;
+    border: none;
+    color: black;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.center {
+    text-align: center;
+}
