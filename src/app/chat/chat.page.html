@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Chat title
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row align-items-center>
+      <ion-col size="10">
+        <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="message"></ion-textarea>
+      </ion-col>
+      <ion-col  size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="message ===''" class="msg-btn"
+                    (click)="sendMessage()">
+
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

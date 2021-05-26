@@ -3,17 +3,17 @@ import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-chat',
+  templateUrl: './chat.page.html',
+  styleUrls: ['./chat.page.scss'],
 })
-export class HomePage {
+export class ChatPage implements OnInit {
 
   message = '';
   messages = [];
   protected currentUser : string = '';
 
-  constructor(private socket: Socket, private toastCtrl: ToastController) {}
+  constructor(private socket: Socket, private toastCtrl: ToastController) { }
 
   ngOnInit(): void {
        this.socket.connect();
@@ -58,4 +58,5 @@ export class HomePage {
      });
      toast.present();
      }
+
 }
