@@ -17,8 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
-  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
     path: 'calendar',

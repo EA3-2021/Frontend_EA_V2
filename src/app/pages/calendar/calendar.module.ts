@@ -16,6 +16,7 @@ import { CalendarModule } from 'ion2-calendar';
     CommonModule,
     FormsModule,
     IonicModule,
+    CalendarModule,
     RouterModule.forChild([
       {
         path: '',

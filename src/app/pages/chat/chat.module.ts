@@ -13,6 +13,13 @@ import { ChatPage } from './chat.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ChatPage
+      }
+    ]),
+
     ChatPageRoutingModule
   ],
   declarations: [ChatPage]
