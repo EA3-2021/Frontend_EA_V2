@@ -1,44 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login Admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!--<ion-content>
-  <div class="loginAdmin">
+<ion-content>
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
 
-    <h2 class="loginAdmin-header">Login</h2>
-    <form [formGroup]="loginAdminForm" class="loginAdmin-container" (ngSubmit)="submitLoginAdmin()">
-      <input type="name" placeholder="Username or email*" formControlName="name" />
-      <ng-container
-        *ngIf="!formControls.name.valid &&formControls.name.touched"
-      >
-        <p *ngIf="formControls.name.errors.required">
-          Name is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
 
-      <input type="password" placeholder="Password*" formControlName="password" />
-      <ng-container
-        *ngIf="!formControls.password.valid &&formControls.password.touched"
-      >
-        <p *ngIf="formControls.password.errors.required">
-          Password is required
-        </p>
-      </ng-container>
-
-      <p>
-        <input type="submit" value="Get in!" [disabled]="loginAdminForm.invalid" />
-      </p>
-    </form>
-  </div>
-  <div class="center">
-    <button (click)="admin()" class="button"> Back </button>
-  </div>
-
-</ion-content>-->
-<ion-list class = "ion-wrap" class = "ion-padding-bottom">
-  <div class = "center">
-  <ion-button [routerLink]="['/admin-desk']">Login</ion-button>
-  </div>
-</ion-list>
+    <ion-row>
+      <ion-col class="center">
+        <ion-button [routerLink]="['/admin-desk']" type="submit" color="danger" expand="block">Sign In</ion-button>
+        <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
