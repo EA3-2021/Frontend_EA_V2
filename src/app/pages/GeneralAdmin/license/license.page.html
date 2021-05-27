@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>license</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <!--<ion-content>
   <div class="loginAdmin">
 
@@ -32,3 +26,33 @@
   </div>
 
 </ion-content>-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>License</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="center1">
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">License Code</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button [routerLink]="['/register-admin']" type="submit" color="primary" expand="block">Send</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <div><span class="divider line one-line">or</span></div>
+  <p class="center">If you don't have a license, obtain one for your business in minutes:</p>
+  <ion-button color="danger">Obtain License</ion-button>
+
+</ion-content>
+

@@ -1,84 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register-admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="loginAdmin">
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Business name</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
 
-    <h2 class="loginAdmin-header">Register</h2>
-    <form [formGroup]="registerAdminForm" class="loginAdmin-container" (ngSubmit)="submitRegisterAdmin()">
-      <input type="name" placeholder="Business name...*" formControlName="name" />
-      <ng-container
-        *ngIf="!formControls.name.valid &&formControls.name.touched"
-      >
-        <p *ngIf="formControls.name.errors.required">
-          Business name is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">CIF code</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
 
-      <input type="cif" placeholder="Business CIF...*" formControlName="cif" />
-      <ng-container
-        *ngIf="!formControls.cif.valid &&formControls.cif.touched"
-      >
-        <p *ngIf="formControls.cif.errors.required">
-          CIF is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">Business mail</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
 
-      <input type="email" placeholder="Business email...*" formControlName="email" />
-      <ng-container
-        *ngIf="!formControls.email.valid &&formControls.email.touched"
-      >
-        <p *ngIf="formControls.email.errors.required">
-          Email is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">Business phone</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+ 
+    <ion-item lines="full">
+      <ion-label position="floating">Business address</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+     
+    <ion-item lines="full">
+      <ion-label position="floating">Postal code</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
 
-      <input type="phone" placeholder="Business phone...*" formControlName="phone" />
-      <ng-container
-        *ngIf="!formControls.phone.valid &&formControls.phone.touched"
-      >
-        <p *ngIf="formControls.phone.errors.required">
-          Phone is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
 
-      <input type="address" placeholder="Business address...*" formControlName="address" />
-      <ng-container
-        *ngIf="!formControls.address.valid &&formControls.address.touched"
-      >
-        <p *ngIf="formControls.address.errors.required">
-          Address is required
-        </p>
-      </ng-container>
-
-      <input type="postalCode" placeholder="Postal code...*" formControlName="postalCode" />
-      <ng-container
-        *ngIf="!formControls.postalCode.valid &&formControls.postalCode.touched"
-      >
-        <p *ngIf="formControls.postalCode.errors.required">
-          Postal code is required
-        </p>
-      </ng-container>
-
-      <input type="password" placeholder="Password*" formControlName="password" />
-      <ng-container
-        *ngIf="!formControls.password.valid &&formControls.password.touched"
-      >
-        <p *ngIf="formControls.password.errors.required">
-          Password is required
-        </p>
-      </ng-container>
-
-      <p>
-        <input type="submit" value="Get in!" [disabled]="registerAdminForm.invalid" />
-      </p>
-    </form>
-  </div>
-  <div class="center">
-    <button (click)="admin()" class="button"> Back </button>
-  </div>
-
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
