@@ -19,7 +19,9 @@ export class LoginAdminPage implements OnInit {
   loading = false;
   submitted = false;*/
 
+  constructor( private router: Router,){
 
+  }
   /*constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
@@ -37,6 +39,9 @@ export class LoginAdminPage implements OnInit {
   
   }
 
+  goPassword(){
+    this.router.navigateByUrl('/forgot-password');
+  }
 
 
   /*// convenience getter for easy access to form fields
