@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AlertService } from '../../../services/alert.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.page.html',
   styleUrls: ['./login-admin.page.scss'],
 })
+
 export class LoginAdminPage implements OnInit {
-/*
 
-  loginAdminForm: FormGroup;
+
+  /*loginAdminForm: FormGroup;
   loading = false;
-  submitted = false;
+  submitted = false;*/
 
-*/
-  constructor(
-  /*
+
+  /*constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
       private alertService: AlertService
-  */) { }
+  ) { }*/
 
   ngOnInit() {
-  /*
-      this.loginAdminForm = this.formBuilder.group({
+
+      /*this.loginAdminForm = this.formBuilder.group({
           name: ['', Validators.required],
           password: ['', Validators.required]
-      });
-  */
+      });*/
+  
   }
 
-  /*
 
-  // convenience getter for easy access to form fields
+
+  /*// convenience getter for easy access to form fields
   get formControls() { return this.loginAdminForm.controls; }
 
   submitLoginAdmin() {
@@ -60,8 +66,5 @@ export class LoginAdminPage implements OnInit {
   }
   admin() {
     this.router.navigateByUrl('/admin');
-  }
-
-  */
-
+  }*/
 }

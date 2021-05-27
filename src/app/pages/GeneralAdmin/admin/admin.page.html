@@ -4,15 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="text-align: center;">
-    <h1 id="text">Admin</h1>
+<ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  <div class = "center">
+  <ion-button [routerLink]="['/login-admin']">Login</ion-button>
   </div>
-  <div style="text-align: center;">
+  <div class = "center">
+  <ion-button [routerLink]="['/license']">Register</ion-button>
+  </div>
+</ion-list>
+
+  <!--<div style="text-align: center;">
     <button (click)="goLoginAdmin()" class="button">LOGIN</button>
-  </div>
+
   <div style="text-align: center;">
     <button (click)="goRegisterAdmin()" class="button">REGISTER</button>
-  </div>
-
-</ion-content>
+  </div>-->

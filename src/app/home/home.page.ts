@@ -13,17 +13,6 @@ export class HomePage {
 
   constructor() {}
 
-  ngOnInit(): void {
-
-  /*
-  goAdmin(){
-    this.router.navigateByUrl('/admin');
-  }
-
-  goUser(){
-    this.router.navigateByUrl('/user');
-  }
-*/
-   }
+  ngOnInit(): void {}
 
 }

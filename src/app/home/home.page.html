@@ -1,7 +1,15 @@
-<div style="text-align: center;">
-  <button (click)="goUser()" class="button">User</button>
-</div>
-<div style="text-align: center;">
-  <button (click)="goAdmin()" class="button">Admin</button>
-</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>MyTeam</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  <div class = "center">
+  <ion-button [routerLink]="['/user']">Worker</ion-button>
+  </div>
+  <div class = "center">
+  <ion-button [routerLink]="['/admin']">Business</ion-button>
+  </div>
+</ion-list>
 

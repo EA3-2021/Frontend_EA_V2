@@ -1,19 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>adminDesk</ion-title>
+    <ion-title>Admin Desk</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="text-align: center;">
-    <button (click)="goUsers()" class="button">Users</button>
-  </div>
-  <div style="text-align: center;">
-    <button (click)="goTeams()" class="button">Teams</button>
-  </div>
 
-  <!--Boton sin funcionalidad de momento-->
-  <div style="text-align: center;">
-    <button (click)="goRequests()" class="button">Pending requests</button>
+<ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  <div class = "center">
+  <ion-button [routerLink]="['/teams']">Users</ion-button>
   </div>
-</ion-content>
+  <div class = "center">
+  <ion-button [routerLink]="['/users']">Teams</ion-button>
+  </div>
+  <!--Boton sin funcionalidad de momento-->
+  <div class = "center">
+    <ion-button [routerLink]="['/requets']">Pending requests</ion-button>
+    </div>
+</ion-list>
