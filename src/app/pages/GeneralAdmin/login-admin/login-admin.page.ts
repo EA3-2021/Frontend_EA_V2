@@ -15,36 +15,24 @@ import { AuthenticationService } from '../../../services/authentication.service'
 export class LoginAdminPage implements OnInit {
 
 
-  /*loginAdminForm: FormGroup;
-  loading = false;
-  submitted = false;*/
+  loginAdminForm: FormGroup;
+  submitted = false;
 
-  constructor( private router: Router,){
-
-  }
-  /*constructor(
-      private formBuilder: FormBuilder,
+  constructor(
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
       private alertService: AlertService
-  ) { }*/
+  ) { }
 
-  ngOnInit() {
-
-      /*this.loginAdminForm = this.formBuilder.group({
-          name: ['', Validators.required],
-          password: ['', Validators.required]
-      });*/
-  
-  }
+  ngOnInit() {}
 
   goPassword(){
     this.router.navigateByUrl('/forgot-password');
   }
 
 
-  /*// convenience getter for easy access to form fields
+  // convenience getter for easy access to form fields
   get formControls() { return this.loginAdminForm.controls; }
 
   submitLoginAdmin() {
@@ -58,7 +46,6 @@ export class LoginAdminPage implements OnInit {
           return;
       }
 
-      this.loading = true;
       this.authenticationService.loginAdmin(this.formControls.name.value, this.formControls.password.value)
           .pipe(first())
           .subscribe(() =>  {
@@ -66,10 +53,9 @@ export class LoginAdminPage implements OnInit {
               },
               error => {
                   this.alertService.error(error);
-                  this.loading = false;
               });
   }
   admin() {
     this.router.navigateByUrl('/admin');
-  }*/
+  }
 }

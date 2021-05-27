@@ -1,32 +1,3 @@
-<!--<ion-content>
-  <div class="loginAdmin">
-
-    <h2 class="loginAdmin-header">Insert your license</h2>
-    <form [formGroup]="licenseForm" class="loginAdmin-container" (ngSubmit)="submitLicense()">
-      <input type="licenseCode" placeholder="Insert the license code...*" formControlName="licenseCode" />
-      <ng-container
-        *ngIf="!formControls.licenseCode.valid &&formControls.licenseCode.touched"
-      >
-        <p *ngIf="formControls.licenseCode.errors.required">
-          License code is required
-        </p>
-      </ng-container>
-
-      <p>
-        <input type="submit" value="Next" [disabled]="licenseForm.invalid" />
-      </p>
-    </form>
-  </div>
-  <p class="center">If you don't have a license, obtain one for your business in minutes:</p>
-  <div class="center">
-    <button (click)="obtainLicense()" class="button1"> Obtain a license </button>
-  </div>
-  <div class="center">
-    <button (click)="admin()" class="button"> Back </button>
-  </div>
-
-</ion-content>-->
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -36,23 +7,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="center1">
-  <form>
+<ion-content>
+  <form [formGroup]="licenseForm" (ngSubmit)="submitLicense()" novalidate>
+
     <ion-item lines="full">
       <ion-label position="floating">License Code</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input formControlName="licenseCode" type="text"></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="formControls.licenseCode.errors.required">
+      License Code is required.
+    </span>
 
     <ion-row>
       <ion-col>
-        <ion-button [routerLink]="['/register-admin']" type="submit" color="primary" expand="block">Send</ion-button>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
       </ion-col>
     </ion-row>
   </form>
-
-  <div><span class="divider line one-line">or</span></div>
-  <p class="center">If you don't have a license, obtain one for your business in minutes:</p>
-  <ion-button color="danger">Obtain License</ion-button>
-
 </ion-content>
 

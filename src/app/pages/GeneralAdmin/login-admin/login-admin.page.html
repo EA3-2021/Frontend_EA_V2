@@ -8,22 +8,22 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
+  <form [formGroup]="loginAdminForm">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" formControlName="name" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
+    <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input type="password" formControlName="password" required></ion-input>
     </ion-item>
 
     <ion-row>
       <ion-col class="center">
-        <ion-button [routerLink]="['/admin-desk']" type="submit" expand="block">Sign In</ion-button>       
-        <ion-button (click)="goPassword()" class="button" color="danger">Forgot Password ?</ion-button>
+        <ion-button type="submit" expand="block" [disabled]="!loginAdminForm.valid"  (click)="submitLoginAdmin()">Sign In</ion-button>       
       </ion-col>
     </ion-row>
+    <ion-button (click)="goPassword()" class="button" color="danger" >Forgot Password ?</ion-button>
   </form>
 </ion-content>

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //import { ChatPageModule } from './pages/chat/chat.page';
 //import { CalendarPageModule } from './pages/calendar/calendar.page';
@@ -26,7 +27,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   AppRoutingModule,
  // CalendarModule,
   SocketIoModule.forRoot(config),
-  HttpClientModule
+  HttpClientModule,
+  FormsModule,
+  ReactiveFormsModule
   ],
   providers: [
  // StatusBar,
