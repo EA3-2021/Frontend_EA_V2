@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { TeamFormComponent } from './components/team-form/team-form.component';
+
 
 //import { HomeComponent } from './pages/home/home.component';
 //import { ChatPageModule } from './pages/chat/chat.page';
@@ -89,13 +91,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
   { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'team-form', component: TeamFormComponent},
 
 ];
 
 @NgModule({
+  
   imports: [
     RouterModule.forRoot(routes,
-     { preloadingStrategy: PreloadAllModules })
+     { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule]
 })

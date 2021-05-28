@@ -20,7 +20,7 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input minlength="5" formControlName="password" type="password" required></ion-input>
+      <ion-input formControlName="password" type="password" required></ion-input>
     </ion-item>
     <span class="error ion-padding" *ngIf="submitted && formControls.password.errors.required">
       Password is required.

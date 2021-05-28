@@ -1,20 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>teams</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Teams</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="center">
-    <button (click)="addTeam()" class="button" >Add new team</button>
-    <button (click)="adminDesk()" class="button"> Back </button>
+  <div class="center1">
+    <ion-button (click)="addTeam()" class="button" >Add new team</ion-button>
   </div>
 
-  <div class="teams">
-    <!-- SELECTOR DE COURSE-CARD.COMPONENT.TS -->
+  <!--<div class="teams">
     <app-team-card *ngFor="let team of teams; index as i"
                    [team]="team" [teamIndex]="i">
     </app-team-card>
+  </div>-->
 
-  </div>
+  <ion-card *ngFor="let team of teams">
+    <ion-card-header>
+      <ion-card-title>{{ team.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngFor="let user of team.users">
+      <div class="user-name">
+        User: {{user.name}}
+      </div>
+    
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
+    
+      <div class="user-phone">
+        Phone: {{user.phone}}
+      </div>
+    </ion-card-content>
+  
+    <ion-footer class="center">
+      <ion-button size="small" (click)="newUser()" class="button">+</ion-button>
+    </ion-footer>
+  </ion-card>
+
 </ion-content>
