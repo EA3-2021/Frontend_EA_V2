@@ -12,26 +12,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-/*
+
   getUsers(){
     return this.http.get<User[]>(environment.apiURL+'/user/all')
-  }
-
-  //Funcion registro usuario
-  registerUser(user: User) {
-    return this.http.post(environment.apiURL + '/auth/registerUser', user);
   }
 
   newUser(newUser: User){
     return this.http.post(environment.apiURL + '/user/new', newUser);
   }
 
-  //Llamada API: Delete TODOS user
-  deleteUsers(){
-    return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
-  }
-
-  //Llamada API: Delete un user
   deleteUser(name: string){
     return this.http.delete<User[]>(environment.apiURL+'/user/drop/' + name)
   }
@@ -40,6 +29,22 @@ export class UserService {
   updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }
+  
+/*
+  //Funcion registro usuario
+  registerUser(user: User) {
+    return this.http.post(environment.apiURL + '/auth/registerUser', user);
+  }
+
+  
+
+  //Llamada API: Delete TODOS user
+  deleteUsers(){
+    return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
+  }
+
+  //Llamada API: Delete un user
+  
 
   */
 }

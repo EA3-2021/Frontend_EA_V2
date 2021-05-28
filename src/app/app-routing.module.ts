@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 //import { HomeComponent } from './pages/home/home.component';
 //import { ChatPageModule } from './pages/chat/chat.page';
@@ -92,6 +93,7 @@ const routes: Routes = [
   },
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'team-form', component: TeamFormComponent},
+  { path: 'user-form', component: UserFormComponent},
 
 ];
 
