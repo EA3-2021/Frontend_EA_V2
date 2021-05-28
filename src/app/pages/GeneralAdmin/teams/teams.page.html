@@ -34,10 +34,13 @@
       <div class="user-phone">
         Phone: {{user.phone}}
       </div>
+      <div class="user-password">
+        Password:{{user.password}}
+      </div>
     </ion-card-content>
   
     <ion-footer class="center">
-      <ion-button size="small" (click)="newUser()" class="button">+</ion-button>
+      <ion-button size="small" (click)="addUser(team.name)" class="button">Add user</ion-button>
     </ion-footer>
   </ion-card>
 

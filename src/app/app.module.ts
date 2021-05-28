@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TeamFormComponent } from './components/team-form/team-form.component';  
+import { TeamFormComponent } from './components/team-form/team-form.component'; 
 
 //import { ChatPageModule } from './pages/chat/chat.page';
 //import { CalendarPageModule } from './pages/calendar/calendar.page';

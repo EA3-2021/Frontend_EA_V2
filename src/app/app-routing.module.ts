@@ -94,6 +94,11 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'team-form', component: TeamFormComponent},
   { path: 'user-form', component: UserFormComponent},
+  {
+    path: 'user-to-team/:teamName',
+    loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
+  },
+
 
 ];
 
