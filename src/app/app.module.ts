@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TeamFormComponent } from './components/team-form/team-form.component';  
-
+import { UserFormComponent } from './components/user-form/user-form.component';  
 //import { ChatPageModule } from './pages/chat/chat.page';
 //import { CalendarPageModule } from './pages/calendar/calendar.page';
 
@@ -22,7 +22,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [AppComponent,
-    TeamFormComponent],
+    TeamFormComponent,
+    UserFormComponent],
   entryComponents: [],
   imports: [
   BrowserModule,

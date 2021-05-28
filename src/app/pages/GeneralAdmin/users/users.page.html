@@ -14,7 +14,7 @@
     <ion-button (click)="deleteUsers()">Delete all users</ion-button>
   </div>
   
-  <ion-card *ngFor="let user of users" [user]="user">
+  <ion-card *ngFor="let user of users">
     <ion-card-content >
       <div class="user-name">
         User: {{user.name}}

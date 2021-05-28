@@ -1,9 +1,9 @@
 import { UserService } from '../../services/user.service';
-import { TeamService } from '../../services/team.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { User } from '../../model/user'
+
 
 @Component({
   selector: 'app-user-form',
@@ -12,23 +12,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserFormComponent implements OnInit {
 
-  /*userForm: FormGroup;
+  userForm: FormGroup;
   isSubmitted = false;
-  teamName;
 
-  constructor(public teamService: TeamService, public userService: UserService, private router: Router,
-              private formBuilder: FormBuilder, private route: ActivatedRoute){ }
-  */
+  constructor(public userService: UserService, private router: Router,
+              private formBuilder: FormBuilder){ }
+  
   ngOnInit(): void {
-    /*this.teamName = this.route.snapshot.paramMap.get('teamName');
     this.userForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.nullValidator]],
       email: ['', [Validators.required, Validators.nullValidator]],
       phone: ['', [Validators.required, Validators.nullValidator]],
       password: ['', [Validators.required, Validators.nullValidator]]
-    });*/
+    });
   }
-  /*get formControls(){
+  get formControls(){
     return this.userForm.controls;
   }
 
@@ -37,6 +35,7 @@ export class UserFormComponent implements OnInit {
     if(this.userForm.invalid){
       return;
     }
+    
     const name = this.userForm.value.name;
     const email = this.userForm.value.email;
     const phone = this.userForm.value.phone;
@@ -44,17 +43,10 @@ export class UserFormComponent implements OnInit {
     const token = this.userForm.value.token;
     let user = {'name': name, 'email': email, 'phone': phone, 'password': password, 'token': token};
 
-    if(this.teamName==null) {
-      this.userService.newUser(user)
+    this.userService.newUser(user)
       .subscribe(() => {
         this.router.navigateByUrl('/users');
       });
-    } else {
-      this.teamService.addUser(user, this.teamName)
-      .subscribe(() => {
-        this.router.navigateByUrl('/teams');
-      })
-    }
-  }*/
+  }
   
 }

@@ -11,16 +11,14 @@ import { User } from '../../../model/user';
 export class UsersPage implements OnInit {
 
   users: User[];
-  teamName: string;
 
   constructor(
   public userService: UserService,
   private router: Router,
-  private route: ActivatedRoute
+  private route: ActivatedRoute,
   ) {}
 
-  ngOnInit(): void {
-      //this.teamName = this.route.snapshot.paramMap.get('teamName');
+  ngOnInit(): void { 
       this.userService.getUsers().subscribe (users => {
         this.users = users;
       });
@@ -32,26 +30,22 @@ export class UsersPage implements OnInit {
     });
   }
 
-  /*updateUser(_id: string) {
+  deleteUsers() {
+    this.userService.deleteUsers().subscribe (data => {
+      window.location.reload();
+    });
+  }
 
+  updateUser(_id: string) {
     localStorage.setItem("data", JSON.stringify(_id));
+    this.router.navigateByUrl('/update-form') 
+  }
 
+  /*updateUser(_id: string, user: User) {
+    localStorage.setItem("data", JSON.stringify(_id));
     this.userService.updateUser(_id, this.user).subscribe ((res: Response) => {
       this.router.navigateByUrl('/update/' + _id)
     });
   }*/
-
-/*
-  newUser() {
-      if(this.teamName==null) this.router.navigateByUrl('/newUser');
-      else this.router.navigateByUrl('/teams/add/'+this.teamName);
-    }
-
-  deleteUsers() {
-      this.userService.deleteUsers().subscribe (data => {
-        alert('Success');
-      });
-  }
-  */
 
 }

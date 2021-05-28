@@ -13,6 +13,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
+  getUser(_id: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/' + _id)
+  }
   getUsers(){
     return this.http.get<User[]>(environment.apiURL+'/user/all')
   }
@@ -29,22 +32,14 @@ export class UserService {
   updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }
-  
-/*
-  //Funcion registro usuario
-  registerUser(user: User) {
-    return this.http.post(environment.apiURL + '/auth/registerUser', user);
-  }
 
-  
-
-  //Llamada API: Delete TODOS user
   deleteUsers(){
     return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
   }
-
-  //Llamada API: Delete un user
   
-
+  /*
+  registerUser(user: User) {
+    return this.http.post(environment.apiURL + '/auth/registerUser', user);
+  }
   */
 }

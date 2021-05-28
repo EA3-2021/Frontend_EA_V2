@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
+import { UpdateFormComponent } from './components/update-form/update-form.component';
 
 import { UserFormComponent } from './components/user-form/user-form.component';
 
@@ -52,10 +53,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/teams/teams.module').then( m => m.TeamsPageModule)
   },
   {
-    path: 'update-form',
-    loadChildren: () => import('./pages/GeneralAdmin/update-form/update-form.module').then( m => m.UpdateFormPageModule)
-  },
-  {
     path: 'users',
     loadChildren: () => import('./pages/GeneralAdmin/users/users.module').then( m => m.UsersPageModule)
   },
@@ -94,6 +91,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'team-form', component: TeamFormComponent},
   { path: 'user-form', component: UserFormComponent},
+  { path: 'update-form', component: UpdateFormComponent},
 
 ];
 
