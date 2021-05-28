@@ -31,14 +31,14 @@ export class UserCardComponent implements OnInit {
   ngOnInit(): void {
     this.teamName = this.route.snapshot.paramMap.get('teamName');
   }
-/*
+
   newUser(){
     this.teamService.addUser(this.user, this.teamName).subscribe((res: Response) => {
       this.router.navigateByUrl('/teams')
     });
   }
 
-  deleteUser(name: string) {
+  /*deleteUser(name: string) {
     this.userService.deleteUser(name).subscribe (data => {
       window.location.reload();
     });
@@ -53,4 +53,5 @@ export class UserCardComponent implements OnInit {
     });
   }
 */
+
 }

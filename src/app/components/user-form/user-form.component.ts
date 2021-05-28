@@ -12,23 +12,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserFormComponent implements OnInit {
 
-  userForm: FormGroup;
+  /*userForm: FormGroup;
   isSubmitted = false;
   teamName;
 
   constructor(public teamService: TeamService, public userService: UserService, private router: Router,
               private formBuilder: FormBuilder, private route: ActivatedRoute){ }
-
+  */
   ngOnInit(): void {
-    this.teamName = this.route.snapshot.paramMap.get('teamName');
+    /*this.teamName = this.route.snapshot.paramMap.get('teamName');
     this.userForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.nullValidator]],
       email: ['', [Validators.required, Validators.nullValidator]],
       phone: ['', [Validators.required, Validators.nullValidator]],
       password: ['', [Validators.required, Validators.nullValidator]]
-    });
+    });*/
   }
-  get formControls(){
+  /*get formControls(){
     return this.userForm.controls;
   }
 
@@ -55,5 +55,6 @@ export class UserFormComponent implements OnInit {
         this.router.navigateByUrl('/teams');
       })
     }
-  }
+  }*/
+  
 }
