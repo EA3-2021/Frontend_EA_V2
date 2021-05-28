@@ -8,40 +8,62 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <form [formGroup]="registerAdminForm" (ngSubmit)="submitRegisterAdmin()" novalidate>
     <ion-item lines="full">
       <ion-label position="floating">Business name</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input formControlName="name" type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">CIF code</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input formControlName="cif" type="text" required></ion-input>
     </ion-item>
+
+    <!--<ion-item lines="full">
+      <ion-label position="floating">Business mail</ion-label>
+      <ion-input formControlName="email" type="text" required></ion-input>
+    </ion-item>-->
 
     <ion-item lines="full">
       <ion-label position="floating">Business mail</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
+      Email is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.pattern">
+      Enter valid email.
+    </span>
+
+    <!--<ion-item lines="full">
+      <ion-label position="floating">Business phone</ion-label>
+      <ion-input formControlName="phone" type="text" required></ion-input>
+    </ion-item>-->
 
     <ion-item lines="full">
       <ion-label position="floating">Business phone</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input maxlength="10" formControlName="phone" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.required">
+      Phone number is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.pattern">
+      Number values allowed.
+    </span>
  
     <ion-item lines="full">
       <ion-label position="floating">Business address</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input formControlName="address" type="text" required></ion-input>
     </ion-item>
      
     <ion-item lines="full">
       <ion-label position="floating">Postal code</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input formControlName="postalCode" type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input formControlName="password" type="password" required></ion-input>
     </ion-item>
 
     <ion-row>

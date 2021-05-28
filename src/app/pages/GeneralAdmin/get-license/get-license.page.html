@@ -14,7 +14,7 @@
       <ion-label position="floating">Email</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="formControls.email.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
       Enter your email.
     </span>
 

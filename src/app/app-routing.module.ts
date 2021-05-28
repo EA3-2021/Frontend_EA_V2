@@ -37,14 +37,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/login-admin/login-admin.module').then( m => m.LoginAdminPageModule)
   },
   {
-    path: 'obtain-license',
-    loadChildren: () => import('./pages/GeneralAdmin/obtain-license/obtain-license.module').then( m => m.ObtainLicensePageModule)
-  },
-  {
-    path: 'obtain-license',
-    loadChildren: () => import('./pages/GeneralAdmin/obtain-license/obtain-license.module').then( m => m.ObtainLicensePageModule)
-  },
-  {
     path: 'register-admin',
     loadChildren: () => import('./pages/GeneralAdmin/register-admin/register-admin.module').then( m => m.RegisterAdminPageModule)
   },
@@ -97,10 +89,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
   { path: 'forgot-password', component: ForgotPasswordComponent},
-
-
-
-
 
 ];
 

@@ -45,7 +45,7 @@ export class AuthenticationService {
     }
 
     loginAdmin(name, password) {
-        return this.http.post<any>(environment.apiURL+ '/auth/loginAdmin', { name, password })
+        return this.http.post<any>(environment.apiURL+ '/auth/login-admin', { name, password })
             .pipe(map(admin => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentAdmin', JSON.stringify(admin));

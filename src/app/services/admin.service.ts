@@ -12,6 +12,6 @@ export class AdminService {
 
   //Funcion registro admin
   registerAdmin(admin: Admin) {
-    return this.http.post(environment.apiURL + '/admin/registerAdmin', admin);
+    return this.http.post(environment.apiURL + '/admin/register-admin', admin);
   }
 }
