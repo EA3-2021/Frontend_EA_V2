@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class UpdateFormComponent implements OnInit {
 
   updateForm: FormGroup;
-  _id:string;
+  _id;
   
   constructor(public teamService: TeamService, public userService: UserService, private router: Router, 
               private formBuilder: FormBuilder, private route: ActivatedRoute){ }
 
   ngOnInit(): void {
+    
     this._id = this.route.snapshot.paramMap.get('_id');
     this.updateForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.nullValidator]],
@@ -32,6 +33,9 @@ export class UpdateFormComponent implements OnInit {
   }
 
   submitUpdate(): void {  
+
+    var id = JSON.parse(localStorage.getItem("data"));
+
     const name = this.updateForm.value.name;
     const email = this.updateForm.value.email;
     const phone = this.updateForm.value.phone;
@@ -39,7 +43,7 @@ export class UpdateFormComponent implements OnInit {
     const token = this.updateForm.value.token;
     let user = {'name': name, 'email': email, 'phone': phone, 'password': password, 'token': token};
 
-    this.userService.updateUser(this._id, user).subscribe(() => { this.router.navigateByUrl('/users');});
+    this.userService.updateUser(id, user).subscribe(() => { this.router.navigateByUrl('/users');});
   }
 
 }

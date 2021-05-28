@@ -24,9 +24,11 @@
       <div class="user-password">
         Password:{{user.password}}
       </div>
-      <div class="center">
-        <ion-button (click)="newUser(user._id)" size="small" *ngIf="teamName!=null">+</ion-button>
-      </div>
     </ion-card-content>
+    
+    <ion-footer class="center">
+      <ion-button (click)="newUser(user)" size="small" *ngIf="teamName!=null">+</ion-button>
+    </ion-footer>
+
   </ion-card>
 </ion-content>

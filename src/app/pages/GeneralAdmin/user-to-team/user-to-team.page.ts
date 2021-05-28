@@ -33,9 +33,18 @@ export class UserToTeamPage implements OnInit {
       this.router.navigateByUrl('/teams')
     });
   }*/
-  newUser(_id: string){
+  /*newUser(_id: string, user: User){
 
-    this.teamService.addUser(this.teamName, _id).subscribe((res: Response) => {
+    this.teamService.addUser(this.teamName, _id, user).subscribe((res: Response) => {
+      this.router.navigateByUrl('/teams').then(() => {
+        window.location.reload();
+    });
+  });
+  }*/
+
+  newUser(user: User){
+
+    this.teamService.addUser(this.teamName, user).subscribe((res: Response) => {
       this.router.navigateByUrl('/teams').then(() => {
         window.location.reload();
     });

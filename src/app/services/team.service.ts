@@ -20,8 +20,8 @@ export class TeamService {
     return this.http.post(environment.apiURL + '/team/new', newTeam);
   }
 
-  addUser( teamName: string, _id: string) {
-    return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, _id);
+  addUser( teamName: string, user: User) {
+    return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user);
   }
 
   //Update
