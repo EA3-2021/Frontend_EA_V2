@@ -32,6 +32,10 @@ export class LicensePage implements OnInit {
 
     submitLicense(): void {
   
+      if (this.submitted == true) {
+        return;
+      }
+
       this.submitted = true;
   
       if(this.licenseForm.invalid){
@@ -40,8 +44,16 @@ export class LicensePage implements OnInit {
   
       const licenseCode = this.licenseForm.value.licenseCode;
   
-      this.licenseService.checkLicense(licenseCode)
-        .subscribe( res => { this.router.navigateByUrl('/register-admin');
+      this.licenseService.useLicense(licenseCode)
+        .subscribe(() => {
+          
+          this.submitted = false;
+          this.router.navigateByUrl('/register-admin')
+
+      },
+      (error: any) => {
+        this.submitted = false;
+          console.log(error);
       });
     }
   

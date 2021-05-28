@@ -13,6 +13,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'get-license',
+    loadChildren: () => import('./pages/GeneralAdmin/get-license/get-license.module').then( m => m.GetLicensePageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },

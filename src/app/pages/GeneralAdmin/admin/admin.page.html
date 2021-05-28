@@ -11,12 +11,15 @@
   <ion-grid>
     <ion-row>
       <ion-col align-self-center>
+        <ion-button [routerLink]="['/get-license']" expand="block" color="secondary">Obtain license</ion-button>
         <ion-button [routerLink]="['/license']" expand="block" color="primary">Register</ion-button>
-
+      
           <div><span class="divider line one-line">or</span></div>
           <div><span class="already">Already a user?</span></div>
 
         <ion-button [routerLink]="['/login-admin']" expand="block" color="danger">Sign In</ion-button>
+        
+
       </ion-col>
     </ion-row>
   </ion-grid>
