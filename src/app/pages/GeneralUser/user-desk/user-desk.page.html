@@ -1,20 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user-desk</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>User Desk</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="text-align: center;">
-    <button (click)="goUsers()" class="button">My Contacts</button>
+<ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  <div class = "center">
+  <ion-button [routerLink]="['/calendar']">Calendar</ion-button>
   </div>
-  <div style="text-align: center;">
-    <button (click)="goTeams()" class="button">My Teams</button>
-  </div>
-
-  <!--Boton sin funcionalidad de momento-->
-  <div style="text-align: center;">
-    <button (click)="goCalendar()" class="button">Calendar</button>
-  </div>
-
-</ion-content>
+  <div class = "center">
+    <ion-button [routerLink]="['/contacts']">Contacts</ion-button>
+    </div>
+</ion-list>

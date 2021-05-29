@@ -40,12 +40,4 @@ export class UsersPage implements OnInit {
     localStorage.setItem("data", JSON.stringify(_id));
     this.router.navigateByUrl('/update-form') 
   }
-
-  /*updateUser(_id: string, user: User) {
-    localStorage.setItem("data", JSON.stringify(_id));
-    this.userService.updateUser(_id, this.user).subscribe ((res: Response) => {
-      this.router.navigateByUrl('/update/' + _id)
-    });
-  }*/
-
 }

@@ -12,12 +12,4 @@ export class AdminPage implements OnInit {
 
   ngOnInit() {
   }
-
-  /*goLoginAdmin(){
-    this.router.navigateByUrl('/loginAdmin');
-  }
-  goRegisterAdmin(){
-    this.router.navigateByUrl('/license');
-  }*/
-  
 }

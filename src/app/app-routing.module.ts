@@ -96,7 +96,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
   },
 
-  { path: 'update-form', component: UpdateFormComponent},
+  { path: 'update-form', component: UpdateFormComponent},  {
+    path: 'contacts',
+    loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
+  },
+
 
 ];
 
