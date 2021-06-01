@@ -7,11 +7,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-list class = "ion-wrap" class = "ion-padding-bottom">
-  <div class = "center">
-  <ion-button [routerLink]="['/calendar']">Calendar</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/contacts']">Contacts</ion-button>
-    </div>
-</ion-list>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/calendar']" expand="block" color="primary">Calendar</ion-button>
+        <ion-button [routerLink]="['/contacts']" expand="block" color="primary">Contacts</ion-button>
+        <!--Boton sin funcionalidad de momento-->
+        <ion-button [routerLink]="['/report']" expand="block" color="primary">Report</ion-button>
+        <ion-button [routerLink]="['/job-clock']" expand="block" color="primary">Job in/out</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

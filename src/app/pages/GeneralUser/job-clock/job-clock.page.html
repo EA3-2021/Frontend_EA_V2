@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Record your entry and exit from work</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <!-- este botón debería mandar la hora i el nombre de usuario o id y registrarlo en la bbdd -->
+        <ion-button [routerLink]="['/user-desk']" expand="block" color="primary">Start</ion-button>
+        <ion-button [routerLink]="['/user-desk']" expand="block" color="primary">Finish</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

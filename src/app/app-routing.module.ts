@@ -95,17 +95,30 @@ const routes: Routes = [
     path: 'user-to-team/:teamName',
     loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
   },
-
-  { path: 'update-form', component: UpdateFormComponent},  {
+  { path: 'update-form', component: UpdateFormComponent},
+  {
     path: 'contacts',
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
+  {
+    path: 'report',
+    loadChildren: () => import('./pages/GeneralUser/report/report.module').then( m => m.ReportPageModule)
+  },
+  {
+    path: 'reports',
+    loadChildren: () => import('./pages/GeneralAdmin/reports/reports.module').then( m => m.ReportsPageModule)
+  },  {
+    path: 'job-clock',
+    loadChildren: () => import('./pages/GeneralUser/job-clock/job-clock.module').then( m => m.JobClockPageModule)
+  },
+
+
 
 
 ];
 
 @NgModule({
-  
+
   imports: [
     RouterModule.forRoot(routes,
      { preloadingStrategy: PreloadAllModules }),

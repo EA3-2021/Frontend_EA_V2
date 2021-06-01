@@ -7,16 +7,16 @@
   </ion-toolbar>
 </ion-header>
 
-
-<ion-list class = "ion-wrap" class = "ion-padding-bottom">
-  <div class = "center">
-  <ion-button [routerLink]="['/users']">Users</ion-button>
-  </div>
-  <div class = "center">
-  <ion-button [routerLink]="['/teams']">Teams</ion-button>
-  </div>
-  <!--Boton sin funcionalidad de momento-->
-  <div class = "center">
-    <ion-button [routerLink]="['/requests']">Pending requests</ion-button>
-    </div>
-</ion-list>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/users']" expand="block" color="primary">Users</ion-button>
+        <ion-button [routerLink]="['/teams']" expand="block" color="primary">Teams</ion-button>
+        <!--Boton sin funcionalidad de momento-->
+        <ion-button [routerLink]="['/requests']" expand="block" color="primary">Pending requests</ion-button>
+        <ion-button [routerLink]="['/reports']" expand="block" color="primary">Reports</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

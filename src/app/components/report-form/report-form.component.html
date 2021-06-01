@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="reportForm" (ngSubmit)="submitReport()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Affair</ion-label>
+      <ion-input formControlName="affair" type="affair"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.affair.errors.required">
+      Affair is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Description</ion-label>
+      <ion-input formControlName="description" type="description"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
+      Description is required.
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>
+
