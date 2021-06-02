@@ -107,12 +107,19 @@ const routes: Routes = [
   {
     path: 'reports',
     loadChildren: () => import('./pages/GeneralAdmin/reports/reports.module').then( m => m.ReportsPageModule)
-  },  {
+  },
+  {
     path: 'job-clock',
     loadChildren: () => import('./pages/GeneralUser/job-clock/job-clock.module').then( m => m.JobClockPageModule)
   },
-
-
+  {
+    path: 'setting',
+    loadChildren: () => import('./pages/GeneralUser/setting/setting.module').then( m => m.SettingPageModule)
+  },
+  {
+    path: 'settings-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/settings-admin/settings-admin.module').then( m => m.SettingsAdminPageModule)
+  },
 
 
 ];

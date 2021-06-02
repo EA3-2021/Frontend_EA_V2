@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class = "ion-padding-bottom">
+
+  <ion-card *ngFor="let setting of settings">
+    <ion-card-content >
+
+      <div class="setting-name">
+        Name: {{setting.name}}
+      </div>
+
+      <div class="setting-notifications">
+        Notifications: {{setting.notifications}}
+      </div>
+
+      <div class="setting-privacity">
+        Privacity: {{setting.privacity}}
+      </div>
+
+      <div class="setting-security">
+        Security: {{setting.security}}
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

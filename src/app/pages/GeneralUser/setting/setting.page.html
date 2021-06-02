@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="settingForm" (ngSubmit)="submitSetting()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="name"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
+      Name is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Notifications</ion-label>
+      <ion-input formControlName="notifications" type="notifications"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.notifications.errors.required">
+      Notifications is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Privacity</ion-label>
+      <ion-input formControlName="privacity" type="privacity" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.privacity.errors.required">
+      Privacity is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Security</ion-label>
+      <ion-input formControlName="security" type="security" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.security.errors.required">
+      Security is required.
+    </span>
+
+    <ion-row>
+      <ion-col class="center">
+        <ion-button type="submit" expand="block">Setting</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>
