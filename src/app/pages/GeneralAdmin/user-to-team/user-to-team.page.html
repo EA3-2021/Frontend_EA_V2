@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Users to add</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <ion-card *ngFor="let user of users">
+    <ion-card-content >
+      <div class="user-name">
+        User: {{user.name}}
+      </div>
+
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
+
+      <div class="user-phone">
+        Phone: {{user.phone}}
+      </div>
+      <div class="user-password">
+        Password:{{user.password}}
+      </div>
+    </ion-card-content>
+    
+    <ion-footer class="center">
+      <ion-button (click)="newUser(user)" size="small" *ngIf="teamName!=null">+</ion-button>
+    </ion-footer>
+
+  </ion-card>
+</ion-content>

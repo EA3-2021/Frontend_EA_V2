@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list class = "ion-wrap" class = "ion-padding-bottom">
+
+  <ion-text color="secondary">
+    <p>Username: {{username}}</p>
+  </ion-text>
+
+  <ion-text color="secondary">
+    <p>Email: {{email}}</p>
+  </ion-text>
+
+  <ion-text color="secondary">
+    <p>Phone: {{phone}}</p>
+  </ion-text>
+
+  <ion-text color="secondary">
+    <p>Insignias:</p>
+  </ion-text>
+
+  <ion-content>
+    <ion-list inset>
+      <ion-item *ngFor="let insig of insignias">
+        <p>{{insig}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-list>

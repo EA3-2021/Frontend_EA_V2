@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class = "ion-padding-bottom">
+  
+  <div class="center">
+    <ion-button [routerLink]="['/user-form']">Add new User</ion-button>
+    <ion-button (click)="deleteUsers()">Delete all users</ion-button>
+  </div>
+  
+  <ion-card *ngFor="let user of users">
+    <ion-card-content >
+      <div class="user-name">
+        User: {{user.name}}
+      </div>
+
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
+
+      <div class="user-phone">
+        Phone: {{user.phone}}
+      </div>
+      <div class="user-password">
+        Password:{{user.password}}
+      </div>
+    </ion-card-content>
+
+    <ion-footer class="center">
+      <ion-button (click)="updateUser(user._id)">Update</ion-button>
+      <ion-button (click)="deleteUser(user.name)">Delete</ion-button>
+    </ion-footer>
+  </ion-card>
+
+</ion-content>
+
+

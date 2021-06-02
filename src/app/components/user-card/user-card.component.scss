@@ -1,0 +1,30 @@
+.student-card{
+  background-color: #FADBD8;
+}
+
+.student-phones{
+    margin: 10px;
+}
+
+.student-name {
+  font-weight: bold;
+}
+
+.button {
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  padding: 3px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.center {
+  text-align: center;
+}

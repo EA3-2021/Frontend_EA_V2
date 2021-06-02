@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>MyTeam</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/user']" expand="block" color="primary">Worker</ion-button>
+          <div><span class="divider line one-line">or</span></div>
+        <ion-button [routerLink]="['/admin']" expand="block" color="primary">Business</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

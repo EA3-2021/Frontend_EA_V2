@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="userForm" (ngSubmit)="submitUser()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="name"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
+      Name is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
+      Email is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input formControlName="phone" type="phone"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.required">
+      Phone is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors.required">
+      Password is required.
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  
+</ion-content>
+

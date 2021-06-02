@@ -1,0 +1,46 @@
+<!--<div class="login">
+  <h2 class="login-header">New Team</h2>
+  <form [formGroup]="teamForm" class="login-container" (ngSubmit)="submitTeam()">
+    <input type="name" placeholder="Name*" formControlName="name" />
+    <ng-container
+      *ngIf="!formControls.name.valid &&formControls.name.touched"
+    >
+      <p *ngIf="formControls.name.errors.required">
+        Name is required
+      </p>
+    </ng-container>
+
+    <p>
+      <input type="submit" value="Submit" [disabled]="teamForm.invalid" />
+    </p>
+  </form>
+</div>-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create new team</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="teamForm" (ngSubmit)="submitTeam()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Team name</ion-label>
+      <ion-input formControlName="name" type="name"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
+      Team name is required.
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  
+</ion-content>
