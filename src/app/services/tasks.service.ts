@@ -13,7 +13,7 @@ export class TasksService {
   getTasks(){
     return this.http.get<Task[]>(environment.apiURL+'/task/all')
   }
-
+  
   newTask(newTask: Task){
     return this.http.post(environment.apiURL + '/task/new', newTask);
   }

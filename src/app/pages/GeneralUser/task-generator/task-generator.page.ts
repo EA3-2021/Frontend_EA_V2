@@ -50,7 +50,7 @@ export class TaskGeneratorPage implements OnInit {
       const day = this.taskForm.value.day;
       const description = this.taskForm.value.description;
       let task = {'name': name, 'startTime': startTime, 'endTime': endTime, 'day': day, 'description': description};
-      this.TaskService.newTask(task )
+      this.TaskService.newTask(task)
           .pipe(first())
           .subscribe(() =>  {
                  this.router.navigateByUrl('/tasks');

@@ -108,7 +108,15 @@ const routes: Routes = [
   {
     path: 'task-generator',
     loadChildren: () => import('./pages/GeneralUser/task-generator/task-generator.module').then( m => m.TaskGeneratorPageModule)
+  },  {
+    path: 'faq-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
   },
+  {
+    path: 'faq-user',
+    loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)
+  },
+
 
 
 ];
