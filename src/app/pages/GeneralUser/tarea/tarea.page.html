@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Nueva Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <form [formGroup]="registerTareaForm" (ngSubmit)="submitRegisterTarea()" novalidate>
+    <ion-item lines="full">
+
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input formControlName="descripcion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Hora</ion-label>
+      <ion-input formControlName="hora" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Duracion</ion-label>
+      <ion-input formControlName="duracion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

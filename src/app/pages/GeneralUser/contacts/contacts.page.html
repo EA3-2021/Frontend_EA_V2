@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Contacts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class = "ion-padding-bottom">
+  
+  <ion-card *ngFor="let user of users">
+    <ion-card-content >
+      <div class="user-name">
+        User: {{user.name}}
+      </div>
+
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

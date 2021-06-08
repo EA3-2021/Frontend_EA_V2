@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>User Desk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  <div class = "center">
+  <ion-button [routerLink]="['/calendar']">Calendar</ion-button>
+  </div>
+  <div class = "center">
+    <ion-button [routerLink]="['/contacts']">Contacts</ion-button>
+    </div>
+</ion-list>

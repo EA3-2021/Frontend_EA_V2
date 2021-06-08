@@ -1,0 +1,24 @@
+<div class="user-card" *ngIf="user">
+
+  <div class="user-name">
+    User {{index+1}}: {{user.name}}
+  </div>
+
+  <div class="user-email">
+    Email: {{user.email}}
+  </div>
+
+  <div class="user-phone">
+    Phone: {{user.phone}}
+  </div>
+
+  <div class="user-password">
+    Password: {{user.password}}
+  </div>
+
+  <button (click)="updateUser(user._id)" class="button" >Update</button>
+
+  <button (click)="deleteUser(user.name)" class="button" >Delete</button>
+
+</div>
+<br>

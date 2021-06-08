@@ -1,0 +1,16 @@
+<div class="team-card" *ngIf="team">
+
+  <div class="team-title">
+    <h2>{{teamIndex+1 + ' - ' + team.name}}</h2>
+  </div>
+
+  <div class="users">
+    <app-user-card *ngFor="let user of team.users; index as i"
+                   [user]="user" [index]="i"></app-user-card>
+  </div>
+
+  <div class="center">
+    <button (click)="addUser(team.name)" class="button">Add new user</button>
+  </div>
+
+</div>
