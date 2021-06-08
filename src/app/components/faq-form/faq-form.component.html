@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>FAQ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="faqForm" (ngSubmit)="faqUser()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" type="title"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.title.errors.required">
+      Title is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Content</ion-label>
+      <ion-input formControlName="content" type="content"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.content.errors.required">
+      Content is required.
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  
+</ion-content>

@@ -96,10 +96,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
   },
 
-  { path: 'update-form', component: UpdateFormComponent},  {
+  { path: 'update-form', component: UpdateFormComponent},
+  {
     path: 'contacts',
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
+  {
+    path: 'tasks',
+    loadChildren: () => import('./pages/GeneralUser/tasks/tasks.module').then( m => m.TasksPageModule)
+  },
+  {
+    path: 'task-generator',
+    loadChildren: () => import('./pages/GeneralUser/task-generator/task-generator.module').then( m => m.TaskGeneratorPageModule)
+  },  {
+    path: 'faq-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
+  },
+  {
+    path: 'faq-user',
+    loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)
+  },
+
 
 
 ];
