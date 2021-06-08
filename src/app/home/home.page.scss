@@ -1,14 +1,35 @@
-.button {
-    background-color: #C70039;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+.divider {
+  display: flex;
+  
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+  }
+}
+
+.line {
+  align-items: center;
+  margin: 1em -1em;
+  color: #cccccc;
+  
+  &:before,
+  &:after {
+    height: 1px;
+    margin: 0 1em;
+  }
+} 
+
+.one-line {
+  &:before,
+  &:after {
+     background: #cccccc;
+  }
+}
+
+.auth-form ion-grid,
+.auth-form ion-row {
+  height: 100%;
+  justify-content: center;
+  padding-top: 100px;
 }

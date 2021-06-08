@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -7,16 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-/*
-  goLoginAdmin(){
-    this.router.navigateByUrl('/loginAdmin');
-  }
-  goRegisterAdmin(){
-    this.router.navigateByUrl('/license');
-  }
-  */
 }

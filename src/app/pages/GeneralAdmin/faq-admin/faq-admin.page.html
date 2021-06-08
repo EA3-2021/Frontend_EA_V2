@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Faqs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class = "ion-padding-bottom">
+ 
+
+    <div class="center">
+      <ion-button type="submit">Add new FAQ</ion-button>
+    </div>
+
+  <ion-card *ngFor="let faq of faqs">
+    <ion-card-content >
+      <div class="faq-title">
+        Title: {{faq.title}}
+      </div>
+
+      <div class="faq-content">
+        Content: {{faq.content}}
+      </div>
+
+    
+    </ion-card-content>
+
+    <ion-footer class="center">
+      <ion-button (click)="deleteFaq(faq.title)">Delete</ion-button>
+    </ion-footer>
+  </ion-card>
+
+</ion-content>
+

@@ -1,18 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Admin - Registration & Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="text-align: center;">
-    <h1 id="text">Admin</h1>
-  </div>
-  <div style="text-align: center;">
-    <button (click)="goLoginAdmin()" class="button">LOGIN</button>
-  </div>
-  <div style="text-align: center;">
-    <button (click)="goRegisterAdmin()" class="button">REGISTER</button>
-  </div>
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/license']" expand="block" color="primary">Register</ion-button>
+      
+          <div><span class="divider line one-line">or</span></div>
+          <div><span class="already">Already a user?</span></div>
 
+        <ion-button [routerLink]="['/login-admin']" expand="block" color="danger">Sign In</ion-button>
+        
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+ 

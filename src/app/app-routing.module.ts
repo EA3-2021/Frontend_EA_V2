@@ -1,5 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { TeamFormComponent } from './components/team-form/team-form.component';
+import { UpdateFormComponent } from './components/update-form/update-form.component';
+
+import { UserFormComponent } from './components/user-form/user-form.component';
+<<<<<<< HEAD
+=======
+import { MapcomponentComponent } from './map/mapcomponent/mapcomponent.component';
+>>>>>>> features
 
 //import { HomeComponent } from './pages/home/home.component';
 //import { ChatPageModule } from './pages/chat/chat.page';
@@ -10,6 +19,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'get-license',
+    loadChildren: () => import('./pages/GeneralAdmin/get-license/get-license.module').then( m => m.GetLicensePageModule)
   },
   {
     path: 'home',
@@ -32,14 +45,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/login-admin/login-admin.module').then( m => m.LoginAdminPageModule)
   },
   {
-    path: 'obtain-license',
-    loadChildren: () => import('./pages/GeneralAdmin/obtain-license/obtain-license.module').then( m => m.ObtainLicensePageModule)
-  },
-  {
-    path: 'obtain-license',
-    loadChildren: () => import('./pages/GeneralAdmin/obtain-license/obtain-license.module').then( m => m.ObtainLicensePageModule)
-  },
-  {
     path: 'register-admin',
     loadChildren: () => import('./pages/GeneralAdmin/register-admin/register-admin.module').then( m => m.RegisterAdminPageModule)
   },
@@ -50,10 +55,6 @@ const routes: Routes = [
   {
     path: 'teams',
     loadChildren: () => import('./pages/GeneralAdmin/teams/teams.module').then( m => m.TeamsPageModule)
-  },
-  {
-    path: 'update-form',
-    loadChildren: () => import('./pages/GeneralAdmin/update-form/update-form.module').then( m => m.UpdateFormPageModule)
   },
   {
     path: 'users',
@@ -91,16 +92,54 @@ const routes: Routes = [
     path: 'user-desk',
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'team-form', component: TeamFormComponent},
+  { path: 'user-form', component: UserFormComponent},
+  {
+    path: 'user-to-team/:teamName',
+    loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
+  },
 
+  { path: 'update-form', component: UpdateFormComponent},
+  {
+    path: 'contacts',
+    loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
+  },
+<<<<<<< HEAD
+  {
+    path: 'tasks',
+    loadChildren: () => import('./pages/GeneralUser/tasks/tasks.module').then( m => m.TasksPageModule)
+  },
+  {
+    path: 'task-generator',
+    loadChildren: () => import('./pages/GeneralUser/task-generator/task-generator.module').then( m => m.TaskGeneratorPageModule)
+  },  {
+    path: 'faq-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
+  },
+  {
+    path: 'faq-user',
+    loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)
+=======
+  { path: 'map', component: MapcomponentComponent},
+  {
+    path: 'tarea',
+    loadChildren: () => import('./pages/GeneralUser/tarea/tarea.module').then( m => m.TareaPageModule)
+  },  {
+    path: 'configuration',
+    loadChildren: () => import('./pages/GeneralAdmin/configuration/configuration.module').then( m => m.ConfigurationPageModule)
+>>>>>>> features
+  },
 
 
 
 ];
 
 @NgModule({
+  
   imports: [
     RouterModule.forRoot(routes,
-     { preloadingStrategy: PreloadAllModules })
+     { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule]
 })

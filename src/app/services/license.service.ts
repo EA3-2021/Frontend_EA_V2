@@ -9,8 +9,12 @@ export class LicenseService {
 
   constructor(private http: HttpClient) { }
 
-  checkLicense(licenseCode: string) {
-    return this.http.get(environment.apiURL + '/admin/' +licenseCode);
+  useLicense(licenseCode: string) {
+    return this.http.post(environment.apiURL + '/license/use', {"licenseCode": licenseCode});
+  }
+
+  getLicense(email: string) {
+    return this.http.post(environment.apiURL + '/license/obtain', {"email": email});
   }
 
 }

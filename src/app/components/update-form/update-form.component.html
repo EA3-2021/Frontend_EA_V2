@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<form [formGroup]="updateForm" class="login-container" (ngSubmit)="submitUpdate()">
+      
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="name" placeholder="Update name..." formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" placeholder="Update email..." formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input type="text" placeholder="Update phone..." formControlName="phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" placeholder="Update password..." formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  
+  </form>-->
+
+  <form [formGroup]="updateForm" (ngSubmit)="submitUpdate()" novalidate>
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.pattern">
+      Enter valid email.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input maxlength="10" formControlName="phone" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.pattern">
+      Number values allowed.
+    </span>
+ 
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
+

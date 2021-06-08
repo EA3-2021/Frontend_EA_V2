@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-users',
@@ -6,41 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.page.scss'],
 })
 export class UsersPage implements OnInit {
-/*
+
   users: User[];
-  teamName: string;
-*/
+
   constructor(
-  /*
   public userService: UserService,
   private router: Router,
-  private route: ActivatedRoute
-  */
-  ) { }
+  private route: ActivatedRoute,
+  ) {}
 
-  ngOnInit(): void {
-  /*
-      this.teamName = this.route.snapshot.paramMap.get('teamName');
+  ngOnInit(): void { 
       this.userService.getUsers().subscribe (users => {
         this.users = users;
       });
-      */
   }
-/*
-  newUser() {
-      if(this.teamName==null) this.router.navigateByUrl('/newUser');
-      else this.router.navigateByUrl('/teams/add/'+this.teamName);
-    }
 
-  adminDesk(){
-      this.router.navigateByUrl('/adminDesk');
+  deleteUser(name: string) {
+    this.userService.deleteUser(name).subscribe (data => {
+      window.location.reload();
+    });
   }
 
   deleteUsers() {
-      this.userService.deleteUsers().subscribe (data => {
-        alert('Success');
-      });
+    this.userService.deleteUsers().subscribe (data => {
+      window.location.reload();
+    });
   }
-  */
 
+  updateUser(_id: string) {
+    localStorage.setItem("data", JSON.stringify(_id));
+    this.router.navigateByUrl('/update-form') 
+  }
 }

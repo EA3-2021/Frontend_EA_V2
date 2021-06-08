@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Team } from '../model/team'
-import { TeamService } from '../services/team.service';
+import { Team } from '../../model/team'
+import { TeamService } from '../../services/team.service';
 
 @Component({
   selector: 'app-team-form',

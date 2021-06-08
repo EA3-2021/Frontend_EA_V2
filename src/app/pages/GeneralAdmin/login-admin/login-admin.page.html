@@ -1,39 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>loginAdmin</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="loginAdmin">
+<ion-content class="center">
+  <form [formGroup]="loginAdminForm" (ngSubmit)="submitLoginAdmin()" novalidate>
 
-    <h2 class="loginAdmin-header">Login</h2>
-    <form [formGroup]="loginAdminForm" class="loginAdmin-container" (ngSubmit)="submitLoginAdmin()">
-      <input type="name" placeholder="Username or email*" formControlName="name" />
-      <ng-container
-        *ngIf="!formControls.name.valid &&formControls.name.touched"
-      >
-        <p *ngIf="formControls.name.errors.required">
-          Name is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
+      Name is required.
+    </span>
 
-      <input type="password" placeholder="Password*" formControlName="password" />
-      <ng-container
-        *ngIf="!formControls.password.valid &&formControls.password.touched"
-      >
-        <p *ngIf="formControls.password.errors.required">
-          Password is required
-        </p>
-      </ng-container>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors.required">
+      Password is required.
+    </span>
 
-      <p>
-        <input type="submit" value="Get in!" [disabled]="loginAdminForm.invalid" />
-      </p>
-    </form>
-  </div>
-  <div class="center">
-    <button (click)="admin()" class="button"> Back </button>
-  </div>
-
+    <ion-row>
+      <ion-col class="center">
+        <ion-button type="submit" expand="block">Sign In</ion-button>       
+      </ion-col>
+    </ion-row>
+    <ion-button (click)="goPassword()" class="button" color="danger" >Forgot Password ?</ion-button>
+  </form>
 </ion-content>

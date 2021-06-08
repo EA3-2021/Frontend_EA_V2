@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Team } from '../../../model/team';
+import { TeamService } from '../../../services/team.service';
+import { Router } from '@angular/router';
+import { User } from '../../../model/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-teams',
@@ -7,33 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsPage implements OnInit {
 
-//   teams: Team[];
+  teams: Team[];
+
+  @Input()
+  user: User;
+  users: User[];
+
   constructor(
-  /*
 
-  public teamService: TeamService, private router: Router
-
-  */
-  ) { }
+  public teamService: TeamService, private router: Router, public userService: UserService) { }
 
   ngOnInit() {
-  /*
       this.teamService.getTeams().subscribe (teams => {
         this.teams = teams;
-      })
-  */
+      });
+      this.userService.getUsers().subscribe (users => {
+        this.users = users;
+      });
   }
 
-  /*
-
     addTeam() {
-      this.router.navigateByUrl('/newTeam');
+      this.router.navigateByUrl('/team-form');
     }
 
-    adminDesk(){
-      this.router.navigateByUrl('/adminDesk');
+    addUser(teamName: string){
+      this.router.navigateByUrl('/user-to-team/' + teamName);
     }
-
-  */
 
 }

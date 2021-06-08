@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Admin } from '../models/admin';
+import { Admin } from '../model/admin';
+<<<<<<< HEAD
+=======
+import { Configuration } from '../model/configuration';
+>>>>>>> features
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,6 +16,13 @@ export class AdminService {
 
   //Funcion registro admin
   registerAdmin(admin: Admin) {
-    return this.http.post(environment.apiURL + '/admin/registerAdmin', admin);
+    return this.http.post(environment.apiURL + '/admin/register-admin', admin);
   }
+<<<<<<< HEAD
+=======
+
+  updateConfiguration(configuration: Configuration) {
+    return this.http.post(environment.apiURL + '/admin/configuration', configuration);
+  }
+>>>>>>> features
 }
