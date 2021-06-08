@@ -5,6 +5,10 @@ import { TeamFormComponent } from './components/team-form/team-form.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 
 import { UserFormComponent } from './components/user-form/user-form.component';
+<<<<<<< HEAD
+=======
+import { MapcomponentComponent } from './map/mapcomponent/mapcomponent.component';
+>>>>>>> features
 
 //import { HomeComponent } from './pages/home/home.component';
 //import { ChatPageModule } from './pages/chat/chat.page';
@@ -101,6 +105,7 @@ const routes: Routes = [
     path: 'contacts',
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
+<<<<<<< HEAD
   {
     path: 'tasks',
     loadChildren: () => import('./pages/GeneralUser/tasks/tasks.module').then( m => m.TasksPageModule)
@@ -115,6 +120,15 @@ const routes: Routes = [
   {
     path: 'faq-user',
     loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)
+=======
+  { path: 'map', component: MapcomponentComponent},
+  {
+    path: 'tarea',
+    loadChildren: () => import('./pages/GeneralUser/tarea/tarea.module').then( m => m.TareaPageModule)
+  },  {
+    path: 'configuration',
+    loadChildren: () => import('./pages/GeneralAdmin/configuration/configuration.module').then( m => m.ConfigurationPageModule)
+>>>>>>> features
   },
 
 
