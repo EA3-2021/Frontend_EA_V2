@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { Router, ActivatedRoute } from '@angular/router';
 import {TareaPage} from './../tarea/tarea.page';
->>>>>>> features
 
 @Component({
   selector: 'app-calendar',
@@ -12,19 +9,12 @@ import {TareaPage} from './../tarea/tarea.page';
 })
 export class CalendarPage implements OnInit {
 
-<<<<<<< HEAD
   date: string;
   type: 'string';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   onChange($event) {
     console.log($event);
   }
-=======
   eventSource = [];
 
   calendar = {
@@ -55,5 +45,4 @@ export class CalendarPage implements OnInit {
       this.selectedDate = ev.selectedTime;
   }
 
->>>>>>> features
 }
