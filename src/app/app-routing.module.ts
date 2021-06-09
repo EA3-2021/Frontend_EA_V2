@@ -103,14 +103,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
   {
-    path: 'tasks',
-    loadChildren: () => import('./pages/GeneralUser/tasks/tasks.module').then( m => m.TasksPageModule)
-  },
-  {
-    path: 'task-generator',
-    loadChildren: () => import('./pages/GeneralUser/task-generator/task-generator.module').then( m => m.TaskGeneratorPageModule)
-  },
-  {
     path: 'faq-admin',
     loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
   },
