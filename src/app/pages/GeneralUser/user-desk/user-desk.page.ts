@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-user-desk',
@@ -7,24 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDeskPage implements OnInit {
 
-   constructor(
-   /*
-   private router: Router
-   */
-   ) { }
+  latitude: any = 0; //latitude
+  longitude: any = 0; //longitude*/
+
+   constructor() { }
 
    ngOnInit(): void {
+    const coordinates = Geolocation.getCurrentPosition().then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
    }
-/*
-   goTeams(){
-     this.router.navigateByUrl('/teams');
-   }
-   goUsers(){
-     this.router.navigateByUrl('/users');
-   }
-   goCalendar(){
-     this.router.navigateByUrl('/calendar');
-   }
-*/
 
 }
