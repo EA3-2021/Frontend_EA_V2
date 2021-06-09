@@ -32,7 +32,7 @@ export class UserService {
   }
 
   registerTask(tarea:Tarea){
-    return this.http.post(environment.apiURL + '/user/newtarea', tarea);
+    return this.http.post(environment.apiURL + '/user/newtask', tarea);
   }
 
 }

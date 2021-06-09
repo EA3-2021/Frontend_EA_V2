@@ -34,8 +34,6 @@ export class TareaPage implements OnInit {
     this.año = this.route.snapshot.paramMap.get('año');
     this.fecha = this.dia+'/'+this.mes + '/'+this.año;
 
-    alert(this.fecha);
-
     this.registerTareaForm = this.formBuilder.group({
       descripcion: ['', Validators.required],
       hora: ['', Validators.required],
@@ -57,6 +55,7 @@ export class TareaPage implements OnInit {
           .subscribe(() => {
                   this.router.navigate(['/calendar']);
               });
+    console.log (this.registerTareaForm.value);
 
   }
  
