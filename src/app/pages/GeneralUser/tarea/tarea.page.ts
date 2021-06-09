@@ -39,7 +39,7 @@ export class TareaPage implements OnInit {
     this.registerTareaForm = this.formBuilder.group({
       descripcion: ['', Validators.required],
       hora: ['', Validators.required],
-      duracion: ['', Validators.required]
+      duracion: ['', Validators.required],
     });  
     
   }
@@ -57,6 +57,8 @@ export class TareaPage implements OnInit {
           .subscribe(() => {
                   this.router.navigate(['/calendar']);
               });
+
+    console.log(this.registerTareaForm.value);
 
   }
  
