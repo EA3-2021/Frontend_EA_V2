@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { Tarea } from '../../../model/tarea';
 
 @Component({
   selector: 'app-calendar',
@@ -18,25 +20,37 @@ export class CalendarPage implements OnInit {
 
   selectedDate = new Date();
 
+  tareas: Tarea[]; 
+
   constructor(private router: Router,
-    private route: ActivatedRoute, ) { }
+    private route: ActivatedRoute,private userService: UserService ) { }
 
 
   ngOnInit() {
   }
 
   addNewEvent() {   
-    let end = this.selectedDate;
-    let month = end.getMonth();
-    month= month +1;
-    let year = end.getFullYear();
-    let dayNumber = end.getUTCDate(); 
-    this.router.navigateByUrl('/tarea/'+ dayNumber +'/'+month+'/'+year);
+    this.router.navigateByUrl('/tarea');
   }
 
   onTimeSelected(ev) {
       this.selectedDate = ev.selectedTime;
+      let end = this.selectedDate;
+      let month = end.getMonth();
+      month= month +1;
+      let year = end.getFullYear();
+      let dayNumber = end.getUTCDate(); 
+      let fecha = (dayNumber+'-'+month+'-'+year);
+  
+      this.userService.getTareas(fecha).subscribe(tareas => {
+        this.tareas = tareas;
+      });
   }
 
+  deleteTarea(titulo:String){
+    this.userService.deleteTask(titulo).subscribe(data => {
+      window.location.reload();
+    });
+  }
 }
 

@@ -29,15 +29,12 @@ export class TareaPage implements OnInit {
 
   ngOnInit() {
 
-    this.dia = this.route.snapshot.paramMap.get('dia');
-    this.mes = this.route.snapshot.paramMap.get('mes');
-    this.año = this.route.snapshot.paramMap.get('año');
-    this.fecha = this.dia+'/'+this.mes + '/'+this.año;
-
     this.registerTareaForm = this.formBuilder.group({
+      titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
-      hora: ['', Validators.required],
-      duracion: ['', Validators.required],
+      fecha: ['', Validators.required],
+      horaI: ['', Validators.required],
+      horaF: ['', Validators.required]
     });  
     
   }
@@ -55,9 +52,8 @@ export class TareaPage implements OnInit {
           .subscribe(() => {
                   this.router.navigate(['/calendar']);
               });
+    
     console.log (this.registerTareaForm.value);
-
-    console.log(this.registerTareaForm.value);
 
   }
  

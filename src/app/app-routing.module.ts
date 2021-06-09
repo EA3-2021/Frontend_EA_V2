@@ -107,7 +107,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)},
   { path: 'map', component: MapcomponentComponent},
   {
-    path: 'tarea/:dia/:mes/:año',
+    path: 'tarea',
     loadChildren: () => import('./pages/GeneralUser/tarea/tarea.module').then( m => m.TareaPageModule)
   },
   {

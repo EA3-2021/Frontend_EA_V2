@@ -9,6 +9,10 @@ import { User } from '../model/user';
 })
 export class UserService {
 
+  deleteTask(titulo: String) {
+    return this.http.delete<Tarea[]>(environment.apiURL+'/user/droptask/' + titulo);
+  }
+
   constructor(private http: HttpClient) { }
 
   getUsers(){
@@ -33,6 +37,10 @@ export class UserService {
 
   registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea);
+  }
+
+  getTareas(fecha:string){
+    return this.http.get<Tarea[]>(environment.apiURL+'/user/taskall/' + fecha);
   }
 
 }
