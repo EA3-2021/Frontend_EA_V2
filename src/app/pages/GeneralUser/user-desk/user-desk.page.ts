@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-desk',
@@ -11,15 +12,20 @@ export class UserDeskPage implements OnInit {
   latitude: any = 0; //latitude
   longitude: any = 0; //longitude*/
 
-   constructor() { }
+   constructor(private userService: UserService) { }
 
    ngOnInit(): void {
-    const coordinates = Geolocation.getCurrentPosition().then((resp) => {
+    Geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
+
+      let location = {'latitude': this.latitude, 'longitude': this.longitude}
+
+      this.userService.saveLocation(location).subscribe(() => {});
+
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-   }
 
+   }
 }
