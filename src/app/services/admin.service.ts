@@ -11,7 +11,6 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  //Funcion registro admin
   registerAdmin(admin: Admin) {
     return this.http.post(environment.apiURL + '/admin/register-admin', admin);
   }

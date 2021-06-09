@@ -3,13 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
-
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { MapcomponentComponent } from './map/mapcomponent/mapcomponent.component';
 
-//import { HomeComponent } from './pages/home/home.component';
-//import { ChatPageModule } from './pages/chat/chat.page';
-//import { CalendarPageModule } from './pages/calendar/calendar.page';
 
 const routes: Routes = [
    {
@@ -111,17 +107,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)},
   { path: 'map', component: MapcomponentComponent},
   {
-    path: 'tarea',
+    path: 'tarea/:dia/:mes/:año',
     loadChildren: () => import('./pages/GeneralUser/tarea/tarea.module').then( m => m.TareaPageModule)
   },
   {
     path: 'configuration',
     loadChildren: () => import('./pages/GeneralAdmin/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   },
-
-
-
 ];
+
 
 @NgModule({
   

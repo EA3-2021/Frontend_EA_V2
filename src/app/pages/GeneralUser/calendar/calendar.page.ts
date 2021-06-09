@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {TareaPage} from './../tarea/tarea.page';
 
 @Component({
   selector: 'app-calendar',
@@ -9,13 +8,8 @@ import {TareaPage} from './../tarea/tarea.page';
 })
 export class CalendarPage implements OnInit {
 
-  date: string;
-  type: 'string';
-
-  onChange($event) {
-    console.log($event);
-  }
   eventSource = [];
+  public fecha: string;
 
   calendar = {
     mode: 'month',
@@ -25,24 +19,24 @@ export class CalendarPage implements OnInit {
   selectedDate = new Date();
 
   constructor(private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, ) { }
 
-  numero = 'holiiiii';
+
   ngOnInit() {
   }
 
-  addNewEvent(numero) {   
+  addNewEvent() {   
     let end = this.selectedDate;
-    let dayWeek = end.getDay();
     let month = end.getMonth();
+    month= month +1;
     let year = end.getFullYear();
-    let dayNumber = end.getUTCDate();
-    let fecha = (dayWeek+','+dayNumber+' '+'de'+' '+month+','+year);
-
-    this.router.navigateByUrl('/tarea');
+    let dayNumber = end.getUTCDate(); 
+    this.router.navigateByUrl('/tarea/'+ dayNumber +'/'+month+'/'+year);
   }
+
   onTimeSelected(ev) {
       this.selectedDate = ev.selectedTime;
   }
 
 }
+

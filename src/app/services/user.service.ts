@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
+import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
-import { Team } from '../model/team';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,6 @@ export class UserService {
     return this.http.delete<User[]>(environment.apiURL+'/user/drop/' + name)
   }
 
-  //Llamada API: Update user
   updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }
@@ -32,10 +30,9 @@ export class UserService {
   deleteUsers(){
     return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
   }
-  
-  /*
-  registerUser(user: User) {
-    return this.http.post(environment.apiURL + '/auth/registerUser', user);
+
+  registerTask(tarea:Tarea){
+    return this.http.post(environment.apiURL + '/user/newtarea', tarea);
   }
-  */
+
 }

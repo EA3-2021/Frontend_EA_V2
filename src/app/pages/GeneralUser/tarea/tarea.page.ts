@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import {CalendarPage} from '../calendar/calendar.page';
+import { UserService } from '../../../services/user.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tarea',
@@ -10,35 +13,51 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class TareaPage implements OnInit {
 
   registerTareaForm: FormGroup;
+  calendar:CalendarPage;
   submitted = false;
-  d='';
-  
+  dia:any;
+  mes:any;
+  año:any;
+  fecha:any;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router,
+    private userService: UserService) { 
     }
 
   ngOnInit() {
+
+    this.dia = this.route.snapshot.paramMap.get('dia');
+    this.mes = this.route.snapshot.paramMap.get('mes');
+    this.año = this.route.snapshot.paramMap.get('año');
+    this.fecha = this.dia+'/'+this.mes + '/'+this.año;
+
+    alert(this.fecha);
+
     this.registerTareaForm = this.formBuilder.group({
       descripcion: ['', Validators.required],
       hora: ['', Validators.required],
-      duracion: ['', Validators.required],
-    });
+      duracion: ['', Validators.required]
+    });  
+    
   }
 
-  submitRegisterTarea() {
-    //this.submitted = true;
-    alert(this.d);
-    /*if (this.registerTareaForm.invalid) {
-        return;
-    }*/
+  get formControls() { return this.registerTareaForm.controls; }
 
-    /*this.adminService.registerAdmin(this.registerAdminForm.value)
+  submitRegisterTarea() {
+    this.submitted = true;
+    if (this.registerTareaForm.invalid) {
+        return;
+    }
+
+    this.userService.registerTask(this.registerTareaForm.value)
           .pipe(first())
           .subscribe(() => {
-                  this.router.navigate(['/login-admin']);
-              });*/
+                  this.router.navigate(['/calendar']);
+              });
+
   }
  
 }
