@@ -29,7 +29,7 @@ export class MapcomponentComponent implements OnInit {
       type: 'Point',
       coordinates: ['45.52222', '2.58696']
     };*/
-    this.map = new L.Map('mapId').setView([42.35663, -71.1109], 16);
+    this.map = new L.Map('mapId').setView([41.296344, 2.078333], 16);
 
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: 'edupala.com'
