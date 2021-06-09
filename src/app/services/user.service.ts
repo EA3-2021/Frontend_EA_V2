@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
+import { Location } from '../model/location';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,10 @@ export class UserService {
 
   getTareas(fecha:string){
     return this.http.get<Tarea[]>(environment.apiURL+'/user/taskall/' + fecha);
+  }
+  
+  saveLocation(location: Location){
+    return this.http.post(environment.apiURL + '/user/newlocation', location);
   }
 
 }
