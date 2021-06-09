@@ -24,7 +24,6 @@ export class TeamService {
     return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user);
   }
 
-  //Update
   updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }

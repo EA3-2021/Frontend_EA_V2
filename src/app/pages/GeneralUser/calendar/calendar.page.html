@@ -9,13 +9,6 @@
 
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-calendar [(ngModel)]="date"
-                  (onChange)="onChange($event)"
-                  [type]="type"
-                  [format]="'YYYY-MM-DD'">
-    </ion-calendar>
-  </div>
 
   <ion-button (click)="addNewEvent()">Add New Event</ion-button>
 
@@ -31,3 +24,4 @@
 </calendar>
 
 </ion-content>
+

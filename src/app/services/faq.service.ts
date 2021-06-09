@@ -22,7 +22,6 @@ export class FaqService {
     return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title)
   }
 
-  //Llamada API: Update user
   updateFaq(title: string, content: string){
     return this.http.put(environment.apiURL + '/faq/update/' + title, content);
   }
