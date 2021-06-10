@@ -21,6 +21,10 @@ export class AdminService {
   }
 
   getLocations(){
-    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations')
+    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations');
+  }
+
+  getAdminName(){
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName');
   }
 }

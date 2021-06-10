@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Admin } from '../../../model/admin';
 
+import { AdminService } from '../../../services/admin.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -15,21 +17,28 @@ export class RegisterUserPage implements OnInit {
   registerUserForm: FormGroup;
   submitted = false;
   company: string;
+  admins: Admin[]; 
 
   constructor(
     private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
-      private userService: UserService
+      private userService: UserService,
+      private adminService: AdminService
   ) { }
 
   ngOnInit() {
-    this.registerUserForm = this.formBuilder.group({
-    name: ['', Validators.required],
-    email: ['', Validators.required],
-    phone: ['', Validators.required],
-    password: ['', Validators.required]
-  });
+      this.registerUserForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    this.adminService.getAdminName().subscribe(admins => {
+    this.admins = admins;
+    });
+ 
   }
 
   ionChanger($event){
