@@ -43,10 +43,10 @@ export class UserFormComponent implements OnInit {
     const token = this.userForm.value.token;
     let user = {'name': name, 'email': email, 'phone': phone, 'password': password, 'token': token};
 
-    this.userService.newUser(user)
+    /*this.userService.newUser(user)
       .subscribe(() => {
         this.router.navigateByUrl('/users');
-      });
+      });*/
   }
   
 }

@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register-user</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register User</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+
+  <form [formGroup]="registerUserForm" (ngSubmit)="submitRegisterUser()" novalidate>
+
+    <ion-item>
+      <ion-label>Company</ion-label>
+      <ion-select value="none" ok-text="Okay" (ionChange)="ionChanger()" cancel-text="Dismiss">
+        <ion-select-option value="none">...</ion-select-option>
+        <ion-select-option value="LaCaixa">La Caixa</ion-select-option>
+        <ion-select-option value="SecuritasDirect">Securitas Direct</ion-select-option>
+        <ion-select-option value="SonyExperia">Sony Experia</ion-select-option>
+        <ion-select-option value="LeroyMerlin">Leroy Merlin</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Complete name</ion-label>
+      <ion-input disabled= "true" formControlName="name" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input disabled= "true" formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
+      Email is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.pattern">
+      Enter valid email.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Phone number</ion-label>
+      <ion-input disabled= "true" maxlength="10" formControlName="phone" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.required">
+      Phone number is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.pattern">
+      Number values allowed.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input disabled= "true" formControlName="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

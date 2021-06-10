@@ -43,7 +43,7 @@ export class UpdateFormComponent implements OnInit {
     const token = this.updateForm.value.token;
     let user = {'name': name, 'email': email, 'phone': phone, 'password': password, 'token': token};
 
-    this.userService.updateUser(id, user).subscribe(() => { this.router.navigateByUrl('/users');});
+    //this.userService.updateUser(id, user).subscribe(() => { this.router.navigateByUrl('/users');});
   }
 
 }

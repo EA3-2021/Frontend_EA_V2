@@ -10,27 +10,27 @@ import { Location } from '../model/location';
 })
 export class UserService {
 
-  deleteTask(titulo: String) {
-    return this.http.delete<Tarea[]>(environment.apiURL+'/user/droptask/' + titulo);
-  }
-
   constructor(private http: HttpClient) { }
+
+  registerUser(registerUser: User){
+    return this.http.post(environment.apiURL + '/user/registerUser', registerUser);
+  }
 
   getUsers(){
     return this.http.get<User[]>(environment.apiURL+'/user/all')
   }
 
-  newUser(newUser: User){
+  /*newUser(newUser: User){
     return this.http.post(environment.apiURL + '/user/new', newUser);
-  }
+  }*/
 
   deleteUser(name: string){
     return this.http.delete<User[]>(environment.apiURL+'/user/drop/' + name)
   }
 
-  updateUser(_id: string, updateUser: User){
+  /*updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
-  }
+  }*/
 
   deleteUsers(){
     return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
@@ -42,6 +42,10 @@ export class UserService {
 
   getTareas(fecha:string){
     return this.http.get<Tarea[]>(environment.apiURL+'/user/taskall/' + fecha);
+  }
+
+  deleteTask(titulo: String) {
+    return this.http.delete<Tarea[]>(environment.apiURL+'/user/droptask/' + titulo);
   }
   
   saveLocation(location: Location){
