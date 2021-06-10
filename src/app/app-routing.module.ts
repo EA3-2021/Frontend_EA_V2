@@ -122,6 +122,15 @@ const routes: Routes = [
     path: 'get-comment',
     loadChildren: () => import('./pages/GeneralAdmin/get-comment/get-comment.module').then( m => m.GetCommentPageModule)
   },
+  {
+    path: 'new-chat',
+    loadChildren: () => import('./pages/GeneralUser/chat/new-chat/new-chat.module').then( m => m.NewChatPageModule)
+  },
+  {
+    path: 'information-chat',
+    loadChildren: () => import('./pages/GeneralUser/chat/information-chat/information-chat.module').then( m => m.InformationChatPageModule)
+  },
+
 
 ];
 
