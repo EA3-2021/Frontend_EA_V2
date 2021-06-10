@@ -11,11 +11,11 @@
   <form [formGroup]="loginUserForm" (ngSubmit)="submitLoginUser()" novalidate>
 
     <ion-item lines="full">
-      <ion-label position="floating">Name</ion-label>
-      <ion-input formControlName="name" type="text"></ion-input>
+      <ion-label position="floating">Worker ID</ion-label>
+      <ion-input formControlName="workerID" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
-      Name is required.
+    <span class="error ion-padding" *ngIf="submitted && formControls.workerID.errors.required">
+      Worker ID is required.
     </span>
 
     <ion-item lines="full">

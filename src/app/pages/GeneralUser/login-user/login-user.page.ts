@@ -26,7 +26,7 @@ export class LoginUserPage implements OnInit {
 
   ngOnInit() {
       this.loginUserForm = this.formBuilder.group({
-          name: ['', Validators.required],
+          workerID: ['', Validators.required],
           password: ['', Validators.required]
       });
   }
@@ -45,7 +45,7 @@ export class LoginUserPage implements OnInit {
           return;
       }
 
-      this.authenticationService.loginUser(this.formControls.name.value, this.formControls.password.value)
+      this.authenticationService.loginUser(this.formControls.workerID.value, this.formControls.password.value)
           .pipe(first())
           .subscribe(() =>  {
                  this.router.navigateByUrl('/user-desk');

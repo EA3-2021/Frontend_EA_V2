@@ -34,8 +34,8 @@ export class AuthenticationService {
         return this.currentAdminSubject.value;
     }
 
-    loginUser(name, password) {
-        return this.http.post<any>(environment.apiURL+ '/auth/loginUser', { name, password })
+    loginUser(workerID, password) {
+        return this.http.post<any>(environment.apiURL+ '/auth/loginUser', {workerID, password })
             .pipe(map(user => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
