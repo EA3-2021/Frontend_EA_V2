@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {CalendarPage} from '../calendar/calendar.page';
 import { UserService } from '../../../services/user.service';
 import { first } from 'rxjs/operators';
+import {format} from "date-fns";
 
 @Component({
   selector: 'app-tarea',
@@ -47,14 +48,21 @@ export class TareaPage implements OnInit {
         return;
     }
 
-    this.userService.registerTask(this.registerTareaForm.value)
+    const titulo = this.registerTareaForm.value.titulo;
+    const descripcion = this.registerTareaForm.value.descripcion;
+    const fecha1 = this.registerTareaForm.value.fecha;
+    const fecha2 = format(new Date(fecha1), "d-M-yyyy");
+    console.log (fecha2);
+    const horaI = this.registerTareaForm.value.horaI;
+    const horaF = this.registerTareaForm.value.horaF;
+
+    let tarea = {'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI, 'horaF': horaF};
+
+    this.userService.registerTask(tarea)
           .pipe(first())
           .subscribe(() => {
                   this.router.navigate(['/calendar']);
               });
-    
-    console.log (this.registerTareaForm.value);
-
   }
  
 }
