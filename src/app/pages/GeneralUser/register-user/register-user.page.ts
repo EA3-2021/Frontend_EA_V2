@@ -14,6 +14,7 @@ export class RegisterUserPage implements OnInit {
 
   registerUserForm: FormGroup;
   submitted = false;
+  company: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,8 +32,10 @@ export class RegisterUserPage implements OnInit {
   });
   }
 
-  ionChanger(){
+  ionChanger($event){
    this.registerUserForm.enable();
+   this.company = $event.target.value;
+   //console.log($event.target.value) ;
   }
 
   // convenience getter for easy access to form fields
@@ -46,12 +49,23 @@ export class RegisterUserPage implements OnInit {
           return;
       }
 
-      this.userService.registerUser(this.registerUserForm.value)
+    const company = this.company;
+    console.log (this.company);
+    const name = this.registerUserForm.value.name;
+    const email = this.registerUserForm.value.email;
+    const phone = this.registerUserForm.value.phone;
+    const password = this.registerUserForm.value.password;
+
+    let user = {'company': company, 'name': name, 'email': email, 'phone': phone, 'password': password};
+      
+
+      this.userService.registerUser(user)
             .pipe(first())
             .subscribe(() => {
               //Llevarte una page anterior con tostada avisando de register exitoso
                     this.router.navigate(['/login-user']);
                 });
+      console.log(user)
   }
 
 }
