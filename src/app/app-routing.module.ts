@@ -78,10 +78,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/user/user.module').then( m => m.UserPageModule)
   },
   {
-    path: 'user-company',
-    loadChildren: () => import('./pages/GeneralUser/user-company/user-company.module').then( m => m.UserCompanyPageModule)
-  },
-  {
     path: 'user-desk',
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
