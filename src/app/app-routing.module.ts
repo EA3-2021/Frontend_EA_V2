@@ -107,18 +107,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)},
   { path: 'map', component: MapcomponentComponent},
   {
-    path: 'tarea/:dia/:mes/:año',
+    path: 'tarea',
     loadChildren: () => import('./pages/GeneralUser/tarea/tarea.module').then( m => m.TareaPageModule)
   },
   {
     path: 'configuration',
     loadChildren: () => import('./pages/GeneralAdmin/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   },
+  {
+    path: 'comment',
+    loadChildren: () => import('./pages/GeneralUser/comment/comment.module').then( m => m.CommentPageModule)
+  },
+  {
+    path: 'get-comment',
+    loadChildren: () => import('./pages/GeneralAdmin/get-comment/get-comment.module').then( m => m.GetCommentPageModule)
+  },
+
 ];
 
 
 @NgModule({
-  
+
   imports: [
     RouterModule.forRoot(routes,
      { preloadingStrategy: PreloadAllModules }),

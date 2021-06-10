@@ -1,5 +1,7 @@
 export interface Tarea {
+    titulo: string;
     descripcion: string;
-    hora: string;
-    duracion: string;
+    fecha: string;
+    horaI: string;
+    horaF: string;
 }

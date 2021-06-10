@@ -3,6 +3,7 @@ import { Admin } from '../model/admin';
 import { Configuration } from '../model/configuration';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '../model/location';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class AdminService {
 
   updateConfiguration(configuration: Configuration) {
     return this.http.post(environment.apiURL + '/admin/configuration', configuration);
+  }
+
+  getLocations(){
+    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations')
   }
 }
