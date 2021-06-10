@@ -52,11 +52,12 @@ export class TareaPage implements OnInit {
     const descripcion = this.registerTareaForm.value.descripcion;
     const fecha1 = this.registerTareaForm.value.fecha;
     const fecha2 = format(new Date(fecha1), "d-M-yyyy");
-    console.log (fecha2);
-    const horaI = this.registerTareaForm.value.horaI;
-    const horaF = this.registerTareaForm.value.horaF;
+    const horaI1 = this.registerTareaForm.value.horaI;
+    const horaI2 = format(new Date(horaI1), "HH:mm");
+    const horaF1 = this.registerTareaForm.value.horaF;
+    const horaF2 = format(new Date(horaF1), "HH:mm");
 
-    let tarea = {'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI, 'horaF': horaF};
+    let tarea = {'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI2, 'horaF': horaF2};
 
     this.userService.registerTask(tarea)
           .pipe(first())
