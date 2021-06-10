@@ -3,14 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Register</ion-title>
+    <ion-title>Register User</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
 
-  <form [formGroup]="registerAdminForm" (ngSubmit)="submitRegisterAdmin()" novalidate>
+  <form [formGroup]="registerUserForm" (ngSubmit)="submitRegisterUser()" novalidate>
 
     <ion-item>
       <ion-label>Company</ion-label>
