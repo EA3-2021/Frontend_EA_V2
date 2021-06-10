@@ -110,11 +110,20 @@ const routes: Routes = [
     path: 'configuration',
     loadChildren: () => import('./pages/GeneralAdmin/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   },
+  {
+    path: 'comment',
+    loadChildren: () => import('./pages/GeneralUser/comment/comment.module').then( m => m.CommentPageModule)
+  },
+  {
+    path: 'get-comment',
+    loadChildren: () => import('./pages/GeneralAdmin/get-comment/get-comment.module').then( m => m.GetCommentPageModule)
+  },
+
 ];
 
 
 @NgModule({
-  
+
   imports: [
     RouterModule.forRoot(routes,
      { preloadingStrategy: PreloadAllModules }),
