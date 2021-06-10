@@ -9,22 +9,23 @@
 
 <ion-content>
 
-  <ion-item>
-    <ion-label>Company</ion-label>
-    <ion-select value="none" ok-text="Okay" (ionChange)="ionChanger()" cancel-text="Dismiss">
-      <ion-select-option value="none">...</ion-select-option>
-      <ion-select-option value="brown">Brown</ion-select-option>
-      <ion-select-option value="blonde">Blonde</ion-select-option>
-      <ion-select-option value="black">Black</ion-select-option>
-      <ion-select-option value="red">Red</ion-select-option>
-    </ion-select>
-  </ion-item>
 
   <form [formGroup]="registerAdminForm" (ngSubmit)="submitRegisterAdmin()" novalidate>
 
+    <ion-item>
+      <ion-label>Company</ion-label>
+      <ion-select value="none" ok-text="Okay" (ionChange)="ionChanger()" cancel-text="Dismiss">
+        <ion-select-option value="none">...</ion-select-option>
+        <ion-select-option value="LaCaixa">La Caixa</ion-select-option>
+        <ion-select-option value="SecuritasDirect">Securitas Direct</ion-select-option>
+        <ion-select-option value="SonyExperia">Sony Experia</ion-select-option>
+        <ion-select-option value="LeroyMerlin">Leroy Merlin</ion-select-option>
+      </ion-select>
+    </ion-item>
+
     <ion-item lines="full">
       <ion-label position="floating">Complete name</ion-label>
-      <ion-input disabled= "name.disabled" formControlName="name" type="text" required></ion-input>
+      <ion-input disabled= "true" formControlName="name" type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">

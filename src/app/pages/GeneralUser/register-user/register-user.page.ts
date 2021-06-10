@@ -13,7 +13,6 @@ import { UserService } from '../../../services/user.service';
 export class RegisterUserPage implements OnInit {
 
   registerAdminForm: FormGroup;
-  disabled = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +34,8 @@ export class RegisterUserPage implements OnInit {
   }
 
   ionChanger(){
-    //this.name.enable;
+   this.registerAdminForm.enable();
   }
+
 
 }
