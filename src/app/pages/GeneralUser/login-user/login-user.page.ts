@@ -57,4 +57,8 @@ export class LoginUserPage implements OnInit {
   user() {
     this.router.navigateByUrl('/user');
   }
+
+  goPassword(){
+    this.router.navigateByUrl('/forgot-password');
+  }
 }

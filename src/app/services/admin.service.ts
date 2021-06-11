@@ -27,4 +27,8 @@ export class AdminService {
   getAdminName(){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName');
   }
+
+  getPasswordAdmin(email:string){
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getPasswordAdmin' +'/'+ email);
+  }
 }

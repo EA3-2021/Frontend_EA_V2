@@ -125,11 +125,11 @@ const routes: Routes = [
   {
     path: 'information-chat',
     loadChildren: () => import('./pages/GeneralUser/chat/information-chat/information-chat.module').then( m => m.InformationChatPageModule)
-  },  {
+  },
+  {
     path: 'registration-request',
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },
-
 
 
 ];

@@ -64,4 +64,7 @@ export class UserService {
     return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email);
   }
 
+  getPasswordUser(email:string){
+    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
+  }
 }
