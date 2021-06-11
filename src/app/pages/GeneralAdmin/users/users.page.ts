@@ -11,6 +11,7 @@ import { User } from '../../../model/user';
 export class UsersPage implements OnInit {
 
   users: User[];
+  usersID: User[];
   data: any;
 
   constructor(
@@ -26,6 +27,9 @@ export class UsersPage implements OnInit {
       this.userService.getUsers(companyName).subscribe (users => {
         this.users = users;
       });
+      this.userService.getWorkerID(companyName).subscribe (usersID => {
+        this.usersID = usersID;
+      });
   }
 
   deleteUser(name: string) {
@@ -34,14 +38,12 @@ export class UsersPage implements OnInit {
     });
   }
 
-  deleteUsers() {
-    this.userService.deleteUsers().subscribe (data => {
-      window.location.reload();
-    });
-  }
-
   updateUser(_id: string) {
     localStorage.setItem("data", JSON.stringify(_id));
     this.router.navigateByUrl('/update-form') 
+  }
+
+  addTask() {
+    this.router.navigateByUrl('/tasks-by-admin/' + this.data ) 
   }
 }

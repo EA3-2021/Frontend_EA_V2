@@ -131,11 +131,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },
   {
-    path: 'calendar-admin',
+    path: 'calendar-admin/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/calendar-admin/calendar-admin.module').then( m => m.CalendarAdminPageModule)
   },
   {
-    path: 'tasks-by-admin',
+    path: 'tasks-by-admin/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
   },
 

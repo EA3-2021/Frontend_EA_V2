@@ -22,8 +22,12 @@ export class CalendarAdminPage implements OnInit {
 
   tareas: Tarea[]; 
 
+  data: any;
+
   constructor(private router: Router,
-    private route: ActivatedRoute,private userService: UserService) { }
+    private route: ActivatedRoute,private userService: UserService) { 
+      this.data = this.route.snapshot.paramMap.get('companyName');
+    }
 
   ngOnInit() {
   }

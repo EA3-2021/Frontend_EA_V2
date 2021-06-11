@@ -32,10 +32,6 @@ export class UserService {
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }*/
 
-  deleteUsers(){
-    return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
-  }
-
   registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea);
   }
@@ -66,5 +62,9 @@ export class UserService {
 
   getPasswordUser(email:string){
     return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
+  }
+
+  getWorkerID(companyName: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName);
   }
 }
