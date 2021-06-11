@@ -141,7 +141,11 @@ const routes: Routes = [
   {
     path: 'tasks-by-admin/:companyName/:workerID',
     loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
+  },  {
+    path: 'job-clock',
+    loadChildren: () => import('./pages/GeneralUser/job-clock/job-clock.module').then( m => m.JobClockPageModule)
   },
+
 
 
 
