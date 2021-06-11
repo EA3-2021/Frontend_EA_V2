@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/get-license/get-license.module').then( m => m.GetLicensePageModule)
   },
   {
+    path: 'profile',
+    loadChildren: () => import('./pages/GeneralUser/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -125,7 +129,8 @@ const routes: Routes = [
   {
     path: 'information-chat',
     loadChildren: () => import('./pages/GeneralUser/chat/information-chat/information-chat.module').then( m => m.InformationChatPageModule)
-  },  {
+  },
+  {
     path: 'registration-request',
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },

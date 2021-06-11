@@ -7,6 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
+<div class = "center">
+<ion-text color="blue">
+  <p>Welcome back {{workerID}}!</p>
+</ion-text>
+</div>
+
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
   <div class = "center">
     <ion-button [routerLink]="['/calendar']">Calendar</ion-button>
@@ -15,6 +21,10 @@
   <div class = "center">
     <ion-button [routerLink]="['/contacts']">Contacts</ion-button>
   </div>
+
+  <div class = "center">
+    <ion-button [routerLink]="['/profile']">profile</ion-button>
+    </div>
 
   <div class = "center">
     <ion-button [routerLink]="['/chat']">CHAT</ion-button>
@@ -28,7 +38,12 @@
     <ion-button [routerLink]="['/comment']">Help us to improve</ion-button>
   </div>
 
-  <div>Latitud: {{latitude}}</div>
-  <div>Longitud: {{longitude}}</div>
+  <div class = "center">
+    <ion-text>Latitud: {{latitude}}</ion-text>
+  </div>
+
+  <div class = "center">
+    <ion-text>Longitud: {{longitude}}</ion-text>
+  </div>
 
 </ion-list>

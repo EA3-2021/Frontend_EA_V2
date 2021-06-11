@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Chat } from '../model/chat';
 
@@ -9,14 +9,23 @@ import { Chat } from '../model/chat';
 export class ChatService {
 
 
-  constructor(private http: HttpClient) { }
+  headers: HttpHeaders;
+
+  constructor(private http: HttpClient) { 
+
+    this.headers = new HttpHeaders();
+    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.headers.append('Accept', 'application/json');
+    this.headers.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
 
   getChats(){
-    return this.http.get<Chat[]>(environment.apiURL+'/chat/all')
+    return this.http.get<Chat[]>(environment.apiURL+'/chat/all', { headers: this.headers })
   }
 
   newChat(newChat: Comment){
-    return this.http.post(environment.apiURL + '/chat/new', newChat);
+    return this.http.post(environment.apiURL + '/chat/new', newChat, { headers: this.headers });
   }
 
 

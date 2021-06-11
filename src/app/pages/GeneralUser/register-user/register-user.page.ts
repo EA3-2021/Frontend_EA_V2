@@ -65,7 +65,7 @@ export class RegisterUserPage implements OnInit {
     const phone = this.registerUserForm.value.phone;
     const password = this.registerUserForm.value.password;
 
-    let user = {'company': company, 'name': name, 'email': email, 'phone': phone, 'password': password};
+    let user = {'company': company, 'name': name, 'email': email, 'phone': phone, 'password': password, 'insignias': []};
       
 
       this.userService.registerUser(user)
