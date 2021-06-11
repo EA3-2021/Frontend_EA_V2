@@ -46,14 +46,19 @@ export class LoginAdminPage implements OnInit {
 
       this.authenticationService.loginAdmin(this.formControls.name.value, this.formControls.password.value)
           .pipe(first())
-          .subscribe(() =>  {
-                 this.router.navigateByUrl('/admin-desk');
+          .subscribe(() =>  {        
+                 this.router.navigateByUrl('/admin-desk/'+ this.formControls.name.value);
               },
               error => {
                   this.alertService.error(error);
               });
+      
   }
   admin() {
     this.router.navigateByUrl('/admin');
+  }
+
+  goPassword(){
+    this.router.navigateByUrl('/forgot-password');
   }
 }

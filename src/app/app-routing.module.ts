@@ -30,7 +30,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/admin/admin.module').then( m => m.AdminPageModule)
   },
   {
-    path: 'admin-desk',
+    path: 'admin-desk/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/admin-desk/admin-desk.module').then( m => m.AdminDeskPageModule)
   },
   {
@@ -46,15 +46,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/register-admin/register-admin.module').then( m => m.RegisterAdminPageModule)
   },
   {
-    path: 'requests',
+    path: 'requests/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/requests/requests.module').then( m => m.RequestsPageModule)
   },
   {
-    path: 'teams',
+    path: 'teams/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/teams/teams.module').then( m => m.TeamsPageModule)
   },
   {
-    path: 'users',
+    path: 'users/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/users/users.module').then( m => m.UsersPageModule)
   },
   {
@@ -62,7 +62,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
-    path: 'calendar',
+    path: 'calendar/:workerID',
     loadChildren: () => import('./pages/GeneralUser/calendar/calendar.module').then( m => m.CalendarPageModule)
   },
   {
@@ -82,7 +82,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/user/user.module').then( m => m.UserPageModule)
   },
   {
-    path: 'user-desk',
+    path: 'user-desk/:workerID',
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
   { path: 'forgot-password', component: ForgotPasswordComponent},
@@ -134,11 +134,27 @@ const routes: Routes = [
     path: 'registration-request',
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },
+  {
+    path: 'holiday-request/:workerID',
+    loadChildren: () => import('./pages/GeneralUser/holiday-request/holiday-request.module').then( m => m.HolidayRequestPageModule)
+  },
+  {
+    path: 'calendar-admin/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/calendar-admin/calendar-admin.module').then( m => m.CalendarAdminPageModule)
+  },
+  {
+    path: 'tasks-by-admin/:companyName/:workerID',
+    loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
+  },
+  {
+    path: 'holiday-pending/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/holiday-pending/holiday-pending.module').then( m => m.HolidayPendingPageModule)
+  },
+
 
 
 
 ];
-
 
 @NgModule({
 

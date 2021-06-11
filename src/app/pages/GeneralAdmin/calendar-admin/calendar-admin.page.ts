@@ -4,11 +4,11 @@ import { UserService } from '../../../services/user.service';
 import { Tarea } from '../../../model/tarea';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.page.html',
-  styleUrls: ['./calendar.page.scss'],
+  selector: 'app-calendar-admin',
+  templateUrl: './calendar-admin.page.html',
+  styleUrls: ['./calendar-admin.page.scss'],
 })
-export class CalendarPage implements OnInit {
+export class CalendarAdminPage implements OnInit {
 
   eventSource = [];
   public fecha: string;
@@ -21,19 +21,19 @@ export class CalendarPage implements OnInit {
   selectedDate = new Date();
 
   tareas: Tarea[]; 
-  data:any;
+
+  data: any;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,private userService: UserService ) {
-      this.data = this.route.snapshot.paramMap.get('workerID');
-   }
-
+    private route: ActivatedRoute,private userService: UserService) { 
+      this.data = this.route.snapshot.paramMap.get('companyName');
+    }
 
   ngOnInit() {
   }
 
-  addHolidayRequest() {   
-    this.router.navigateByUrl('/holiday-request/'+ this.data);
+  addNewEvent() {   
+    this.router.navigateByUrl('/task-by-admin');
   }
 
   onTimeSelected(ev) {
@@ -55,5 +55,5 @@ export class CalendarPage implements OnInit {
       window.location.reload();
     });
   }
-}
 
+}

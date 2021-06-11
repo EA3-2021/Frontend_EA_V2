@@ -4,6 +4,7 @@ import { Configuration } from '../model/configuration';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Location } from '../model/location';
+import { Request } from '../model/request';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,9 @@ export class AdminService {
 
   getAdminName(){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName', { headers: this.headers });
+  }
+
+  getPasswordAdmin(email:string){
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getPasswordAdmin' +'/'+ email);
   }
 }

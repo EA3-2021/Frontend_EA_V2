@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
+import { Request } from '../model/request';
+import { Clock } from '../model/clock';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +28,8 @@ export class UserService {
     return this.http.post(environment.apiURL + '/user/registerUser', registerUser);
   }
 
-  getUsers(){
-    return this.http.get<User[]>(environment.apiURL + '/user/all')
+  getUsers(companyName: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName)
   }
 
   getUser(id: String){
@@ -46,10 +48,6 @@ export class UserService {
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }*/
 
-  deleteUsers(){
-    return this.http.delete<User[]>(environment.apiURL + '/user/dropall', { headers: this.headers })
-  }
-
   registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea, { headers: this.headers });
   }
@@ -61,7 +59,7 @@ export class UserService {
   deleteTask(titulo: String) {
     return this.http.delete<Tarea[]>(environment.apiURL + '/user/droptask/' + titulo, { headers: this.headers });
   }
-  
+
   saveLocation(location: Location){
     return this.http.post(environment.apiURL + '/user/newlocation', location, { headers: this.headers });
   }
@@ -70,12 +68,36 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL + '/user/register/Requests', { headers: this.headers });
   }
 
-  refuseRegisterRequest(workerID:string){
-    return this.http.delete<User[]>(environment.apiURL + '/user/drop/registerRequest/' + workerID, { headers: this.headers });
+  refuseRegisterRequest(workerID:string, email1:string){
+    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1, { headers: this.headers });
   }
 
-  acceptRegisterRequest(workerID:string,email:string){
-    return this.http.put(environment.apiURL + '/user/accept/' + workerID, email, { headers: this.headers });
+  acceptRegisterRequest(workerID:string, email:string){
+    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.headers });
   }
 
+  getPasswordUser(email:string){
+    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email, { headers: this.headers });
+  }
+
+  holidayRequest(holidayRequest: Request){
+    return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest, { headers: this.headers });
+  }
+  getWorkerID(companyName: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName, { headers: this.headers });
+  }
+
+  getHolidayPending(companyName: string){
+    return this.http.get<Request[]>(environment.apiURL+'/user/getHolidayPending/'+ companyName, { headers: this.headers });
+  }
+  
+/*
+  saveClockIn(clockIn: ClockIn){
+    return this.http.post(environment.apiURL + '/user/clockIn', clockIn);
+  }
+  saveClockOut(clockOut: ClockOut){
+    return this.http.post(environment.apiURL + '/user/clockOut', clockOut);
+  }
+
+  */
 }

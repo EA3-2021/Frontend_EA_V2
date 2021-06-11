@@ -11,30 +11,36 @@
   
   <div class="center">
     <ion-button [routerLink]="['/user-form']">Add new User</ion-button>
-    <ion-button (click)="deleteUsers()">Delete all users</ion-button>
   </div>
   
-  <ion-card *ngFor="let user of users">
-    <ion-card-content >
-      <div class="user-name">
-        User: {{user.name}}
-      </div>
+  <!--<ion-card *ngFor="let user of usersID">
+    <ion-card-header>
+      <ion-card-title>Worker ID: {{ user.workerID }}</ion-card-title>
+    </ion-card-header>-->
+    <ion-card *ngFor="let user of users">
 
-      <div class="user-email">
-        Email: {{user.email}}
-      </div>
+      <ion-card-header>
+        <ion-card-title>Worker ID: {{ user.workerID }}</ion-card-title>
+      </ion-card-header>
 
-      <div class="user-phone">
-        Phone: {{user.phone}}
-      </div>
-      <div class="user-password">
-        Password:{{user.password}}
-      </div>
-    </ion-card-content>
+      <ion-card-content>
+        <div class="user-name">
+          Worker name: {{user.name}}
+        </div>
+
+        <div class="user-email">
+          Email: {{user.email}}
+        </div>
+
+        <div class="user-phone">
+          Phone: {{user.phone}}
+        </div>
+      </ion-card-content>
 
     <ion-footer class="center">
       <ion-button (click)="updateUser(user._id)">Update</ion-button>
       <ion-button (click)="deleteUser(user.name)">Delete</ion-button>
+      <ion-button (click)="addTask(user.workerID)">Add task</ion-button>
     </ion-footer>
   </ion-card>
 

@@ -3,14 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Calendar</ion-title>
+    <ion-title>Users tasks</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-
-  <ion-button (click)="addHolidayRequest()" expand="block">Add Holiday Request</ion-button>
+<ion-content class = "ion-padding-top">
 
   <calendar [eventSource]="eventSource"
   [calendarMode]="calendar.mode"
@@ -57,4 +55,3 @@
   </ion-card>
 
 </ion-content>
-

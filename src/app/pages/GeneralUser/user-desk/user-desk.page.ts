@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { UserService } from '../../../services/user.service';
 import { AlertService } from '../../../services/alert.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-desk',
@@ -14,14 +15,14 @@ export class UserDeskPage implements OnInit {
   longitude: any = 0; //longitude*/
   name: String;
   workerID: String;
+  data:any;
+  
+   constructor(private userService: UserService, private route: ActivatedRoute,  private alertService: AlertService,
+    private router: Router) {
+      this.data = this.route.snapshot.paramMap.get('workerID');
+    }
 
-   constructor(
-     private userService: UserService, 
-     private alertService: AlertService,
-    ) 
-    { }
-
-   ngOnInit(): void {
+   ngOnInit(): void {   
     Geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;

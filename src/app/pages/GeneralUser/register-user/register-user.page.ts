@@ -59,7 +59,6 @@ export class RegisterUserPage implements OnInit {
       }
 
     const company = this.company;
-    console.log (this.company);
     const name = this.registerUserForm.value.name;
     const email = this.registerUserForm.value.email;
     const phone = this.registerUserForm.value.phone;
@@ -74,7 +73,6 @@ export class RegisterUserPage implements OnInit {
               //Llevarte una page anterior con tostada avisando de register exitoso
                     this.router.navigate(['/login-user']);
                 });
-      console.log(user)
   }
 
 }
