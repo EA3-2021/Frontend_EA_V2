@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>RegistrationRequests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let user of users">
+    <ion-card-content >
+      <div class="user-name">
+        User: {{user.name}}
+      </div>
+
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
+
+      <div class="user-phone">
+        Phone: {{user.phone}}
+      </div>
+
+      <div class="user-password">
+        Password:{{user.password}}
+      </div>
+
+      <div class="user-password">
+        Worker ID:{{user.workerID}}
+      </div>
+    </ion-card-content>
+
+    <ion-footer class="center">
+      <ion-button (click)="updateUser(user._id)">Accept</ion-button>
+      <ion-button (click)="deleteUser(user.name)">Refuse</ion-button>
+    </ion-footer>
+  </ion-card>
+
+</ion-content>

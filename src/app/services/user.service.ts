@@ -52,4 +52,8 @@ export class UserService {
     return this.http.post(environment.apiURL + '/user/newlocation', location);
   }
 
+  getRegisterRequest(){
+    return this.http.get<User[]>(environment.apiURL+'/user/register/Requests')
+  }
+
 }

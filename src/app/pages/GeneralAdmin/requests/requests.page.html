@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>requests</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Requests</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list class = "ion-wrap" class = "ion-padding-bottom">
+ 
+    <div class = "center">
+      <ion-button [routerLink]="['/registration-request']">Registration Requests</ion-button>
+    </div>
+  
+    <div class = "center">
+      <ion-button [routerLink]="['/vacation-request']">Vacation Requests</ion-button>
+    </div>
 
+  </ion-list>
 </ion-content>
+
+
