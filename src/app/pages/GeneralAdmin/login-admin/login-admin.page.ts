@@ -56,4 +56,8 @@ export class LoginAdminPage implements OnInit {
   admin() {
     this.router.navigateByUrl('/admin');
   }
+
+  goPassword(){
+    this.router.navigateByUrl('/forgot-password');
+  }
 }

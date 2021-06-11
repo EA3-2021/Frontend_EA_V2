@@ -12,7 +12,7 @@ import { AdminService } from '../../services/admin.service';
 export class ForgotPasswordComponent implements OnInit {
 
   passwordForm: FormGroup;
-  isSubmitted = false;
+  submitted = false;
 
   constructor(private router: Router,private formBuilder: FormBuilder,
     public userService: UserService,public adminService: AdminService){}
@@ -28,26 +28,28 @@ export class ForgotPasswordComponent implements OnInit {
     this.router.navigateByUrl('/login-admin')
   }
 
-  submitPassword(): void {
-    this.isSubmitted = true;
+  // convenience getter for easy access to form fields
+  get formControls() { return this.passwordForm.controls; }
+
+  submitPassword() {
+    this.submitted = true;
+
     if(this.passwordForm.invalid){
       return;
     }
-    console.log('ha entrado en el submit');
+    console.log(this.passwordForm.value.email);
     
-    this.userService.getPasswordUser(this.passwordForm.value)
+    this.userService.getPasswordUser(this.passwordForm.value.email)
     .subscribe(() => {
       this.router.navigateByUrl('/login-user');
       console.log('ha entrado en user');
     });
 
-    this.adminService.getPasswordAdmin(this.passwordForm.value)
+    this.adminService.getPasswordAdmin(this.passwordForm.value.email)
     .subscribe(() => {
       this.router.navigateByUrl('/login-admin');
       console.log('ha entrado en admin');
     });
 
   }
-  
-
 }
