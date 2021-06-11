@@ -47,7 +47,8 @@ export class HolidayRequestPage implements OnInit {
         return;
     }
 
-    console.log("Llega");
+  
+    const workerID = this.data
     const motivo = this.motivo;
     const descripcion = this.holidayRequestForm.value.descripcion;
     const fechaI1 = this.holidayRequestForm.value.fechaI;
@@ -56,11 +57,11 @@ export class HolidayRequestPage implements OnInit {
     const fechaF2 = format(new Date(fechaF1), "d-M-yyyy");
     
 
-    let request = {'motivo': motivo, 'descripcion': descripcion, 'fechaI': fechaI2, 'fechaF': fechaF2};
+    let request = {'workerID': workerID,'motivo': motivo, 'descripcion': descripcion, 'fechaI': fechaI2, 'fechaF': fechaF2};
 
     console.log(this.data);
 
-    this.userService.holidayRequest(request,this.data).pipe(first()).subscribe(() => {
+    this.userService.holidayRequest(request).pipe(first()).subscribe(() => {
                   this.router.navigate(['/calendar/'+ this.data]);
               });
   }

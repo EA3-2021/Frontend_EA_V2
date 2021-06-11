@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { UserService } from '../../../services/user.service';
+import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,8 +13,11 @@ export class UserDeskPage implements OnInit {
 
   latitude: any = 0; //latitude
   longitude: any = 0; //longitude*/
+  name: String;
+  workerID: String;
   data:any;
-   constructor(private userService: UserService, private route: ActivatedRoute,
+  
+   constructor(private userService: UserService, private route: ActivatedRoute,  private alertService: AlertService,
     private router: Router) {
       this.data = this.route.snapshot.paramMap.get('workerID');
     }
@@ -31,5 +35,20 @@ export class UserDeskPage implements OnInit {
       console.log('Error getting location', error);
     });
 
+    this.loadUserData();
+
    }
+
+  loadUserData() {
+
+    this.userService.getUser(JSON.parse(localStorage.getItem('currentUser'))["_id"])
+      .subscribe(data => {
+        this.name = data[0]["name"]
+        this.workerID = data[0]["workerID"]
+      },
+        error => {
+          this.alertService.error(error);
+        });
+  }
+
 }

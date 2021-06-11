@@ -4,7 +4,7 @@ export interface User {
     email: string;
     phone: string;
     password: string;
-    //token: string;
+    insignias: Array<String>;
     //workerID: string;
     //petition: boolean;
 }

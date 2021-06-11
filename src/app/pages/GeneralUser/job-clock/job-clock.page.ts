@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { first } from 'rxjs/operators';
+import { format } from "date-fns";
 
 @Component({
   selector: 'app-job-clock',
@@ -7,9 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobClockPage implements OnInit {
 
-  constructor() { }
+  submitted = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+    ) {
+    }
 
   ngOnInit() {
+
+
   }
+
 
 }

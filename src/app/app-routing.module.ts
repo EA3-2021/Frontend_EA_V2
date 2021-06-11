@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/get-license/get-license.module').then( m => m.GetLicensePageModule)
   },
   {
+    path: 'profile',
+    loadChildren: () => import('./pages/GeneralUser/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -42,7 +46,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/register-admin/register-admin.module').then( m => m.RegisterAdminPageModule)
   },
   {
-    path: 'requests',
+    path: 'requests/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/requests/requests.module').then( m => m.RequestsPageModule)
   },
   {
@@ -141,16 +145,16 @@ const routes: Routes = [
   {
     path: 'tasks-by-admin/:companyName/:workerID',
     loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
-  },  {
-    path: 'job-clock',
-    loadChildren: () => import('./pages/GeneralUser/job-clock/job-clock.module').then( m => m.JobClockPageModule)
+  },
+  {
+    path: 'holiday-pending/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/holiday-pending/holiday-pending.module').then( m => m.HolidayPendingPageModule)
   },
 
 
 
 
 ];
-
 
 @NgModule({
 
