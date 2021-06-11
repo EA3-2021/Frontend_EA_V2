@@ -5,6 +5,7 @@ import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
+import { Clock } from '../model/clock';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class UserService {
   deleteTask(titulo: String) {
     return this.http.delete<Tarea[]>(environment.apiURL+'/user/droptask/' + titulo);
   }
-  
+
   saveLocation(location: Location){
     return this.http.post(environment.apiURL + '/user/newlocation', location);
   }
@@ -75,4 +76,14 @@ export class UserService {
   getHolidayPending(companyName: string){
     return this.http.get<Request[]>(environment.apiURL+'/user/getHolidayPending/'+ companyName);
   }
+  
+/*
+  saveClockIn(clockIn: ClockIn){
+    return this.http.post(environment.apiURL + '/user/clockIn', clockIn);
+  }
+  saveClockOut(clockOut: ClockOut){
+    return this.http.post(environment.apiURL + '/user/clockOut', clockOut);
+  }
+
+  */
 }
