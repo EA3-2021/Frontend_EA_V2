@@ -56,12 +56,12 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL+'/user/register/Requests');
   }
 
-  refuseRegisterRequest(workerID:string){
-    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID);
+  refuseRegisterRequest(workerID:string, email1:string){
+    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1);
   }
 
-  acceptRegisterRequest(workerID:string,email:string){
-    return this.http.put(environment.apiURL + '/user/accept/' + workerID, email);
+  acceptRegisterRequest(workerID:string, email:string){
+    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email);
   }
 
 }

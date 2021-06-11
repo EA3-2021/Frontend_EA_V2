@@ -21,14 +21,14 @@ export class RegistrationRequestPage implements OnInit {
 
   }
 
-  acceptRegisterRequest(workerID:string,email:string) {
+  acceptRequest(workerID:string,email:string) {
     this.userService.acceptRegisterRequest(workerID,email).subscribe (data => {
       window.location.reload();
     });
   }
 
-  refuseRegisterRequest(workerID: string) {
-    this.userService.refuseRegisterRequest(workerID).subscribe (data => {
+  refuseRequest(workerID: string, email:string) {
+    this.userService.refuseRegisterRequest(workerID, email).subscribe (data => {
       window.location.reload();
     });
   }
