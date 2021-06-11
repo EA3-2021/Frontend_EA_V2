@@ -43,7 +43,7 @@ export class UsersPage implements OnInit {
     this.router.navigateByUrl('/update-form') 
   }
 
-  addTask() {
-    this.router.navigateByUrl('/tasks-by-admin/' + this.data ) 
+  addTask(workerID: string) {
+    this.router.navigateByUrl('/tasks-by-admin/' + this.data +'/'+ workerID ) 
   }
 }

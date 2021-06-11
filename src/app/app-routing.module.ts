@@ -135,7 +135,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/calendar-admin/calendar-admin.module').then( m => m.CalendarAdminPageModule)
   },
   {
-    path: 'tasks-by-admin/:companyName',
+    path: 'tasks-by-admin/:companyName/:workerID',
     loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
   },
 
