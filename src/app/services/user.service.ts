@@ -17,8 +17,8 @@ export class UserService {
     return this.http.post(environment.apiURL + '/user/registerUser', registerUser);
   }
 
-  getUsers(){
-    return this.http.get<User[]>(environment.apiURL+'/user/all')
+  getUsers(companyName: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName)
   }
 
   /*newUser(newUser: User){
@@ -32,10 +32,6 @@ export class UserService {
   /*updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }*/
-
-  deleteUsers(){
-    return this.http.delete<User[]>(environment.apiURL+'/user/dropall')
-  }
 
   registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea);
@@ -71,5 +67,8 @@ export class UserService {
 
   holidayRequest(holidayRequest: Request, workerID: string){
     return this.http.post(environment.apiURL + '/user/holidayRequest' + workerID, holidayRequest);
+  }
+  getWorkerID(companyName: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName);
   }
 }
