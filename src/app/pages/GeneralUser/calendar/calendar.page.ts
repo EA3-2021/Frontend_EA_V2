@@ -21,16 +21,19 @@ export class CalendarPage implements OnInit {
   selectedDate = new Date();
 
   tareas: Tarea[]; 
+  data:any;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,private userService: UserService ) { }
+    private route: ActivatedRoute,private userService: UserService ) {
+      this.data = this.route.snapshot.paramMap.get('workerID');
+   }
 
 
   ngOnInit() {
   }
 
-  addNewEvent() {   
-    this.router.navigateByUrl('/tarea');
+  addHolidayRequest() {   
+    this.router.navigateByUrl('/holiday-request/'+ this.data);
   }
 
   onTimeSelected(ev) {

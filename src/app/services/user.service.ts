@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
+import { Request } from '../model/request';
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +65,9 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
   }
 
+  holidayRequest(holidayRequest: Request, workerID: string){
+    return this.http.post(environment.apiURL + '/user/holidayRequest' + workerID, holidayRequest);
+  }
   getWorkerID(companyName: string){
     return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName);
   }

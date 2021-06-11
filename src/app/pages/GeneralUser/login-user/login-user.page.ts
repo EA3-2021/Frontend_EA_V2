@@ -48,7 +48,7 @@ export class LoginUserPage implements OnInit {
       this.authenticationService.loginUser(this.formControls.workerID.value, this.formControls.password.value)
           .pipe(first())
           .subscribe(() =>  {
-                 this.router.navigateByUrl('/user-desk');
+                 this.router.navigateByUrl('/user-desk/'+ this.formControls.workerID.value);
               },
               error => {
                   this.alertService.error(error);
