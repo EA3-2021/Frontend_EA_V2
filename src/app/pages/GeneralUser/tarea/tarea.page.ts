@@ -62,7 +62,7 @@ export class TareaPage implements OnInit {
     this.userService.registerTask(tarea)
           .pipe(first())
           .subscribe(() => {
-                  this.router.navigate(['/calendar']);
+                  this.router.navigate(['/calendar/']);
               });
   }
  

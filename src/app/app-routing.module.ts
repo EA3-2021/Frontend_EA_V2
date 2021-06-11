@@ -58,7 +58,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
-    path: 'calendar',
+    path: 'calendar/:workerID',
     loadChildren: () => import('./pages/GeneralUser/calendar/calendar.module').then( m => m.CalendarPageModule)
   },
   {
@@ -78,7 +78,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/user/user.module').then( m => m.UserPageModule)
   },
   {
-    path: 'user-desk',
+    path: 'user-desk/:workerID',
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
   { path: 'forgot-password', component: ForgotPasswordComponent},
@@ -130,6 +130,11 @@ const routes: Routes = [
     path: 'registration-request',
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },
+  {
+    path: 'holiday-request/:workerID',
+    loadChildren: () => import('./pages/GeneralUser/holiday-request/holiday-request.module').then( m => m.HolidayRequestPageModule)
+  },
+
 
 
 ];
