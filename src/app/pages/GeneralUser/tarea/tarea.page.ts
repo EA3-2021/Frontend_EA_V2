@@ -59,11 +59,11 @@ export class TareaPage implements OnInit {
 
     let tarea = {'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI2, 'horaF': horaF2};
 
-    this.userService.registerTask(tarea)
+    /*this.userService.registerTask(tarea)
           .pipe(first())
           .subscribe(() => {
                   this.router.navigate(['/calendar/']);
-              });
+              });*/
   }
  
 }

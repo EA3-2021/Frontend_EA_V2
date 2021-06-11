@@ -1,9 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tasks-by-admin</ion-title>
+    <ion-title>Create task for a worker</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <form [formGroup]="registerTareaForm" (ngSubmit)="submitRegisterTarea()" novalidate>
+    
+    <ion-item lines="full">
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input formControlName="titulo" type="text" required></ion-input>
+    </ion-item>
 
+    <ion-item lines="full">
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input formControlName="descripcion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-datetime formControlName="fecha" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hora de inicio</ion-label>
+      <ion-datetime formControlName="horaI" display-format="HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hora de finalizacion</ion-label>
+      <ion-datetime formControlName="horaF" display-format="HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Create</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
 </ion-content>

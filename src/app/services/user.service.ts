@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Tarea } from '../model/tarea';
+//import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
@@ -33,7 +33,7 @@ export class UserService {
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }*/
 
-  registerTask(tarea:Tarea){
+  /*registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea);
   }
 
@@ -43,7 +43,7 @@ export class UserService {
 
   deleteTask(titulo: String) {
     return this.http.delete<Tarea[]>(environment.apiURL+'/user/droptask/' + titulo);
-  }
+  }*/
   
   saveLocation(location: Location){
     return this.http.post(environment.apiURL + '/user/newlocation', location);

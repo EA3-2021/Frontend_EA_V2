@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../../../services/user.service';
+import { AdminService } from '../../../services/admin.service';
 import { Tarea } from '../../../model/tarea';
 
 @Component({
@@ -25,7 +25,8 @@ export class CalendarAdminPage implements OnInit {
   data: any;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,private userService: UserService) { 
+    private route: ActivatedRoute,
+    private adminService: AdminService) { 
       this.data = this.route.snapshot.paramMap.get('companyName');
     }
 
@@ -45,13 +46,13 @@ export class CalendarAdminPage implements OnInit {
       let dayNumber = end.getUTCDate(); 
       let fecha = (dayNumber+'-'+month+'-'+year);
   
-      this.userService.getTareas(fecha).subscribe(tareas => {
+      this.adminService.getTareas(fecha).subscribe(tareas => {
         this.tareas = tareas;
       });
   }
 
   deleteTarea(titulo:String){
-    this.userService.deleteTask(titulo).subscribe(data => {
+    this.adminService.deleteTask(titulo).subscribe(data => {
       window.location.reload();
     });
   }

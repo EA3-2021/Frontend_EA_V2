@@ -45,15 +45,15 @@ export class CalendarPage implements OnInit {
       let dayNumber = end.getUTCDate(); 
       let fecha = (dayNumber+'-'+month+'-'+year);
   
-      this.userService.getTareas(fecha).subscribe(tareas => {
+      /*this.userService.getTareas(fecha).subscribe(tareas => {
         this.tareas = tareas;
-      });
+      });*/
   }
 
-  deleteTarea(titulo:String){
+  /*deleteTarea(titulo:String){
     this.userService.deleteTask(titulo).subscribe(data => {
       window.location.reload();
     });
-  }
+  }*/
 }
 

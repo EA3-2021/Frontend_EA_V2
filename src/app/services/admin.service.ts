@@ -4,6 +4,7 @@ import { Configuration } from '../model/configuration';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '../model/location';
+import { Tarea } from '../model/tarea';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,17 @@ export class AdminService {
 
   getPasswordAdmin(email:string){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/getPasswordAdmin' +'/'+ email);
+  }
+
+  registerTask(tarea:Tarea){
+    return this.http.post(environment.apiURL + '/admin/newtask', tarea);
+  }
+
+  getTareas(fecha:string){
+    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha);
+  }
+
+  deleteTask(titulo: String) {
+    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + titulo);
   }
 }
