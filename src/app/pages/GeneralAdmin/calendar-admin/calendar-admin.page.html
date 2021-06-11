@@ -25,11 +25,12 @@
 <ion-content class = "ion-padding-bottom">
 
   <ion-card *ngFor="let tarea of tareas">
-    <ion-card-content >
 
-      <div class="user-name">
-        WorkerID: {{tarea.titulo}}
-      </div>
+    <ion-card-header>
+      <ion-card-title>Worker ID: {{ tarea.workerID }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
 
       <div class="user-name">
         Titulo: {{tarea.titulo}}

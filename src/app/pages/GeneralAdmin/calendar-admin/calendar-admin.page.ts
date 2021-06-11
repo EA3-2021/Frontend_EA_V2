@@ -48,6 +48,7 @@ export class CalendarAdminPage implements OnInit {
   
       this.adminService.getTareas(fecha).subscribe(tareas => {
         this.tareas = tareas;
+        console.log(tareas);
       });
   }
 
