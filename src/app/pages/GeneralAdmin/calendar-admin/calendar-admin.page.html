@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Users tasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class = "ion-padding-top">
+
+  <calendar [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  [showEventDetail] = "false"
+  (onRangeChanged)="reloadSource(startTime, endTime)"
+  (onEventSelected)="onEventSelected($event)"
+  (onTimeSelected)="onTimeSelected($event)"
+  step="30">
+  </calendar>
+
+</ion-content>
+
+<ion-content class = "ion-padding-bottom">
+
+  <ion-card *ngFor="let tarea of tareas">
+    <ion-card-content >
+
+      <div class="user-name">
+        Titulo: {{tarea.titulo}}
+      </div>
+
+      <div class="user-email">
+        Descripcion: {{tarea.descripcion}}
+      </div>
+
+      <div class="user-phone">
+        Fecha: {{tarea.fecha}}
+      </div>
+
+      <div class="user-password">
+        Hora de Inicio:{{tarea.horaI}}
+      </div>
+
+      <div class="user-password">
+        Hora de Finalizacion:{{tarea.horaF}}
+      </div>
+
+    </ion-card-content>
+
+    <ion-footer class="center">
+      <ion-button (click)="deleteTarea(tarea.titulo)" color="danger" expand="block">Delete</ion-button>
+    </ion-footer>
+  </ion-card>
+
+</ion-content>

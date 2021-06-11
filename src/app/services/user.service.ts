@@ -16,8 +16,8 @@ export class UserService {
     return this.http.post(environment.apiURL + '/user/registerUser', registerUser);
   }
 
-  getUsers(){
-    return this.http.get<User[]>(environment.apiURL+'/user/all')
+  getUsers(companyName: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName)
   }
 
   /*newUser(newUser: User){

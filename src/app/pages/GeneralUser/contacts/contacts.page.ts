@@ -19,8 +19,8 @@ export class ContactsPage implements OnInit {
   ) {}
 
   ngOnInit(): void { 
-      this.userService.getUsers().subscribe (users => {
+      /*this.userService.getUsers().subscribe (users => {
         this.users = users;
-      });
+      });*/
   }
 }

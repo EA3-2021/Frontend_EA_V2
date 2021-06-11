@@ -11,15 +11,19 @@ import { User } from '../../../model/user';
 export class UsersPage implements OnInit {
 
   users: User[];
+  data: any;
 
   constructor(
   public userService: UserService,
   private router: Router,
   private route: ActivatedRoute,
-  ) {}
+  ) {
+    this.data = this.route.snapshot.paramMap.get('companyName');
+  }
 
   ngOnInit(): void { 
-      this.userService.getUsers().subscribe (users => {
+      let companyName = this.data;
+      this.userService.getUsers(companyName).subscribe (users => {
         this.users = users;
       });
   }

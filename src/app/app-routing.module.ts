@@ -26,7 +26,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/admin/admin.module').then( m => m.AdminPageModule)
   },
   {
-    path: 'admin-desk',
+    path: 'admin-desk/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/admin-desk/admin-desk.module').then( m => m.AdminDeskPageModule)
   },
   {
@@ -46,11 +46,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/requests/requests.module').then( m => m.RequestsPageModule)
   },
   {
-    path: 'teams',
+    path: 'teams/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/teams/teams.module').then( m => m.TeamsPageModule)
   },
   {
-    path: 'users',
+    path: 'users/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/users/users.module').then( m => m.UsersPageModule)
   },
   {
@@ -130,6 +130,15 @@ const routes: Routes = [
     path: 'registration-request',
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },
+  {
+    path: 'calendar-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/calendar-admin/calendar-admin.module').then( m => m.CalendarAdminPageModule)
+  },
+  {
+    path: 'tasks-by-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
+  },
+
 
 
 ];
