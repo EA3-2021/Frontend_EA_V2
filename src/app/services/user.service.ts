@@ -53,7 +53,15 @@ export class UserService {
   }
 
   getRegisterRequest(){
-    return this.http.get<User[]>(environment.apiURL+'/user/register/Requests')
+    return this.http.get<User[]>(environment.apiURL+'/user/register/Requests');
+  }
+
+  refuseRegisterRequest(workerID:string){
+    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID);
+  }
+
+  acceptRegisterRequest(workerID:string,email:string){
+    return this.http.put(environment.apiURL + '/user/accept/' + workerID, email);
   }
 
 }

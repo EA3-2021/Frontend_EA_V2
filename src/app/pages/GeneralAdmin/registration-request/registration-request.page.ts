@@ -21,16 +21,16 @@ export class RegistrationRequestPage implements OnInit {
 
   }
 
-  /*denyUser(name: string) {
-    this.userService.deleteUser(name).subscribe (data => {
+  acceptRegisterRequest(workerID:string,email:string) {
+    this.userService.acceptRegisterRequest(workerID,email).subscribe (data => {
       window.location.reload();
     });
   }
 
-  acceptUser(_id: string) {
-    this.userService.deleteUser(name).subscribe (data => {
+  refuseRegisterRequest(workerID: string) {
+    this.userService.refuseRegisterRequest(workerID).subscribe (data => {
       window.location.reload();
     });
-  }*/
+  }
 
 }
