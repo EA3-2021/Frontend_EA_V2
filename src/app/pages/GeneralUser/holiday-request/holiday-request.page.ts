@@ -18,13 +18,15 @@ export class HolidayRequestPage implements OnInit {
   submitted = false;
   holidayRequestForm: FormGroup;
 
-  constructor(private route: ActivatedRoute,private router: Router,private formBuilder: FormBuilder,private userService: UserService) { 
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private userService: UserService) { 
     this.data = this.route.snapshot.paramMap.get('workerID');}
 
   ngOnInit() {
     
     this.holidayRequestForm = this.formBuilder.group({
-      motivo: ['', Validators.required],
       descripcion: ['', Validators.required],
       fechaI: ['', Validators.required],
       fechaF: ['', Validators.required],
@@ -55,6 +57,8 @@ export class HolidayRequestPage implements OnInit {
     
 
     let request = {'motivo': motivo, 'descripcion': descripcion, 'fechaI': fechaI2, 'fechaF': fechaF2};
+
+    console.log(this.data);
 
     this.userService.holidayRequest(request,this.data).pipe(first()).subscribe(() => {
                   this.router.navigate(['/calendar/'+ this.data]);

@@ -66,7 +66,7 @@ export class UserService {
   }
 
   holidayRequest(holidayRequest: Request, workerID: string){
-    return this.http.post(environment.apiURL + '/user/holidayRequest' + workerID, holidayRequest);
+    return this.http.post(environment.apiURL + '/user/holidayRequest/' + workerID, holidayRequest);
   }
   getWorkerID(companyName: string){
     return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName);
