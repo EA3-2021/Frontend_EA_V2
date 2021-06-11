@@ -10,7 +10,7 @@ export class AdminDeskPage implements OnInit {
 
   data: any;
 
-  constructor(private route: ActivatedRoute,) { 
+  constructor(private route: ActivatedRoute) { 
     this.data = this.route.snapshot.paramMap.get('companyName');
   }
 

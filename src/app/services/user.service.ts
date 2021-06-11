@@ -65,10 +65,14 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
   }
 
-  holidayRequest(holidayRequest: Request, workerID: string){
-    return this.http.post(environment.apiURL + '/user/holidayRequest/' + workerID, holidayRequest);
+  holidayRequest(holidayRequest: Request){
+    return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest);
   }
   getWorkerID(companyName: string){
     return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName);
+  }
+
+  getHolidayPending(companyName: string){
+    return this.http.get<Request[]>(environment.apiURL+'/user/getHolidayPending/'+ companyName);
   }
 }

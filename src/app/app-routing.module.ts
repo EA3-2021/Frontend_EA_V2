@@ -42,7 +42,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/register-admin/register-admin.module').then( m => m.RegisterAdminPageModule)
   },
   {
-    path: 'requests',
+    path: 'requests/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/requests/requests.module').then( m => m.RequestsPageModule)
   },
   {
@@ -142,6 +142,11 @@ const routes: Routes = [
     path: 'tasks-by-admin/:companyName/:workerID',
     loadChildren: () => import('./pages/GeneralAdmin/tasks-by-admin/tasks-by-admin.module').then( m => m.TasksByAdminPageModule)
   },
+  {
+    path: 'holiday-pending/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/holiday-pending/holiday-pending.module').then( m => m.HolidayPendingPageModule)
+  },
+
 
 
 

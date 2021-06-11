@@ -4,6 +4,7 @@ import { Configuration } from '../model/configuration';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '../model/location';
+import { Request } from '../model/request';
 
 @Injectable({
   providedIn: 'root'
