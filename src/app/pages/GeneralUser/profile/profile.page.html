@@ -7,35 +7,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-list class = "ion-wrap" class = "ion-padding-bottom">
 
+<ion-content>
 
-  <ion-text color="black">
-    <p>Worker ID: {{workerID}}</p>
-  </ion-text>
+  <ion-card *ngFor="let user of users">
+    <ion-card-header>
+      <ion-card-title>Name: {{ user.name }}</ion-card-title>
+    </ion-card-header>
 
-  <ion-text color="secondary">
-    <p>Name: {{name}}</p>
-  </ion-text>
+    <ion-card-content>
+      <div class="user-name">
+        WorkerID: {{user.workerID}}
+      </div>
 
-  <ion-text color="secondary">
-    <p>Email: {{email}}</p>
-  </ion-text>
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
 
-  <ion-text color="secondary">
-    <p>Phone: {{phone}}</p>
-  </ion-text>
+      <div class="user-phone">
+        Phone: {{user.phone}}
+      </div>
 
-  <ion-text color="secondary">
-    <p>Insignias:</p>
-  </ion-text>
+      <div class="user-phone">
+        Password: {{user.password}}
+      </div>
 
-  <ion-content>
-    <ion-list inset>
-      <ion-item *ngFor="let insig of insignias">
-        <p>{{insig}}</p>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+    </ion-card-content>
 
-</ion-list>
+    <ion-footer class="center">
+      <ion-button expand="block" (click)="updateUser(user._id)">Update</ion-button>
+    </ion-footer>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Insgisnias:</ion-card-title>
+      <!--<ion-list inset>
+        <ion-item *ngFor="let insig of insignias">
+          <p>{{insig}}</p>
+        </ion-item>
+      </ion-list>-->
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

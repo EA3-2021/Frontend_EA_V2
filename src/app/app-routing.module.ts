@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/get-license/get-license.module').then( m => m.GetLicensePageModule)
   },
   {
-    path: 'profile',
+    path: 'profile/:workerID',
     loadChildren: () => import('./pages/GeneralUser/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {

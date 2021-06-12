@@ -23,6 +23,7 @@ export class UserDeskPage implements OnInit {
     }
 
    ngOnInit(): void {   
+     
     Geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
@@ -35,7 +36,7 @@ export class UserDeskPage implements OnInit {
       console.log('Error getting location', error);
     });
 
-    this.loadUserData();
+    //this.loadUserData();
 
    }
 

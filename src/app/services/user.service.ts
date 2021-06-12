@@ -33,8 +33,8 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName)
   }
 
-  getUser(id: String){
-    return this.http.get(environment.apiURL+'/user/' + id, { headers: this.headers })
+  getUser(workerID: String){
+    return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.headers })
   }
   
   newUser(newUser: User){

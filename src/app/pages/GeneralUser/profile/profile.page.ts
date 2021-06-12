@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../../services/alert.service';
 import { UserService } from '../../../services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'profile',
@@ -9,36 +11,24 @@ import { UserService } from '../../../services/user.service';
 })
 export class ProfilePage implements OnInit {
 
-  name: string;
-  workerID: string;
-  email: string;
-  phone: string;
-  insignias: Array<String>;
+ 
+  data:any;
+  users: User[];
 
-  constructor(
-    private userService: UserService,
-    private alertService: AlertService,
-  ) {
-  }
+  constructor(private userService: UserService, private alertService: AlertService,
+    private route: ActivatedRoute) {
+    this.data = this.route.snapshot.paramMap.get('workerID');}
 
   ngOnInit(): void {
-    this.loadProfile()
-  }
 
-  loadProfile() {
+    this.userService.getUser(this.data).subscribe (users => {
+      this.users = users;
+    });
 
-    this.userService.getUser(JSON.parse(localStorage.getItem('currentUser'))["_id"])
-      .subscribe(data => {
-        this.name = data[0]["name"]
-        this.email = data[0]["email"]
-        this.phone = data[0]["phone"]
-        this.workerID = data[0]["workerID"]
-        this.insignias = data[0]["insignias"];
-      },
-        error => {
-          this.alertService.error(error);
-        });
+    console.log(this.users);
+
   }
+  
 
 
 }
