@@ -9,7 +9,6 @@
 
 
 <ion-content>
-
   <ion-button (click)="addHolidayRequest()" expand="block">Add Holiday Request</ion-button>
 
   <calendar [eventSource]="eventSource"
@@ -21,40 +20,74 @@
   (onTimeSelected)="onTimeSelected($event)"
   step="30">
   </calendar>
-
+  
 </ion-content>
 
 <ion-content class = "ion-padding-bottom">
+  <ion-card class = card1 *ngFor="let tarea of tareas">
 
-  <ion-card *ngFor="let tarea of tareas">
+    <ion-card-header>
+      <ion-card-title>Tarea</ion-card-title>
+    </ion-card-header>
+
     <ion-card-content >
 
-      <div class="user-name">
+      <div>
+        WorkerID: {{tarea.workerID}}
+      </div>
+
+      <div>
         Titulo: {{tarea.titulo}}
       </div>
 
-      <div class="user-email">
+      <div>
         Descripcion: {{tarea.descripcion}}
       </div>
 
-      <div class="user-phone">
+      <div>
         Fecha: {{tarea.fecha}}
       </div>
 
-      <div class="user-password">
+      <div>
         Hora de Inicio:{{tarea.horaI}}
       </div>
 
-      <div class="user-password">
+      <div>
         Hora de Finalizacion:{{tarea.horaF}}
       </div>
 
     </ion-card-content>
-
-    <ion-footer class="center">
-      <ion-button (click)="deleteTarea(tarea.titulo)" color="danger" expand="block">Delete</ion-button>
-    </ion-footer>
   </ion-card>
 
+  <ion-card class = card2 *ngFor="let request of requests">
+
+    
+    <ion-card-header>
+      <ion-card-title>Libranza</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+
+      <div>
+        WorkerID: {{request.workerID}}
+      </div>
+
+      <div>
+        Motivo: {{request.motivo}}
+      </div>
+
+      <div>
+        Descripcion: {{request.descripcion}}
+      </div>
+
+      <div>
+        Fecha de inicio: {{request.fechaI}}
+      </div>
+
+      <div>
+        Fecha de Finalizacion:{{request.fechaF}}
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { Tarea } from '../../../model/tarea';
+import { Request } from '../../../model/request';
 
 @Component({
   selector: 'app-calendar',
@@ -21,6 +22,7 @@ export class CalendarPage implements OnInit {
   selectedDate = new Date();
 
   tareas: Tarea[]; 
+  requests: Request[]; 
   data:any;
 
   constructor(private router: Router,
@@ -45,15 +47,13 @@ export class CalendarPage implements OnInit {
       let dayNumber = end.getUTCDate(); 
       let fecha = (dayNumber+'-'+month+'-'+year);
   
-      /*this.userService.getTareas(fecha).subscribe(tareas => {
+      this.userService.getTareas(this.data,fecha).subscribe(tareas => {
         this.tareas = tareas;
-      });*/
-  }
+      });
 
-  /*deleteTarea(titulo:String){
-    this.userService.deleteTask(titulo).subscribe(data => {
-      window.location.reload();
-    });
-  }*/
+      this.userService.getHolidays(this.data,fecha).subscribe(requests => {
+        this.requests = requests;
+      });
+  }
 }
 
