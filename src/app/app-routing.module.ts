@@ -150,6 +150,11 @@ const routes: Routes = [
     path: 'holiday-pending/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/holiday-pending/holiday-pending.module').then( m => m.HolidayPendingPageModule)
   },
+  {
+    path: 'update-task-by-admin/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/update-task-by-admin/update-task-by-admin.module').then( m => m.UpdateTaskByAdminPageModule)
+  },
+
 
 
 

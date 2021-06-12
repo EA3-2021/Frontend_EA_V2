@@ -48,7 +48,6 @@ export class CalendarAdminPage implements OnInit {
   
       this.adminService.getTareas(fecha, this.data).subscribe(tareas => {
         this.tareas = tareas;
-        console.log(tareas);
       });
   }
 
@@ -57,7 +56,11 @@ export class CalendarAdminPage implements OnInit {
     this.adminService.deleteTask(_id).subscribe(data => { 
       window.location.reload();
     });
-    console.log(_id);
+  }
+
+  updateTarea(_id: string) {
+    localStorage.setItem("data", JSON.stringify(_id));
+    this.router.navigateByUrl('/update-task-by-admin/' + this.data) 
   }
 
 }
