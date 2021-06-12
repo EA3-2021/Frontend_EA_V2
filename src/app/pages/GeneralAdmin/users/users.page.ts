@@ -39,8 +39,7 @@ export class UsersPage implements OnInit {
   }
 
   updateUser(_id: string) {
-    localStorage.setItem("data", JSON.stringify(_id));
-    this.router.navigateByUrl('/update-form') 
+    this.router.navigateByUrl('/update-form/'+ this.data+'/'+_id)  
   }
 
   addTask(workerID: string) {

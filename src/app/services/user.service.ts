@@ -45,9 +45,9 @@ export class UserService {
     return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name, { headers: this.headers })
   }
 
-  /*updateUser(_id: string, updateUser: User){
+  updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
-  }*/
+  }
 
   /*registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea, { headers: this.headers });
