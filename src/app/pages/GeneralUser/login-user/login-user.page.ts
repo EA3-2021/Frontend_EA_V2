@@ -33,12 +33,12 @@ export class LoginUserPage implements OnInit {
       });
   }
 
-  async presentAlert() {
+  async presentAlert(error: string) {
     const alert = await this.alertController.create({
       cssClass: 'basic-alert',
-      header: 'Wrong credentials!',
+      header: 'Caution!',
       //subHeader: 'Alert Subtitle',
-      //message: error,
+      message: error,
       buttons: ['OK']
     });
 
@@ -66,7 +66,7 @@ export class LoginUserPage implements OnInit {
               },
               error => {
                   this.alertService.error(error);
-                  this.presentAlert();
+                  this.presentAlert(error.error.message);
               });
   }
   user() {
