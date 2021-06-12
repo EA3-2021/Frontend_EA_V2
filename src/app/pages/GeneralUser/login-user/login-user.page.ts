@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../../../services/alert.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login-user',
@@ -21,7 +22,8 @@ export class LoginUserPage implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService
+      private alertService: AlertService,
+      private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -29,6 +31,18 @@ export class LoginUserPage implements OnInit {
           workerID: ['', Validators.required],
           password: ['', Validators.required]
       });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Wrong credentials!',
+      //subHeader: 'Alert Subtitle',
+      //message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   // convenience getter for easy access to form fields
@@ -52,6 +66,7 @@ export class LoginUserPage implements OnInit {
               },
               error => {
                   this.alertService.error(error);
+                  this.presentAlert();
               });
   }
   user() {
