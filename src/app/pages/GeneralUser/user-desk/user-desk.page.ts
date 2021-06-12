@@ -3,6 +3,8 @@ import { Geolocation } from '@capacitor/geolocation';
 import { UserService } from '../../../services/user.service';
 import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../../../model/user';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-desk',
@@ -16,9 +18,13 @@ export class UserDeskPage implements OnInit {
   name: String;
   workerID: String;
   data:any;
+  users: User[];
   
-   constructor(private userService: UserService, private route: ActivatedRoute,  private alertService: AlertService,
-    private router: Router) {
+   constructor(private userService: UserService, 
+    private route: ActivatedRoute,  
+    private alertService: AlertService,
+    private router: Router,
+    public toastController: ToastController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
     }
 
@@ -36,20 +42,35 @@ export class UserDeskPage implements OnInit {
       console.log('Error getting location', error);
     });
 
-    //this.loadUserData();
+    this.userService.getUser(this.data).subscribe (users => {
+      this.users = users;
+
+      this.displayToast(this.users[0].name);
+      
+    });
 
    }
 
-  loadUserData() {
-
-    this.userService.getUser(JSON.parse(localStorage.getItem('currentUser'))["_id"])
-      .subscribe(data => {
-        this.name = data[0]["name"]
-        this.workerID = data[0]["workerID"]
-      },
-        error => {
-          this.alertService.error(error);
-        });
-  }
+   displayToast(name1: string) {
+    this.toastController.create({
+      header: 'Welcome '+ name1 + '!',
+      position: 'top',
+      //color: 'primary',
+      cssClass: 'toast',
+      duration: 2000,
+      buttons: [
+       {
+          side: 'end',
+          text: 'Close',
+          role: 'cancel',
+          handler: () => {
+            console.log('');
+          }
+        }
+      ]
+    }).then((toast) => {
+      toast.present();
+    });
+  }  
 
 }

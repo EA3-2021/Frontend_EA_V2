@@ -7,13 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<div class = "center">
-<ion-text color="blue">
-  <p>Welcome back !</p>
-</ion-text>
-</div>
-
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
+
   <div class = "center">
     <ion-button [routerLink]="['/calendar/'+ data]">Calendar</ion-button>
   </div>
@@ -40,14 +35,6 @@
 
   <div class = "center">
     <ion-button [routerLink]="['/comment']">Help us to improve</ion-button>
-  </div>
-
-  <div class = "center">
-    <ion-text>Latitud: {{latitude}}</ion-text>
-  </div>
-
-  <div class = "center">
-    <ion-text>Longitud: {{longitude}}</ion-text>
   </div>
 
 </ion-list>
