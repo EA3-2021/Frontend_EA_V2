@@ -54,4 +54,8 @@ export class AdminService {
   deleteTask(id: string) {
     return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + id);
   }
+
+  updateTask(_id: string, updateTarea: Tarea){
+    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
+  }
 }
