@@ -10,7 +10,7 @@
 <ion-content class = "ion-padding-bottom">
   
   <div class="center">
-    <ion-button [routerLink]="['/user-form']">Add new User</ion-button>
+    <ion-button [routerLink]="['/user-form/'+data]">Add new User</ion-button>
   </div>
 
     <ion-card *ngFor="let user of users">

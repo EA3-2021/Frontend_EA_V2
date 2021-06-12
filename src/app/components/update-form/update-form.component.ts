@@ -12,15 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UpdateFormComponent implements OnInit {
 
+  data: any;
+  data1: any;
   updateForm: FormGroup;
-  _id;
   
   constructor(public teamService: TeamService, public userService: UserService, private router: Router, 
-              private formBuilder: FormBuilder, private route: ActivatedRoute){ }
+              private formBuilder: FormBuilder, private route: ActivatedRoute)
+              { this.data = this.route.snapshot.paramMap.get('compayName');
+              this.data1 = this.route.snapshot.paramMap.get('id');}
 
   ngOnInit(): void {
-    
-    this._id = this.route.snapshot.paramMap.get('_id');
+
     this.updateForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.nullValidator]],
       email: ['', [Validators.required, Validators.nullValidator]],
@@ -34,16 +36,21 @@ export class UpdateFormComponent implements OnInit {
 
   submitUpdate(): void {  
 
-    var id = JSON.parse(localStorage.getItem("data"));
-
+    const company = this.data;
+    console.log(this.data);
+    console.log(this.data1);
     const name = this.updateForm.value.name;
     const email = this.updateForm.value.email;
     const phone = this.updateForm.value.phone;
     const password = this.updateForm.value.password;
-    const token = this.updateForm.value.token;
-    let user = {'name': name, 'email': email, 'phone': phone, 'password': password, 'token': token};
+    const  insignias = this.updateForm.value.insignias;
+    let user = {'company': company, 'name': name, 'email': email, 'phone': phone, 'password': password, 'insignias': insignias};
 
-    //this.userService.updateUser(id, user).subscribe(() => { this.router.navigateByUrl('/users');});
+    this.userService.updateUser(this.data1, user).subscribe(() => { 
+      this.router.navigateByUrl('/users/'+ this.data).then(() => {
+      window.location.reload();
+      })
+    });
   }
-
+  
 }

@@ -37,17 +37,17 @@ export class UserService {
     return this.http.get(environment.apiURL+'/user/' + id, { headers: this.headers })
   }
   
-  /*newUser(newUser: User){
+  newUser(newUser: User){
     return this.http.post(environment.apiURL + '/user/new', newUser);
-  }*/
+  }
 
   deleteUser(name: string){
     return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name, { headers: this.headers })
   }
 
-  /*updateUser(_id: string, updateUser: User){
+  updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
-  }*/
+  }
 
   /*registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea, { headers: this.headers });
