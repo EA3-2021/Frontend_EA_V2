@@ -151,6 +151,11 @@ const routes: Routes = [
     path: 'update-task-by-admin/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/update-task-by-admin/update-task-by-admin.module').then( m => m.UpdateTaskByAdminPageModule)
   },
+  {
+    path: 'update-profile/:workerID',
+    loadChildren: () => import('./pages/GeneralUser/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
+
 
 
 

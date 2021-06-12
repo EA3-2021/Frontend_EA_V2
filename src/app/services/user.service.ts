@@ -12,7 +12,7 @@ import { Request } from '../model/request';
   providedIn: 'root'
 })
 export class UserService {
-
+  
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) { 
@@ -102,6 +102,10 @@ export class UserService {
 
   getHolidays(workerID: string, fecha: string){
     return this.http.get<Request[]>(environment.apiURL + '/user/holidayall/' + workerID +'/'+ fecha);
+  }
+
+  updateUserProfile(workerID: string, user:User) {
+    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user);
   }
   
 
