@@ -14,7 +14,7 @@
       <ion-label position="floating">Worker ID</ion-label>
       <ion-input formControlName="workerID" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.workerID.errors.required">
+    <span class="error ion-padding" *ngIf="(loginUserForm.submitted || formControls.workerID.touched) && formControls.workerID.errors">
       Worker ID is required.
     </span>
 
@@ -22,7 +22,7 @@
       <ion-label position="floating">Password</ion-label>
       <ion-input formControlName="password" type="password" required></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors.required">
+    <span class="error ion-padding" *ngIf="(loginUserForm.submitted || formControls.password.touched) && formControls.password.errors">
       Password is required.
     </span>
 
