@@ -16,7 +16,7 @@ export class ProfilePage implements OnInit {
   users: User[];
 
   constructor(private userService: UserService, private alertService: AlertService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,  private router: Router) {
     this.data = this.route.snapshot.paramMap.get('workerID');}
 
   ngOnInit(): void {
@@ -28,7 +28,9 @@ export class ProfilePage implements OnInit {
     console.log(this.users);
 
   }
-  
 
+  updateUser(workerID:string){
+    this.router.navigateByUrl('/update-profile/'+ workerID);  
+  } 
 
 }
