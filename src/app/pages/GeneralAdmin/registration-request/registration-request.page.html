@@ -11,6 +11,15 @@
 
   <ion-card *ngFor="let user of users">
     <ion-card-content >
+
+      <div class="user-password">
+        Id:{{user._id}}
+      </div>
+
+      <div class="user-password">
+        Worker ID:{{user.workerID}}
+      </div>
+
       <div class="user-name">
         User: {{user.name}}
       </div>
@@ -27,9 +36,6 @@
         Password:{{user.password}}
       </div>
 
-      <div class="user-password">
-        Worker ID:{{user.workerID}}
-      </div>
     </ion-card-content>
 
     <ion-footer class="center">

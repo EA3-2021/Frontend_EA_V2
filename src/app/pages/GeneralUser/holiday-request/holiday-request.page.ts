@@ -47,8 +47,7 @@ export class HolidayRequestPage implements OnInit {
         return;
     }
 
-  
-    const workerID = this.data
+    const workerID = this.data;
     const motivo = this.motivo;
     const descripcion = this.holidayRequestForm.value.descripcion;
     const fechaI1 = this.holidayRequestForm.value.fechaI;

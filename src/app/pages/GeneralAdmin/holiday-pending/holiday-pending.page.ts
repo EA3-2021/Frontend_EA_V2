@@ -21,4 +21,18 @@ export class HolidayPendingPage implements OnInit {
     });
   }
 
+
+  acceptHoliday(id: string) {
+    this.userService.acceptHoliday(id).subscribe (data => {
+      window.location.reload();
+    });
+  }
+
+  refuseHoliday(id: string) {
+    this.userService.refuseHoliday(id).subscribe (data => {
+      window.location.reload();
+    });
+  }
+  
+
 }

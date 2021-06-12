@@ -11,6 +11,11 @@
   
   <ion-card *ngFor="let request of requests">
     <ion-card-content >
+
+        <div class="user-name">
+          ID: {{request._id}}
+        </div>
+
         <div class="user-name">
           WorkerID: {{request.workerID}}
         </div>
@@ -33,8 +38,8 @@
     </ion-card-content>
 
     <ion-footer class="center">
-      <ion-button (click)="updateUser(user._id)">Accept</ion-button>
-      <ion-button (click)="deleteUser(user.name)">Refuse</ion-button>
+      <ion-button (click)="acceptHoliday(request._id)">Accept</ion-button>
+      <ion-button (click)="refuseHoliday(request._id)">Refuse</ion-button>
     </ion-footer>
 
   </ion-card>

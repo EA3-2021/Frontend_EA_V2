@@ -90,6 +90,15 @@ export class UserService {
   getHolidayPending(companyName: string){
     return this.http.get<Request[]>(environment.apiURL+'/user/getHolidayPending/'+ companyName, { headers: this.headers });
   }
+
+  acceptHoliday(id:string){
+    return this.http.put(environment.apiURL + '/user/acceptHoliday/'+id, id);
+  }
+
+  refuseHoliday(id:string){
+    return this.http.delete<Request[]>(environment.apiURL+'/user/dropRequestHoliday/'+id);
+  }
+
   
 /*
   saveClockIn(clockIn: ClockIn){
