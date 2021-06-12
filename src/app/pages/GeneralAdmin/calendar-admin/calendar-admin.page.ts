@@ -46,7 +46,7 @@ export class CalendarAdminPage implements OnInit {
       let dayNumber = end.getUTCDate(); 
       let fecha = (dayNumber+'-'+month+'-'+year);
   
-      this.adminService.getTareas(fecha).subscribe(tareas => {
+      this.adminService.getTareas(fecha, this.data).subscribe(tareas => {
         this.tareas = tareas;
         console.log(tareas);
       });

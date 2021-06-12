@@ -60,8 +60,9 @@ export class TasksByAdminPage implements OnInit {
     const horaI2 = format(new Date(horaI1), "HH:mm");
     const horaF1 = this.registerTareaForm.value.horaF;
     const horaF2 = format(new Date(horaF1), "HH:mm");
+    const company = this.data;
 
-    let tarea = {'workerID': workerID, 'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI2, 'horaF': horaF2};
+    let tarea = {'workerID': workerID, 'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI2, 'horaF': horaF2, 'company': company};
 
     this.adminService.registerTask(tarea)
           .pipe(first())

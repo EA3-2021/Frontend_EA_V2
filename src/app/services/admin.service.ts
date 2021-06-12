@@ -47,8 +47,8 @@ export class AdminService {
     return this.http.post(environment.apiURL + '/admin/newtask', tarea);
   }
 
-  getTareas(fecha:string){
-    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha);
+  getTareas(fecha:string, company:string){
+    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha + '/' + company);
   }
 
   deleteTask(titulo: String) {
