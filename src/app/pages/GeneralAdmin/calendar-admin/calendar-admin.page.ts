@@ -52,10 +52,12 @@ export class CalendarAdminPage implements OnInit {
       });
   }
 
-  deleteTarea(titulo:String){
-    this.adminService.deleteTask(titulo).subscribe(data => {
+  deleteTarea(_id: string){
+    localStorage.setItem("data", JSON.stringify(_id)); 
+    this.adminService.deleteTask(_id).subscribe(data => { 
       window.location.reload();
     });
+    console.log(_id);
   }
 
 }

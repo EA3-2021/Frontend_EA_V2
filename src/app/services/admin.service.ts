@@ -51,7 +51,7 @@ export class AdminService {
     return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha + '/' + company);
   }
 
-  deleteTask(titulo: String) {
-    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + titulo);
+  deleteTask(id: string) {
+    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + id);
   }
 }
