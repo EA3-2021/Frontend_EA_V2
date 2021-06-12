@@ -10,23 +10,24 @@
 
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
   <div class = "center">
-  <ion-button [routerLink]="['/users']">Users</ion-button>
+  <ion-button [routerLink]="['/users/' + data]">Users</ion-button>
   </div>
   <div class = "center">
-  <ion-button [routerLink]="['/teams']">Teams</ion-button>
+  <ion-button [routerLink]="['/teams/' + data]">Teams</ion-button>
   </div>
-  <!--Boton sin funcionalidad de momento-->
   <div class = "center">
     <ion-button [routerLink]="['/map']">Geolocalization</ion-button>
+  </div>
+  <div class = "center">
+    <ion-button [routerLink]="['/calendar-admin/' + data]">User tasks</ion-button>
+  </div>
+  <div class = "center">
+    <ion-button [routerLink]="['/requests/'+ data]">Pending requests</ion-button>
   </div>
   <div class = "center">
     <ion-button [routerLink]="['/configuration']">Profile configuration</ion-button>
   </div>
   <div class = "center">
     <ion-button [routerLink]="['/get-comment']">Comments from users</ion-button>
-  </div>
-  <!--Boton sin funcionalidad de momento-->
-  <div class = "center">
-    <ion-button [routerLink]="['/requests']">Pending requests</ion-button>
   </div>
 </ion-list>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Holiday Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="holidayRequestForm" (ngSubmit)="submitHolidayRequest()" novalidate>
+    
+    <ion-item>
+      <ion-label>Motivo</ion-label>
+      <ion-select value="none" ok-text="Okay" (ionChange)="ionChanger($event)" cancel-text="Dismiss">
+        <ion-select-option value="none">...</ion-select-option>
+        <ion-select-option value="Dia personal">Dia personal</ion-select-option>
+        <ion-select-option value="Vacaciones">Vacaciones</ion-select-option>
+        <ion-select-option value="Urgencia Familiar">Urgencia Familiar</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input formControlName="descripcion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha de inicio</ion-label>
+      <ion-datetime formControlName="fechaI" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha de finalizacion</ion-label>
+      <ion-datetime formControlName="fechaF" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-requests',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsPage implements OnInit {
 
-  constructor() { }
+  data:any;
+  constructor(private route: ActivatedRoute) {this.data = this.route.snapshot.paramMap.get('companyName'); }
 
   ngOnInit() {
   }

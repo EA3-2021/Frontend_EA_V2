@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
-import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +7,9 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
+constructor() { }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void { } 
 
 }
+

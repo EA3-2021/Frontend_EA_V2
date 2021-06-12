@@ -12,6 +12,7 @@ import { TeamFormComponent } from './components/team-form/team-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';   
 import { environment } from 'src/environments/environment';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'; 
 
 
 const config: SocketIoConfig = { url: environment.apiURL, options: {} };
@@ -20,7 +21,8 @@ const config: SocketIoConfig = { url: environment.apiURL, options: {} };
   declarations: [AppComponent,
     TeamFormComponent,
     UserFormComponent,
-    UpdateFormComponent],
+    UpdateFormComponent,
+    ForgotPasswordComponent],
   entryComponents: [],
   imports: [
   BrowserModule,

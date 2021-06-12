@@ -11,16 +11,24 @@ import { User } from '../../../model/user';
 export class UsersPage implements OnInit {
 
   users: User[];
+  usersID: User[];
+  data: any;
 
   constructor(
   public userService: UserService,
   private router: Router,
   private route: ActivatedRoute,
-  ) {}
+  ) {
+    this.data = this.route.snapshot.paramMap.get('companyName');
+  }
 
   ngOnInit(): void { 
-      this.userService.getUsers().subscribe (users => {
+      let companyName = this.data;
+      this.userService.getUsers(companyName).subscribe (users => {
         this.users = users;
+      });
+      this.userService.getWorkerID(companyName).subscribe (usersID => {
+        this.usersID = usersID;
       });
   }
 
@@ -30,14 +38,12 @@ export class UsersPage implements OnInit {
     });
   }
 
-  deleteUsers() {
-    this.userService.deleteUsers().subscribe (data => {
-      window.location.reload();
-    });
-  }
-
   updateUser(_id: string) {
     localStorage.setItem("data", JSON.stringify(_id));
     this.router.navigateByUrl('/update-form') 
+  }
+
+  addTask(workerID: string) {
+    this.router.navigateByUrl('/tasks-by-admin/' + this.data +'/'+ workerID ) 
   }
 }
