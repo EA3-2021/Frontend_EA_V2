@@ -28,8 +28,8 @@ export class LoginUserPage implements OnInit {
 
   ngOnInit() {
       this.loginUserForm = this.formBuilder.group({
-          workerID: ['', Validators.required],
-          password: ['', Validators.required]
+          workerID: ['', [Validators.required, Validators.minLength(6)]],
+          password: ['', [Validators.required, Validators.minLength(6)]]
       });
   }
 
