@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-//import { Tarea } from '../model/tarea';
+import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
-import { Clock } from '../model/clock';
+//import { Clock } from '../model/clock';
+
 
 @Injectable({
   providedIn: 'root'
@@ -50,13 +51,13 @@ export class UserService {
 
   /*registerTask(tarea:Tarea){
     return this.http.post(environment.apiURL + '/user/newtask', tarea, { headers: this.headers });
+  }*/
+
+  getTareas(workerID:string, fecha:string){
+    return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + workerID +'/'+ fecha);
   }
 
-  getTareas(fecha:string){
-    return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + fecha, { headers: this.headers });
-  }
-
-  deleteTask(titulo: String) {
+  /*deleteTask(titulo: String) {
     return this.http.delete<Tarea[]>(environment.apiURL + '/user/droptask/' + titulo, { headers: this.headers });
   }*/
 
@@ -98,6 +99,11 @@ export class UserService {
   refuseHoliday(id:string){
     return this.http.delete<Request[]>(environment.apiURL+'/user/dropRequestHoliday/'+id);
   }
+
+  getHolidays(workerID: string, fecha: string){
+    return this.http.get<Request[]>(environment.apiURL + '/user/holidayall/' + workerID +'/'+ fecha);
+  }
+  
 
   
 /*
