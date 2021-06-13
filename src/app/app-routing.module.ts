@@ -85,10 +85,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
   { path: 'forgot-password', component: ForgotPasswordComponent},
-  { path: 'team-form', component: TeamFormComponent},
+  { path: 'team-form/:companyName', component: TeamFormComponent},
   { path: 'user-form/:companyName', component: UserFormComponent},
   {
-    path: 'user-to-team/:teamName',
+    path: 'user-to-team/:companyName/:teamName',
     loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
   },
   {

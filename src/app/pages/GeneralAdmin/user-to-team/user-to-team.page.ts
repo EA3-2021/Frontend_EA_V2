@@ -14,46 +14,22 @@ export class UserToTeamPage implements OnInit {
   users: User[];
   teamName: string;
   data: any;
-  
-  user: User;
 
-  constructor(public teamService: TeamService, 
-    public userService: UserService, 
-    private router: Router, 
-    private route: ActivatedRoute) { 
+  constructor(public teamService: TeamService, public userService: UserService, private router: Router, private route: ActivatedRoute) { 
       this.data = this.route.snapshot.paramMap.get('companyName');
+      this.teamName = this.route.snapshot.paramMap.get('teamName');
     }
 
-  ngOnInit() {
-    this.teamName = this.route.snapshot.paramMap.get('teamName');
-
-    let companyName = this.data;
-    this.userService.getUsers(companyName).subscribe (users => {
+  ngOnInit() { 
+    this.userService.getUsers(this.data).subscribe (users => {
       this.users = users;
     });
   }
 
-  /*newUser(_id: string){
-
-    localStorage.setItem("data", JSON.stringify(_id));
-
-    this.teamService.addUser(this.teamName, _id).subscribe((res: Response) => {
-      this.router.navigateByUrl('/teams')
-    });
-  }*/
-  /*newUser(_id: string, user: User){
-
-    this.teamService.addUser(this.teamName, _id, user).subscribe((res: Response) => {
-      this.router.navigateByUrl('/teams').then(() => {
-        window.location.reload();
-    });
-  });
-  }*/
-
   newUser(user: User){
 
     this.teamService.addUser(this.teamName, user).subscribe((res: Response) => {
-      this.router.navigateByUrl('/teams').then(() => {
+      this.router.navigateByUrl('/teams/'+ this.data).then(() => {
         window.location.reload();
     });
   });

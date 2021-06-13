@@ -21,19 +21,28 @@ export class TeamService {
 
   }
 
-  getTeams(){
-    return this.http.get<Team[]>(environment.apiURL + '/team/all', { headers: this.headers });
+  getTeams(companyName: string){
+    return this.http.get<Team[]>(environment.apiURL + '/team/all/'+ companyName, { headers: this.headers });
   }
 
-  newTeam(newTeam: Team) {
-    return this.http.post(environment.apiURL + '/team/new', newTeam, { headers: this.headers });
+  newTeam(newTeam: Team, companyName: string) {
+    return this.http.post(environment.apiURL + '/team/new/'+ companyName, newTeam, { headers: this.headers });
   }
 
   addUser( teamName: string, user: User) {
     return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user, { headers: this.headers });
   }
 
-  updateUser(_id: string, updateUser: User){
+  /*updateUser(_id: string, updateUser: User){
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser, { headers: this.headers });
+  }*/
+
+  deleteTeam(teamName:string, companyName:string){
+    return this.http.delete<Team[]>(environment.apiURL + '/team/drop/' + teamName +'/' + companyName, { headers: this.headers })
   }
+
+  deleteUser(teamName:string,id:string, companyName:string){
+    return this.http.delete<Team[]>(environment.apiURL + '/team/dropUser/' + teamName +'/' + companyName + '/'+ id, { headers: this.headers })
+  }
+  
 }
