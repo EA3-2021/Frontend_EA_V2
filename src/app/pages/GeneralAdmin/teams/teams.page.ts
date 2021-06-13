@@ -28,7 +28,7 @@ export class TeamsPage implements OnInit {
    }
 
   ngOnInit() {
-      this.teamService.getTeams().subscribe (teams => {
+      this.teamService.getTeams(this.data).subscribe (teams => {
         this.teams = teams;
       });
 
@@ -40,11 +40,23 @@ export class TeamsPage implements OnInit {
   }
 
     addTeam() {
-      this.router.navigateByUrl('/team-form');
+      this.router.navigateByUrl('/team-form/'+ this.data);
     }
 
     addUser(teamName: string){
-      this.router.navigateByUrl('/user-to-team/' + teamName);
+      this.router.navigateByUrl('/user-to-team/' + this.data + '/' + teamName);
+    }
+
+    deleteTeam(name: string) {
+      this.teamService.deleteTeam(name,this.data).subscribe (data => {
+        window.location.reload();
+      });
+    }
+
+    deleteUser(name:string,id:string){
+      this.teamService.deleteUser(name,id,this.data).subscribe (data => {
+        window.location.reload();
+      });
     }
 
 }
