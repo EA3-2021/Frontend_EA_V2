@@ -71,7 +71,4 @@ export class RegisterAdminPage implements OnInit {
                   this.presentAlert(error.error.message);    
                 });
   }
-  admin() {
-    this.router.navigateByUrl('/admin');
-  }
 }

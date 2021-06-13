@@ -69,7 +69,4 @@ export class LicensePage implements OnInit {
       this.router.navigateByUrl('/obtainLicense');
     }
   
-    admin() {
-      this.router.navigateByUrl('/admin');
-    }
 }

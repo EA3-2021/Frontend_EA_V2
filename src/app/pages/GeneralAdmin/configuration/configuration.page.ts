@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-configuration',
@@ -13,8 +14,10 @@ export class ConfigurationPage implements OnInit {
   public notification:boolean = true;
   public private:boolean = true;
   public authentication:boolean = true;
+  data:any;
 
-  constructor(private adminService: AdminService, private router: Router) { }
+  constructor(private adminService: AdminService, private router: Router,private route: ActivatedRoute) { 
+    this.data = this.route.snapshot.paramMap.get('companyName');}
 
   ngOnInit() {
   }

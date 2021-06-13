@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
     <ion-title>Admin Desk</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +13,7 @@
   <ion-button [routerLink]="['/teams/' + data]">Teams</ion-button>
   </div>
   <div class = "center">
-    <ion-button [routerLink]="['/map']">Geolocalization</ion-button>
+    <ion-button [routerLink]="['/map/'+ data]">Geolocalization</ion-button>
   </div>
   <div class = "center">
     <ion-button [routerLink]="['/calendar-admin/' + data]">User tasks</ion-button>
@@ -25,9 +22,9 @@
     <ion-button [routerLink]="['/requests/'+ data]">Pending requests</ion-button>
   </div>
   <div class = "center">
-    <ion-button [routerLink]="['/configuration']">Profile configuration</ion-button>
+    <ion-button [routerLink]="['/configuration/' + data]">Profile configuration</ion-button>
   </div>
   <div class = "center">
-    <ion-button [routerLink]="['/get-comment']">Comments from users</ion-button>
+    <ion-button [routerLink]="['/get-comment/' +data]">Comments from users</ion-button>
   </div>
 </ion-list>

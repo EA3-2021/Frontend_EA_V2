@@ -55,7 +55,7 @@ export class CalendarAdminPage implements OnInit {
     localStorage.setItem("data", JSON.stringify(_id)); 
     this.adminService.deleteTask(_id).subscribe(data => { 
       window.location.reload();
-    });
+    })
   }
 
   updateTarea(_id: string) {

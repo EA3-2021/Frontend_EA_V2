@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
     <ion-title>User Desk</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +11,7 @@
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/contacts']">Contacts</ion-button>
+    <ion-button [routerLink]="['/contacts/'+data]">Contacts</ion-button>
   </div>
 
   <div class = "center">
@@ -22,19 +19,19 @@
     </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/chat']">CHAT</ion-button>
+    <ion-button [routerLink]="['/chat/' + data]">CHAT</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/job-clock']">clock-in or clock-out</ion-button>
+    <ion-button [routerLink]="['/job-clock/' + data]">clock-in or clock-out</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/faq-user']">FAQ</ion-button>
+    <ion-button [routerLink]="['/faq-user/' + data ]">FAQ</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/comment']">Help us to improve</ion-button>
+    <ion-button [routerLink]="['/comment/' + data]">Help us to improve</ion-button>
   </div>
 
 </ion-list>

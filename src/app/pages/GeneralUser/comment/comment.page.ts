@@ -15,6 +15,7 @@ export class CommentPage implements OnInit {
 
   commentForm: FormGroup;
   submitted = false;
+  data:any;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -22,7 +23,7 @@ export class CommentPage implements OnInit {
       private router: Router,
       private commentService: CommentService,
       private alertService: AlertService
-  ) {}
+  ) {this.data = this.route.snapshot.paramMap.get('workerID');}
 
   ngOnInit() {
       this.commentForm = this.formBuilder.group({

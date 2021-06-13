@@ -1,26 +1,8 @@
-<!--<div class="login">
-  <h2 class="login-header">New Team</h2>
-  <form [formGroup]="teamForm" class="login-container" (ngSubmit)="submitTeam()">
-    <input type="name" placeholder="Name*" formControlName="name" />
-    <ng-container
-      *ngIf="!formControls.name.valid &&formControls.name.touched"
-    >
-      <p *ngIf="formControls.name.errors.required">
-        Name is required
-      </p>
-    </ng-container>
-
-    <p>
-      <input type="submit" value="Submit" [disabled]="teamForm.invalid" />
-    </p>
-  </form>
-</div>-->
-
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-button color = "light" class = "button" [routerLink]="['/teams/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>    
     <ion-title>Create new team</ion-title>
   </ion-toolbar>
 </ion-header>
