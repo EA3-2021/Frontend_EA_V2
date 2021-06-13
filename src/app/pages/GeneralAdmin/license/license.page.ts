@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LicenseService } from '../../../services/license.service';
 import { AlertService } from '../../../services/alert.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-license',
@@ -19,6 +20,7 @@ export class LicensePage implements OnInit {
     private router: Router,
     public licenseService: LicenseService,
     private alertService: AlertService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -27,14 +29,20 @@ export class LicensePage implements OnInit {
   });
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Incorrect code, try again!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
     // convenience getter for easy access to form fields
     get formControls() { return this.licenseForm.controls; }
 
     submitLicense(): void {
-  
-      if (this.submitted == true) {
-        return;
-      }
 
       this.submitted = true;
   
@@ -51,9 +59,9 @@ export class LicensePage implements OnInit {
           this.router.navigateByUrl('/register-admin')
 
       },
-      (error: any) => {
-        this.submitted = false;
-          console.log(error);
+      error => {
+          this.alertService.error(error);
+          this.presentAlert();
       });
     }
   

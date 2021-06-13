@@ -24,6 +24,9 @@
       <ion-label position="floating">Name and Surnames</ion-label>
       <ion-input disabled= "true" formControlName="name" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors?.required">
+      Name is required.
+    </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
