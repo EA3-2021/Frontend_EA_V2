@@ -23,7 +23,7 @@ export class LicensePage implements OnInit {
 
   ngOnInit() {
     this.licenseForm = this.formBuilder.group({
-      licenseCode: ['', Validators.required],
+      licenseCode: ['', [Validators.required, Validators.minLength(12)]],
   });
   }
 
