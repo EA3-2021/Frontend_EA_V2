@@ -14,8 +14,11 @@
       <ion-label position="floating">License Code</ion-label>
       <ion-input formControlName="licenseCode" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.licenseCode.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.licenseCode.errors?.required">
       License Code is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.licenseCode.errors?.minlength">
+      Min 12 chars long.
     </span>
 
     <ion-row>
@@ -26,7 +29,7 @@
   </form>
 
   <div><span class="divider line one-line">or</span></div>
-  <p class="center">If you don't have a license, obtain one for your business in minutes:</p>
+  <p class="center">If you don't have a license, obtain one for your business in :</p>
   <ion-button [routerLink]="['/get-license']" color="secondary">Obtain license</ion-button>
   
 </ion-content>

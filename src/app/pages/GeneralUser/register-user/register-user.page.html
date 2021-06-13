@@ -21,36 +21,50 @@
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Complete name</ion-label>
+      <ion-label position="floating">Name and Surnames</ion-label>
       <ion-input disabled= "true" formControlName="name" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors?.required">
+      Name is required.
+    </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
       <ion-input disabled= "true" formControlName="email" type="email"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors?.required">
       Email is required.
     </span>
-    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.pattern">
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors?.pattern">
       Enter valid email.
     </span>
 
+
     <ion-item lines="full">
       <ion-label position="floating">Phone number</ion-label>
-      <ion-input disabled= "true" maxlength="10" formControlName="phone" type="text" required></ion-input>
+      <ion-input disabled= "true" formControlName="phone" type="text" required></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors?.required">
       Phone number is required.
     </span>
-    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.pattern">
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors?.minlength">
+      Min 9 chars long.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors?.pattern">
       Number values allowed.
     </span>
+    
 
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
       <ion-input disabled= "true" formControlName="password" type="password" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors?.required">
+      Password is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors?.minlength">
+      Min 6 chars long.
+    </span>
 
     <ion-row>
       <ion-col>

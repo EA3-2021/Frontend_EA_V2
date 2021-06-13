@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Admin } from '../../../model/admin';
+import { AlertController } from '@ionic/angular';
+import { AlertService } from '../../../services/alert.service';
 
 import { AdminService } from '../../../services/admin.service';
 import { UserService } from '../../../services/user.service';
@@ -24,21 +26,35 @@ export class RegisterUserPage implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private userService: UserService,
-      private adminService: AdminService
+      private adminService: AdminService,
+      private alertService: AlertService,
+      private alertController: AlertController
   ) { }
 
   ngOnInit() {
       this.registerUserForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(9)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     this.adminService.getAdminName().subscribe(admins => {
     this.admins = admins;
     });
  
+  }
+
+  async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Try again!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   ionChanger($event){
@@ -72,7 +88,12 @@ export class RegisterUserPage implements OnInit {
             .subscribe(() => {
               //Llevarte una page anterior con tostada avisando de register exitoso
                     this.router.navigate(['/login-user']);
+                },
+                error => {
+                  this.alertService.error(error);
+                  this.presentAlert(error.error.message);    
                 });
+
   }
 
 }
