@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { MapcomponentComponent } from './map/mapcomponent/mapcomponent.component';
@@ -84,7 +83,6 @@ const routes: Routes = [
     path: 'user-desk/:workerID',
     loadChildren: () => import('./pages/GeneralUser/user-desk/user-desk.module').then( m => m.UserDeskPageModule)
   },
-  { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'team-form/:companyName', component: TeamFormComponent},
   { path: 'user-form/:companyName', component: UserFormComponent},
   {
@@ -155,11 +153,14 @@ const routes: Routes = [
     path: 'update-profile/:workerID',
     loadChildren: () => import('./pages/GeneralUser/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
   },
-
-
-
-
-
+  {
+    path: 'forgot-password-admin',
+    loadChildren: () => import('./pages/GeneralAdmin/forgot-password-admin/forgot-password-admin.module').then( m => m.ForgotPasswordAdminPageModule)
+  },
+  {
+    path: 'forgot-password-user',
+    loadChildren: () => import('./pages/GeneralUser/forgot-password-user/forgot-password-user.module').then( m => m.ForgotPasswordUserPageModule)
+  },
 
 ];
 
