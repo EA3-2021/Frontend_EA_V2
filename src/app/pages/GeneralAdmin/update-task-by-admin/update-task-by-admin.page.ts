@@ -18,6 +18,10 @@ export class UpdateTaskByAdminPage implements OnInit {
   año:any;
   fecha:any;
 
+  fechaPrint: string;
+  horaIPrint: string;
+  horaFPrint: string;
+
   data: any;
 
   _id: string;
@@ -50,15 +54,25 @@ export class UpdateTaskByAdminPage implements OnInit {
     const titulo = this.updateTareaForm.value.titulo;
     const descripcion = this.updateTareaForm.value.descripcion;
     const fecha1 = this.updateTareaForm.value.fecha;
-    const fecha2 = format(new Date(fecha1), "d-M-yyyy");
+    if (fecha1 != ""){
+      this.fechaPrint = format(new Date(fecha1), "d-M-yyyy");
+    }else{
+      this.fechaPrint = this.updateTareaForm.value.fecha;
+    }
     const horaI1 = this.updateTareaForm.value.horaI;
-    const horaI2 = format(new Date(horaI1), "HH:mm");
+    if (horaI1 != ""){
+      this.horaIPrint = format(new Date(horaI1), "HH:mm");
+    }else{
+      this.horaIPrint = this.updateTareaForm.value.horaI;
+    }
     const horaF1 = this.updateTareaForm.value.horaF;
-    const horaF2 = format(new Date(horaF1), "HH:mm");
+    if (horaF1 != ""){
+      this.horaFPrint = format(new Date(horaF1), "HH:mm");
+    }else{
+      this.horaFPrint = this.updateTareaForm.value.horaF;
+    }
 
-    console.log(titulo, descripcion, fecha1, horaI1, horaF1);
-
-    let tarea = {'titulo': titulo, 'descripcion': descripcion, 'fecha': fecha2, 'horaI': horaI2, 'horaF': horaF2};
+    let tarea = {'titulo': titulo, 'descripcion': descripcion, 'fecha': this.fechaPrint, 'horaI': this.horaIPrint, 'horaF': this.horaFPrint};
 
     this.adminService.updateTask(id, tarea).subscribe(() => {this.router.navigate(['/calendar-admin/' + this.data])
       .then(() => {

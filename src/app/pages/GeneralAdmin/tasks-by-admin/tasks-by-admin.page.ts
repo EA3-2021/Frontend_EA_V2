@@ -69,6 +69,5 @@ export class TasksByAdminPage implements OnInit {
           .subscribe(() => {
                   this.router.navigate(['/calendar-admin/' + this.data]);
               });
-              console.log(tarea);
   }
 }
