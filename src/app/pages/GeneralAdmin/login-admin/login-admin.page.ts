@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 
 import { AlertService } from '../../../services/alert.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login-admin',
@@ -20,14 +21,27 @@ export class LoginAdminPage implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService
+      private alertService: AlertService,
+      private alertController: AlertController
   ) {}
 
   ngOnInit() {
       this.loginAdminForm = this.formBuilder.group({
           name: ['', Validators.required],
-          password: ['', Validators.required]
+          password: ['', [Validators.required, Validators.minLength(6)]]
       });
+  }
+
+  async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Caution!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   // convenience getter for easy access to form fields
@@ -51,6 +65,7 @@ export class LoginAdminPage implements OnInit {
               },
               error => {
                   this.alertService.error(error);
+                  this.presentAlert(error.error.message);
               });
       
   }

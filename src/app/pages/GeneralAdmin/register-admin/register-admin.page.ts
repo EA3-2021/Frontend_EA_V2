@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AdminService } from '../../../services/admin.service';
+import { AlertController } from '@ionic/angular';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-register-admin',
@@ -20,8 +21,9 @@ export class RegisterAdminPage implements OnInit {
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
-      private adminService: AdminService
-
+      private adminService: AdminService,
+      private alertService: AlertService,
+      private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,18 @@ export class RegisterAdminPage implements OnInit {
           postalCode: ['', Validators.required],
           password: ['', [Validators.required, Validators.minLength(6)]]
       });
+  }
+
+  async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Try again!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   // convenience getter for easy access to form fields
@@ -51,6 +65,10 @@ export class RegisterAdminPage implements OnInit {
             .pipe(first())
             .subscribe(() => {
                     this.router.navigate(['/login-admin']);
+                },
+                error => {
+                  this.alertService.error(error);
+                  this.presentAlert(error.error.message);    
                 });
   }
   admin() {

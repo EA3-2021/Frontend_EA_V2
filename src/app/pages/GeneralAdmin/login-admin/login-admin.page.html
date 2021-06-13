@@ -14,16 +14,19 @@
       <ion-label position="floating">Name</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
-      Name is required.
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors?.required">
+      Business Name is required.
     </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
       <ion-input formControlName="password" type="password" required></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors?.required">
       Password is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors?.minlength">
+      Min 6 chars long.
     </span>
 
     <ion-row>
