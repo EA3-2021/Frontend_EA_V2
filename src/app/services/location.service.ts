@@ -14,12 +14,23 @@ export class LocationService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
 
   }
 
   getGeolocation(){
-    return this.http.get<Location[]>(environment.apiURL+'/location/all', { headers: this.headers })
+    return this.http.get<Location[]>(environment.apiURL+'/location/all', { headers: this.getHeaders() })
   }
 }
 

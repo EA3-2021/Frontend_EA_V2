@@ -17,20 +17,31 @@ export class TeamService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
 
   }
 
   getTeams(companyName: string){
-    return this.http.get<Team[]>(environment.apiURL + '/team/all/'+ companyName, { headers: this.headers });
+    return this.http.get<Team[]>(environment.apiURL + '/team/all/'+ companyName, { headers: this.getHeaders() });
   }
 
   newTeam(newTeam: Team, companyName: string) {
-    return this.http.post(environment.apiURL + '/team/new/'+ companyName, newTeam, { headers: this.headers });
+    return this.http.post(environment.apiURL + '/team/new/'+ companyName, newTeam, { headers: this.getHeaders()});
   }
 
   addUser( teamName: string, user: User) {
-    return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user, { headers: this.headers });
+    return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user, { headers: this.getHeaders() });
   }
 
   /*updateUser(_id: string, updateUser: User){
@@ -38,11 +49,11 @@ export class TeamService {
   }*/
 
   deleteTeam(teamName:string, companyName:string){
-    return this.http.delete<Team[]>(environment.apiURL + '/team/drop/' + teamName +'/' + companyName, { headers: this.headers })
+    return this.http.delete<Team[]>(environment.apiURL + '/team/drop/' + teamName +'/' + companyName, { headers: this.getHeaders() })
   }
 
   deleteUser(teamName:string,id:string, companyName:string){
-    return this.http.delete<Team[]>(environment.apiURL + '/team/dropUser/' + teamName +'/' + companyName + '/'+ id, { headers: this.headers })
+    return this.http.delete<Team[]>(environment.apiURL + '/team/dropUser/' + teamName +'/' + companyName + '/'+ id, { headers: this.getHeaders() })
   }
   
 }

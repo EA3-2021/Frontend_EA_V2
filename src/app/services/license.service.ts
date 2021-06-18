@@ -14,7 +14,18 @@ export class LicenseService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
 
   }
 

@@ -19,7 +19,18 @@ export class AdminService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
 
   }
 
@@ -28,15 +39,15 @@ export class AdminService {
   }
 
   updateConfiguration(configuration: Configuration) {
-    return this.http.post(environment.apiURL + '/admin/configuration', configuration, { headers: this.headers });
+    return this.http.post(environment.apiURL + '/admin/configuration', configuration, { headers: this.getHeaders() });
   }
 
   getLocations(){
-    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations', { headers: this.headers });
+    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations', { headers: this.getHeaders() });
   }
 
   getAdminName(){
-    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName', { headers: this.headers });
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName', { headers: this.getHeaders() });
   }
 
   getPasswordAdmin(email:string){

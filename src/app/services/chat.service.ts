@@ -8,7 +8,6 @@ import { Chat } from '../model/chat';
 })
 export class ChatService {
 
-
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) { 
@@ -16,16 +15,27 @@ export class ChatService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
 
   }
 
   getChats(){
-    return this.http.get<Chat[]>(environment.apiURL+'/chat/all', { headers: this.headers })
+    return this.http.get<Chat[]>(environment.apiURL+'/chat/all', { headers: this.getHeaders() })
   }
 
   newChat(newChat: Comment){
-    return this.http.post(environment.apiURL + '/chat/new', newChat, { headers: this.headers });
+    return this.http.post(environment.apiURL + '/chat/new', newChat, { headers: this.getHeaders() });
   }
 
 
