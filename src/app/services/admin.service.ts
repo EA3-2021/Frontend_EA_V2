@@ -71,8 +71,8 @@ export class AdminService {
     return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
   }
 
-  getClock(clockIn:string, company:string){
-    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn + '/' + company);
+  getClock(clockIn:string){
+    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn);
   }
   getAdmin(company: String){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })

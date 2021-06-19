@@ -44,7 +44,7 @@ export class ClockControlPage implements OnInit {
       let dayNumber = end.getUTCDate();
       let clockIn = (dayNumber+'-'+month+'-'+year);
 
-      this.adminService.getClock(clockIn, this.data).subscribe(clocks => {
+      this.adminService.getClock(clockIn).subscribe(clocks => {
         this.clocks = clocks;
       });
   }
