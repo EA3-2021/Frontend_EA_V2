@@ -165,6 +165,11 @@ const routes: Routes = [
     path: 'forgot-password-user',
     loadChildren: () => import('./pages/GeneralUser/forgot-password-user/forgot-password-user.module').then( m => m.ForgotPasswordUserPageModule)
   },
+  {
+    path: 'profile-admin/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/profile-admin/profile-admin.module').then( m => m.ProfileAdminPageModule)
+  },
+
 
 
 ];

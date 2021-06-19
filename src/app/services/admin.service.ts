@@ -69,4 +69,8 @@ export class AdminService {
   updateTask(_id: string, updateTarea: Tarea){
     return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
   }
+
+  getAdmin(company: String){
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })
+  }
 }

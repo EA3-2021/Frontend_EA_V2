@@ -9,10 +9,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AppComponent {
 
   id: string;
+  company: string;
 
   constructor(private route: ActivatedRoute,
     private router: Router) {
     this.id = localStorage.getItem('workerID');
+    this.company = localStorage.getItem('companyName');
   }
 
   home(){
@@ -31,5 +33,23 @@ export class AppComponent {
   //Que haga funcion de deslog
   logout(){
     this.router.navigateByUrl('/profile/' + this.id);
+  }
+
+  home1(){
+    this.router.navigateByUrl('/admin-desk/' + this.company);
+  }
+
+  profile1(){
+    this.router.navigateByUrl('/profile/' + this.company);
+  }
+
+  //Cambiar ruta
+  settings1(){
+    this.router.navigateByUrl('/profile/' + this.company);
+  }
+
+  //Que haga funcion de deslog
+  logout1(){
+    this.router.navigateByUrl('/profile/' + this.company);
   }
 }

@@ -50,10 +50,29 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle menu=“menu2” auto-hide="false">
-            <ion-item [routerDirection]="'root'" [routerLink]="'/listado'">
-              <ion-icon slot="start" [name]="'list'"></ion-icon>
+            <ion-item [routerDirection]="'root'" (click)="home1()">
+              <ion-icon slot="start" name="home-outline"></ion-icon>
               <ion-label>
-                Listado
+                Home
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" (click)="profile1()">
+              <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+              <ion-label>
+                Profile
+              </ion-label>
+            </ion-item>
+            <!--De momento no hay, hay que migrarlo desde admin-->
+            <ion-item [routerDirection]="'root'" (click)="settings1()">
+              <ion-icon slot="start" name="cog-outline"></ion-icon>
+              <ion-label>
+                Settings
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" (click)="logout1()">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon>
+              <ion-label>
+                Logout
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
