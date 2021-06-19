@@ -120,8 +120,9 @@ export class UserService {
   }
 
   clockIn(workerID: string){
-    return this.http.post(environment.apiURL + '/clock/clockIn',workerID);
+    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID, workerID);
   }
+
   clockOut(workerID: string){
     return this.http.put(environment.apiURL + '/clock/clockOut',workerID);
   }
