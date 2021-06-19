@@ -18,6 +18,7 @@ export class UserDeskPage implements OnInit {
   name: String;
   workerID: String;
   data:any;
+  data1:any;
   users: User[];
 
    constructor(private userService: UserService,
@@ -31,6 +32,8 @@ export class UserDeskPage implements OnInit {
     }
 
    ngOnInit(): void {
+
+    console.log(this.data1);
 
     Geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
