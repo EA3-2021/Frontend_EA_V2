@@ -166,6 +166,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/forgot-password-user/forgot-password-user.module').then( m => m.ForgotPasswordUserPageModule)
   },
   {
+    path: 'profile-admin/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/profile-admin/profile-admin.module').then( m => m.ProfileAdminPageModule)
+  },
+  {
     path: 'setting/:workerID',
     loadChildren: () => import('./pages/GeneralUser/setting/setting.module').then( m => m.SettingPageModule)
   },
