@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
+    <ion-button color = "light" class = "button" [routerLink]="['/user-desk/'+ data]">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
-    <ion-title>Profile configuration</ion-title>
+    <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Contacts</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -28,7 +31,7 @@
       <ion-label>Enable Location</ion-label>
       <ion-toggle [(ngModel)]="location" (ionChange)="myChange()" color="danger"></ion-toggle>
     </ion-item>
-    
+
   </ion-list>
   <div class = "center">
     <ion-button expand="block" (click)="save()">Save</ion-button>
