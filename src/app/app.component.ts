@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   company: string;
 
   constructor(private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private authenticationService: AuthenticationService) {
     this.id = localStorage.getItem('workerID');
     this.company = localStorage.getItem('companyName');
   }
@@ -27,7 +29,7 @@ export class AppComponent {
 
   //Cambiar ruta
   settings(){
-    this.router.navigateByUrl('/profile/' + this.id);
+    this.router.navigateByUrl('/setting/' + this.id);
   }
 
   //Que haga funcion de deslog
@@ -49,6 +51,8 @@ export class AppComponent {
 
   //Que haga funcion de deslog
   logout1(){
-    this.router.navigateByUrl('/profile-admin/' + this.company);
+    this.authenticationService.logout().subscribe(() => { 
+      this.router.navigateByUrl('login-user');
+    });
   }
 }

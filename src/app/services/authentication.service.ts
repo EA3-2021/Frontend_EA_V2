@@ -53,7 +53,18 @@ export class AuthenticationService {
     }
 
     logout() {
+        const t = {"token": localStorage.getItem("ACCESS_TOKEN")};
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+        return this.http.put(environment.apiURL + "signout", t);
+    }
+
+    /*signout(): Observable<any> {
+        const t = {"token": localStorage.getItem("ACCESS_TOKEN")};
+        return this.http.put(this.ruta + "signout", t);
+      }*/
+    
+    addToken(token: string){
+    localStorage.setItem("ACCESS_TOKEN", token);
     }
 }
