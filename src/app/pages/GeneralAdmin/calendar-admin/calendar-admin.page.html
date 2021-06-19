@@ -3,6 +3,9 @@
     <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
+    <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
     <ion-title>Users tasks</ion-title>
   </ion-toolbar>
 </ion-header>

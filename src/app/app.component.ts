@@ -40,16 +40,15 @@ export class AppComponent {
   }
 
   profile1(){
-    this.router.navigateByUrl('/profile/' + this.company);
+    this.router.navigateByUrl('/profile-admin/' + this.company);
   }
 
-  //Cambiar ruta
   settings1(){
-    this.router.navigateByUrl('/profile/' + this.company);
+    this.router.navigateByUrl('/configuration/' + this.company);
   }
 
   //Que haga funcion de deslog
   logout1(){
-    this.router.navigateByUrl('/profile/' + this.company);
+    this.router.navigateByUrl('/profile-admin/' + this.company);
   }
 }

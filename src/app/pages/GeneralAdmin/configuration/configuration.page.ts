@@ -3,6 +3,7 @@ import { AdminService } from '../../../services/admin.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-configuration',
@@ -17,10 +18,22 @@ export class ConfigurationPage implements OnInit {
   public location :boolean = true;
   data:any;
 
-  constructor(private adminService: AdminService, private router: Router,private route: ActivatedRoute) { 
+  constructor(private adminService: AdminService, 
+    private router: Router,
+    private route: ActivatedRoute,
+    public menu: MenuController) { 
     this.data = this.route.snapshot.paramMap.get('companyName');}
 
   ngOnInit() {
+    this.menu2();
+  }
+
+  menu2() {
+    this.menu.enable(true, 'menu2');
+  }
+
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
 
   myChange(){

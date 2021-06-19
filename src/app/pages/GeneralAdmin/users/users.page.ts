@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../model/user';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-users',
@@ -18,7 +19,7 @@ export class UsersPage implements OnInit {
   public userService: UserService,
   private router: Router,
   private route: ActivatedRoute,
-  ) {
+  public menu: MenuController) {
     this.data = this.route.snapshot.paramMap.get('companyName');
   }
 
@@ -30,6 +31,16 @@ export class UsersPage implements OnInit {
       this.userService.getWorkerID(companyName).subscribe (usersID => {
         this.usersID = usersID;
       });
+
+      this.menu2();
+  }
+
+  menu2() {
+    this.menu.enable(true, 'menu2');
+  }
+
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
 
   deleteUser(name: string) {

@@ -32,7 +32,7 @@ export class ProfileAdminPage implements OnInit {
   }
 
   menu2() {
-    this.menu.enable(true, 'menu1');
+    this.menu.enable(true, 'menu2');
   }
 
   obtainCompany(){

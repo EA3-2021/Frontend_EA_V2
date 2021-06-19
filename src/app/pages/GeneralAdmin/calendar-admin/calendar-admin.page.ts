@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../../services/admin.service';
 import { Tarea } from '../../../model/tarea';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendar-admin',
@@ -26,11 +27,21 @@ export class CalendarAdminPage implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private adminService: AdminService) { 
+    private adminService: AdminService,
+    public menu: MenuController) { 
       this.data = this.route.snapshot.paramMap.get('companyName');
     }
 
   ngOnInit() {
+    this.menu2();
+  }
+
+  menu2() {
+    this.menu.enable(true, 'menu2');
+  }
+
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
 
   addNewEvent() {   

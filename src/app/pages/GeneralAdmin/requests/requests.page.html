@@ -3,6 +3,9 @@
     <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
+    <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
     <ion-title>Requests</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +18,7 @@
     </div>
   
     <div class = "center">
-      <ion-button [routerLink]="['/holiday-pending/'+ data]">Holiday Request</ion-button>
+      <ion-button [routerLink]="['/holiday-pending/'+ data]">Holiday Requests</ion-button>
     </div>
 
   </ion-list>

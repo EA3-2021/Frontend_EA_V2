@@ -4,6 +4,7 @@ import { TeamService } from '../../../services/team.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user';
 import { UserService } from '../../../services/user.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-teams',
@@ -23,7 +24,8 @@ export class TeamsPage implements OnInit {
   public teamService: TeamService, 
   private router: Router, 
   public userService: UserService,
-  private route: ActivatedRoute,) {
+  private route: ActivatedRoute,
+  public menu: MenuController) {
     this.data = this.route.snapshot.paramMap.get('companyName');
    }
 
@@ -37,6 +39,16 @@ export class TeamsPage implements OnInit {
       this.userService.getUsers(companyName).subscribe (users => {
         this.users = users;
       });
+
+      this.menu2();
+  }
+
+  menu2() {
+    this.menu.enable(true, 'menu2');
+  }
+
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
 
     addTeam() {

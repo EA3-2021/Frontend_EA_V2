@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
     <ion-title>Admin Desk</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,13 +25,7 @@
     <ion-button [routerLink]="['/requests/'+ data]">Pending requests</ion-button>
   </div>
   <div class = "center">
-    <ion-button [routerLink]="['/profile-admin/' + data]">Profile</ion-button>
-    </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/configuration/' + data]">Profile configuration</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/faq-admin/' + data]">Faq tasks</ion-button>
+    <ion-button [routerLink]="['/faq-admin/' + data]">Create Faq</ion-button>
   </div>
   <div class = "center">
     <ion-button [routerLink]="['/get-comment/' +data]">Complaints & Suggestions</ion-button>

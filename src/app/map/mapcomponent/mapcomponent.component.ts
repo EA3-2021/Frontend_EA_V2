@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import { AdminService } from '../../services/admin.service';
 import { Location } from '../../model/location';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'map',
@@ -26,11 +27,25 @@ export class MapcomponentComponent implements OnInit {
 
   data:any;
 
-  constructor(public adminService: AdminService,private route: ActivatedRoute,private router: Router) {
+  constructor(public adminService: AdminService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public menu: MenuController) {
     this.data = this.route.snapshot.paramMap.get('companyName'); }
 
   ngOnInit() {
-    this.showMap()}
+    this.showMap()
+
+    this.menu2();
+  }
+
+    menu2() {
+      this.menu.enable(true, 'menu2');
+    }
+  
+    obtainCompany(){
+      localStorage.setItem('companyName', this.data);
+    }
 
   private showMap() {
     

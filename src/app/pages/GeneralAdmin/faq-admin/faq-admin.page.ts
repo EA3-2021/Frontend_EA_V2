@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FaqService } from '../../../services/faq.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Faq } from '../../../model/faq';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-faq-admin',
@@ -21,7 +22,7 @@ export class FaqAdminPage implements OnInit {
   public faqService: FaqService,
   private router: Router,
   private route: ActivatedRoute,
-  ) {
+  public menu: MenuController) {
     this.data = this.route.snapshot.paramMap.get('companyName');
   }
 
@@ -33,6 +34,16 @@ export class FaqAdminPage implements OnInit {
         title: ['', Validators.required],
         content: ['', Validators.required]
     });
+
+    this.menu2();
+  }
+
+  menu2() {
+    this.menu.enable(true, 'menu2');
+  }
+
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
 
   deleteFaq(name: string) {
