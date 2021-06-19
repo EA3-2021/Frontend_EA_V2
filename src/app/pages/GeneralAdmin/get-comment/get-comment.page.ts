@@ -11,12 +11,12 @@ import { Comment } from '../../../model/comment';
 export class GetCommentPage implements OnInit {
 
   comments: Comment[];
-
+  data:any;
     constructor(
     public commentService: CommentService,
     private router: Router,
     private route: ActivatedRoute,
-    ) {}
+    ) {this.data = this.route.snapshot.paramMap.get('companyName');}
 
     ngOnInit(): void {
         this.commentService.getComments().subscribe (comments => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { AdminService } from '../../services/admin.service';
 import { Location } from '../../model/location';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'map',
@@ -23,7 +24,10 @@ export class MapcomponentComponent implements OnInit {
   propertyList = [];
   //
 
-  constructor(public adminService: AdminService) { }
+  data:any;
+
+  constructor(public adminService: AdminService,private route: ActivatedRoute,private router: Router) {
+    this.data = this.route.snapshot.paramMap.get('companyName'); }
 
   ngOnInit() {
     this.showMap()}
@@ -59,6 +63,10 @@ export class MapcomponentComponent implements OnInit {
       }
         
     });
+  }
+
+  goAdminDesk(){
+      this.router.navigateByUrl('/admin-desk/' + this.data) 
   }
       
             /*this.map = L.map('mapId',{scrollWheelZoom: false

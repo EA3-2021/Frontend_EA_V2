@@ -87,7 +87,7 @@ export class RegisterUserPage implements OnInit {
             .pipe(first())
             .subscribe(() => {
               //Llevarte una page anterior con tostada avisando de register exitoso
-                    this.router.navigate(['/login-user']);
+                    this.router.navigate(['/user']);
                 },
                 error => {
                   this.alertService.error(error);

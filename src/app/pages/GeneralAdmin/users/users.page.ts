@@ -38,10 +38,6 @@ export class UsersPage implements OnInit {
     });
   }
 
-  updateUser(_id: string) {
-    this.router.navigateByUrl('/update-form/'+ this.data+'/'+_id)  
-  }
-
   addTask(workerID: string) {
     this.router.navigateByUrl('/tasks-by-admin/' + this.data +'/'+ workerID ) 
   }

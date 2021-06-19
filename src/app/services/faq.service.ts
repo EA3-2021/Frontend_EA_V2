@@ -15,7 +15,18 @@ export class FaqService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
 
   }
 
@@ -24,15 +35,15 @@ export class FaqService {
   }
 
   newFaq(newFaq: Faq){
-    return this.http.post(environment.apiURL + '/faq/new', newFaq, { headers: this.headers });
+    return this.http.post(environment.apiURL + '/faq/new', newFaq, { headers: this.getHeaders() });
   }
 
   deleteFaq(title: string){
-    return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title, { headers: this.headers })
+    return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title, { headers: this.getHeaders() })
   }
 
   updateFaq(title: string, content: string){
-    return this.http.put(environment.apiURL + '/faq/update/' + title, content, { headers: this.headers });
+    return this.http.put(environment.apiURL + '/faq/update/' + title, content, { headers: this.getHeaders() });
   }
 
 }

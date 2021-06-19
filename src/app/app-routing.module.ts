@@ -56,7 +56,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/users/users.module').then( m => m.UsersPageModule)
   },
   {
-    path: 'chat',
+    path: 'chat/:workerID',
     loadChildren: () => import('./pages/GeneralUser/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
@@ -90,7 +90,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/user-to-team/user-to-team.module').then( m => m.UserToTeamPageModule)
   },
   {
-    path: 'contacts',
+    path: 'contacts/:workerID',
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
   {
@@ -98,23 +98,23 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
   },
   {
-    path: 'faq-user',
+    path: 'faq-user/:workerID',
     loadChildren: () => import('./pages/GeneralUser/faq-user/faq-user.module').then( m => m.FaqUserPageModule)},
-  { path: 'map', component: MapcomponentComponent},
+  { path: 'map/:companyName', component: MapcomponentComponent},
   {
     path: 'tarea',
     loadChildren: () => import('./pages/GeneralUser/tarea/tarea.module').then( m => m.TareaPageModule)
   },
   {
-    path: 'configuration',
+    path: 'configuration/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   },
   {
-    path: 'comment',
+    path: 'comment/:workerID',
     loadChildren: () => import('./pages/GeneralUser/comment/comment.module').then( m => m.CommentPageModule)
   },
   {
-    path: 'get-comment',
+    path: 'get-comment/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/get-comment/get-comment.module').then( m => m.GetCommentPageModule)
   },
   {
@@ -126,7 +126,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/chat/information-chat/information-chat.module').then( m => m.InformationChatPageModule)
   },
   {
-    path: 'registration-request',
+    path: 'registration-request/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/registration-request/registration-request.module').then( m => m.RegistrationRequestPageModule)
   },
   {

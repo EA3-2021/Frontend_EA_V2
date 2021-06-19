@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
     <ion-title>Requests</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
   <ion-list class = "ion-wrap" class = "ion-padding-bottom">
  
     <div class = "center">
-      <ion-button [routerLink]="['/registration-request']">Registration Requests</ion-button>
+      <ion-button [routerLink]="['/registration-request/'+data]">Registration Requests</ion-button>
     </div>
   
     <div class = "center">

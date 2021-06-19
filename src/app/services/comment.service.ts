@@ -16,17 +16,27 @@ export class CommentService {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headers.append('Accept', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["token"]);
 
   }
 
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
+
+  }
 
   getComments(){
-    return this.http.get<Comment[]>(environment.apiURL+'/comment/all', { headers: this.headers })
+    return this.http.get<Comment[]>(environment.apiURL+'/comment/all', { headers: this.getHeaders() })
   }
 
   newComment(newComment: Comment){
-    return this.http.post(environment.apiURL + '/comment/new', newComment, { headers: this.headers });
+    return this.http.post(environment.apiURL + '/comment/new', newComment, { headers: this.getHeaders() });
   }
 
 

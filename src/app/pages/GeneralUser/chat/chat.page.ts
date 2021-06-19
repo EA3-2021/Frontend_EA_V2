@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -9,11 +10,14 @@ import { ToastController } from '@ionic/angular';
 })
 export class ChatPage implements OnInit {
 
+  data:any;
   message = '';
   messages = [];
   protected currentUser : string = '';
 
-  constructor(private socket: Socket, private toastCtrl: ToastController) { }
+  constructor(private socket: Socket, private toastCtrl: ToastController,private router: Router,
+    private route: ActivatedRoute) {
+    this.data = this.route.snapshot.paramMap.get('workerID'); }
 
   ngOnInit(): void {
        this.socket.connect();

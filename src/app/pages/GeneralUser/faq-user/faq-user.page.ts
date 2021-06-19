@@ -11,12 +11,13 @@ import { Faq } from '../../../model/faq';
 export class FaqUserPage implements OnInit {
 
   faqs: Faq[];
-
+  data:any;
+  
   constructor(
   public faqService: FaqService,
   private router: Router,
   private route: ActivatedRoute,
-  ) {}
+  ) {this.data = this.route.snapshot.paramMap.get('workerID');}
 
   ngOnInit(): void { 
       this.faqService.getFaq().subscribe (faqs => {

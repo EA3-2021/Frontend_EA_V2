@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../model/user';
 import { UserService } from '../../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registration-request',
@@ -10,8 +11,9 @@ import { UserService } from '../../../services/user.service';
 export class RegistrationRequestPage implements OnInit {
 
   users: User[];
+  data:any;
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService,private route: ActivatedRoute) {this.data = this.route.snapshot.paramMap.get('companyName'); }
 
   ngOnInit() {
 
