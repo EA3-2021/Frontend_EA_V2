@@ -14,6 +14,7 @@ export class ConfigurationPage implements OnInit {
   public notification:boolean = true;
   public private:boolean = true;
   public authentication:boolean = true;
+  public location :boolean = true;
   data:any;
 
   constructor(private adminService: AdminService, private router: Router,private route: ActivatedRoute) { 
@@ -28,16 +29,9 @@ export class ConfigurationPage implements OnInit {
     console.log(this.authentication);
   }
   save(){
-    /*console.log(this.notification);
-    console.log(this.private);
-    console.log(this.authentication);*/
+    let configuration = {'company': this.data,'notification': this.notification, 'private': this.private, 'authentication': this.authentication, 'location': this.location}
 
-    let configuration = {'notification': this.notification, 'private': this.private, 'authentication': this.authentication}
-
-    console.log (configuration);
-
-    /*this.adminService.updateConfiguration(configuration);*/
-    this.adminService.updateConfiguration(configuration).subscribe(() => { this.router.navigateByUrl('/admin-desk');});
+    this.adminService.updateConfiguration(configuration).subscribe(() => { this.router.navigateByUrl('/admin-desk/'+this.data);});
   }
 
 }

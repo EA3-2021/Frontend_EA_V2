@@ -169,6 +169,10 @@ const routes: Routes = [
     path: 'profile-admin/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/profile-admin/profile-admin.module').then( m => m.ProfileAdminPageModule)
   },
+  {
+    path: 'setting/:workerID',
+    loadChildren: () => import('./pages/GeneralUser/setting/setting.module').then( m => m.SettingPageModule)
+  },
 
 
 

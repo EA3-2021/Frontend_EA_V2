@@ -6,6 +6,7 @@ import { User } from '../model/user';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
 import { Clock } from '../model/clock';
+import { Configuration } from '../model/configuration';
 
 
 @Injectable({
@@ -125,6 +126,9 @@ export class UserService {
 
   clockOut(workerID: string){
     return this.http.put(environment.apiURL + '/clock/clockOut',workerID);
+  }
+  updateConfiguration(configuration: Configuration) {
+    return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });
   }
 
 /*
