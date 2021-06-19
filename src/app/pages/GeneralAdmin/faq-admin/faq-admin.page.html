@@ -1,18 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
     <ion-title>Faqs</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class = "ion-padding-bottom">
- 
+  <form [formGroup]="faqForm" (ngSubmit)="submitFaq()" novalidate>
 
-    <div class="center">
-      <ion-button type="submit">Add new FAQ</ion-button>
-    </div>
+    <ion-item lines="full">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.title.errors.required">
+      Title is required.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Content</ion-label>
+      <ion-input formControlName="content" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.content.errors.required">
+      Content is required.
+    </span>
+
+    <ion-row>
+      <ion-col class="center">
+        <ion-button type="submit">Add new FAQ</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+
+
 
   <ion-card *ngFor="let faq of faqs">
     <ion-card-content >

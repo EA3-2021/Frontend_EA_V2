@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat',
@@ -15,8 +15,11 @@ export class ChatPage implements OnInit {
   messages = [];
   protected currentUser : string = '';
 
-  constructor(private socket: Socket, private toastCtrl: ToastController,private router: Router,
-    private route: ActivatedRoute) {
+  constructor(private socket: Socket, 
+    private toastCtrl: ToastController,
+    private router: Router,
+    private route: ActivatedRoute,
+    public menu: MenuController) {
     this.data = this.route.snapshot.paramMap.get('workerID'); }
 
   ngOnInit(): void {
@@ -43,7 +46,17 @@ export class ChatPage implements OnInit {
            this.messages.push(message);
        })
 
+       this.menu1();
+
    }
+
+   menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
+  }
 
    sendMessage(){
        this.socket.emit('send-message', {text: this.message});

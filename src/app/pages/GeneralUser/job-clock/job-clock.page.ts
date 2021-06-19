@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { first } from 'rxjs/operators';
 import { format } from "date-fns";
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-job-clock',
@@ -13,17 +14,40 @@ import { format } from "date-fns";
 export class JobClockPage implements OnInit {
 
   submitted = false;
+  data: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
-    ) {
+    private userService: UserService,
+    public menu: MenuController) {
+       this.data = this.route.snapshot.paramMap.get('workerID');
+
     }
 
   ngOnInit() {
 
+    this.menu1();
 
+  }
+
+  menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
+  }
+
+  clockIn(){
+        this.userService.clockIn(this.data).pipe(first()).subscribe(() => {
+                  this.router.navigate(['/user-desk/'+ this.data]);
+              });
+  }
+  clockOut(){
+        this.userService.clockOut(this.data).pipe(first()).subscribe(() => {
+                  this.router.navigate(['/user-desk/'+ this.data]);
+              });
   }
 
 

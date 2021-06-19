@@ -3,6 +3,9 @@
     <ion-button color = "light" class = "button" [routerLink]="['/user-desk/'+ data]">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
+    <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
     <ion-title>Faqs</ion-title>
   </ion-toolbar>
 </ion-header>

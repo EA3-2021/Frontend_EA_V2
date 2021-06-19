@@ -4,7 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user';
-import { ToastController } from '@ionic/angular';
+import { ToastController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-desk',
@@ -19,17 +19,19 @@ export class UserDeskPage implements OnInit {
   workerID: String;
   data:any;
   users: User[];
-  
-   constructor(private userService: UserService, 
-    private route: ActivatedRoute,  
+
+   constructor(private userService: UserService,
+    private route: ActivatedRoute,
     private alertService: AlertService,
     private router: Router,
-    public toastController: ToastController) {
+    public toastController: ToastController,
+    public menu: MenuController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
+
     }
 
-   ngOnInit(): void {   
-     
+   ngOnInit(): void {
+
     Geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
@@ -46,10 +48,20 @@ export class UserDeskPage implements OnInit {
       this.users = users;
 
       this.displayToast(this.users[0].name);
-      
+
     });
 
+    this.menu1();
+
    }
+
+   menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
+  }
 
    displayToast(name1: string) {
     this.toastController.create({
@@ -71,6 +83,6 @@ export class UserDeskPage implements OnInit {
     }).then((toast) => {
       toast.present();
     });
-  }  
+  }
 
 }

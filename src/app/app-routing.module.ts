@@ -94,7 +94,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
   {
-    path: 'faq-admin',
+    path: 'faq-admin/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
   },
   {
@@ -112,6 +112,10 @@ const routes: Routes = [
   {
     path: 'comment/:workerID',
     loadChildren: () => import('./pages/GeneralUser/comment/comment.module').then( m => m.CommentPageModule)
+  },
+  {
+    path: 'job-clock/:workerID',
+    loadChildren: () => import('./pages/GeneralUser/job-clock/job-clock.module').then( m => m.JobClockPageModule)
   },
   {
     path: 'get-comment/:companyName',
@@ -161,6 +165,7 @@ const routes: Routes = [
     path: 'forgot-password-user',
     loadChildren: () => import('./pages/GeneralUser/forgot-password-user/forgot-password-user.module').then( m => m.ForgotPasswordUserPageModule)
   },
+
 
 ];
 

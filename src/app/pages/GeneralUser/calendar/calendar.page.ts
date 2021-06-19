@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { Tarea } from '../../../model/tarea';
 import { Request } from '../../../model/request';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendar',
@@ -26,12 +27,23 @@ export class CalendarPage implements OnInit {
   data:any;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,private userService: UserService ) {
+    private route: ActivatedRoute,
+    private userService: UserService,
+    public menu: MenuController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
    }
 
 
   ngOnInit() {
+    this.menu1();
+  }
+
+  menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
   }
 
   addHolidayRequest() {   
