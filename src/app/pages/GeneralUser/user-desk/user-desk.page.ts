@@ -19,18 +19,19 @@ export class UserDeskPage implements OnInit {
   workerID: String;
   data:any;
   users: User[];
-  
-   constructor(private userService: UserService, 
-    private route: ActivatedRoute,  
+
+   constructor(private userService: UserService,
+    private route: ActivatedRoute,
     private alertService: AlertService,
     private router: Router,
     public toastController: ToastController,
     public menu: MenuController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
+
     }
 
-   ngOnInit(): void {   
-     
+   ngOnInit(): void {
+
     Geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
@@ -47,7 +48,7 @@ export class UserDeskPage implements OnInit {
       this.users = users;
 
       this.displayToast(this.users[0].name);
-      
+
     });
 
     this.menu1();
@@ -78,6 +79,6 @@ export class UserDeskPage implements OnInit {
     }).then((toast) => {
       toast.present();
     });
-  }  
+  }
 
 }

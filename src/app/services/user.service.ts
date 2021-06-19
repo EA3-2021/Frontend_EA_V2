@@ -5,7 +5,7 @@ import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
-//import { Clock } from '../model/clock';
+import { Clock } from '../model/clock';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class UserService {
 
   headers: HttpHeaders;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -47,7 +47,7 @@ export class UserService {
   getUser(workerID: String){
     return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.getHeaders() })
   }
-  
+
   newUser(newUser: User){
     return this.http.post(environment.apiURL + '/user/new', newUser);
   }
@@ -118,9 +118,11 @@ export class UserService {
   updateUserProfile(workerID: string, user:User) {
     return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user);
   }
-  
 
-  
+  clockIn(workerID: string){
+    return this.http.post(environment.apiURL + '/clock/clockIn',workerID);
+  }
+
 /*
   saveClockIn(clockIn: ClockIn){
     return this.http.post(environment.apiURL + '/user/clockIn', clockIn);
