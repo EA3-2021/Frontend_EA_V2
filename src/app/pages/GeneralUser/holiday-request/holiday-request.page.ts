@@ -58,8 +58,6 @@ export class HolidayRequestPage implements OnInit {
 
     let request = {'workerID': workerID,'motivo': motivo, 'descripcion': descripcion, 'fechaI': fechaI2, 'fechaF': fechaF2};
 
-    console.log(this.data);
-
     this.userService.holidayRequest(request).pipe(first()).subscribe(() => {
                   this.router.navigate(['/calendar/'+ this.data]);
               });

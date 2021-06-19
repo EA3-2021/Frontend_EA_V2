@@ -27,7 +27,7 @@
   <ion-card class = card1 *ngFor="let tarea of tareas">
 
     <ion-card-header>
-      <ion-card-title>Tarea</ion-card-title>
+      <ion-card-title>Task</ion-card-title>
     </ion-card-header>
 
     <ion-card-content >
@@ -37,23 +37,23 @@
       </div>
 
       <div>
-        Titulo: {{tarea.titulo}}
+        Title: {{tarea.titulo}}
       </div>
 
       <div>
-        Descripcion: {{tarea.descripcion}}
+        Description: {{tarea.descripcion}}
       </div>
 
       <div>
-        Fecha: {{tarea.fecha}}
+        Date: {{tarea.fecha}}
       </div>
 
       <div>
-        Hora de Inicio:{{tarea.horaI}}
+        Start time:{{tarea.horaI}}
       </div>
 
       <div>
-        Hora de Finalizacion:{{tarea.horaF}}
+        Ending time:{{tarea.horaF}}
       </div>
 
     </ion-card-content>
@@ -63,7 +63,7 @@
 
     
     <ion-card-header>
-      <ion-card-title>Libranza</ion-card-title>
+      <ion-card-title>Day off</ion-card-title>
     </ion-card-header>
 
     <ion-card-content >
@@ -73,19 +73,19 @@
       </div>
 
       <div>
-        Motivo: {{request.motivo}}
+        Reason: {{request.motivo}}
       </div>
 
       <div>
-        Descripcion: {{request.descripcion}}
+        Description: {{request.descripcion}}
       </div>
 
       <div>
-        Fecha de inicio: {{request.fechaI}}
+        Start date: {{request.fechaI}}
       </div>
 
       <div>
-        Fecha de Finalizacion:{{request.fechaF}}
+        Ending date:{{request.fechaF}}
       </div>
     </ion-card-content>
   </ion-card>

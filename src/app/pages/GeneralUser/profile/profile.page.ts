@@ -23,7 +23,6 @@ export class ProfilePage implements OnInit {
 
     this.userService.getUser(this.data).subscribe (users => {
       this.users = users;
-      console.log(this.users);
     });
 
   }
