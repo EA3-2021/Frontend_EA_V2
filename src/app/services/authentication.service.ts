@@ -54,9 +54,7 @@ export class AuthenticationService {
 
     logout() {
         const t = {"token": localStorage.getItem("ACCESS_TOKEN")};
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
-        return this.http.put(environment.apiURL + "signout", t);
+        return this.http.put(environment.apiURL + "/auth/signoutUser", t);
     }
 
     /*signout(): Observable<any> {
