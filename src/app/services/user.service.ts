@@ -122,14 +122,13 @@ export class UserService {
   clockIn(workerID: string){
     return this.http.post(environment.apiURL + '/clock/clockIn',workerID);
   }
+  clockOut(workerID: string){
+    return this.http.put(environment.apiURL + '/clock/clockOut',workerID);
+  }
 
 /*
-  saveClockIn(clockIn: ClockIn){
-    return this.http.post(environment.apiURL + '/user/clockIn', clockIn);
+  updateUser(_id: string, updateUser: User){
+    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
   }
-  saveClockOut(clockOut: ClockOut){
-    return this.http.post(environment.apiURL + '/user/clockOut', clockOut);
-  }
-
-  */
+*/
 }

@@ -33,7 +33,9 @@ export class JobClockPage implements OnInit {
               });
   }
   clockOut(){
-     // this.router.navigateByUrl('/clockOut');
+        this.userService.clockOut(this.data).pipe(first()).subscribe(() => {
+                  this.router.navigate(['/user-desk/'+ this.data]);
+              });
   }
 
 
