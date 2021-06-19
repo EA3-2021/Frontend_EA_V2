@@ -59,6 +59,10 @@ export class UserDeskPage implements OnInit {
     this.menu.enable(true, 'menu1');
   }
 
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
+  }
+
    displayToast(name1: string) {
     this.toastController.create({
       header: 'Welcome '+ name1 + '!',

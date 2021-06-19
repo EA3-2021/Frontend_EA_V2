@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { MenuController } from '@ionic/angular';
 
 import { AlertService } from '../../../services/alert.service';
 import { CommentService } from '../../../services/comment.service';
@@ -22,13 +23,23 @@ export class CommentPage implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private commentService: CommentService,
-      private alertService: AlertService
-  ) {this.data = this.route.snapshot.paramMap.get('workerID');}
+      private alertService: AlertService,
+      public menu: MenuController) {this.data = this.route.snapshot.paramMap.get('workerID');}
 
   ngOnInit() {
       this.commentForm = this.formBuilder.group({
           content: ['', Validators.required]
       });
+
+      this.menu1();
+  }
+
+  menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
   }
 
   // convenience getter for easy access to form fields

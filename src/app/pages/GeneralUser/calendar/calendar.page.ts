@@ -35,11 +35,15 @@ export class CalendarPage implements OnInit {
 
 
   ngOnInit() {
-    this.menu2();
+    this.menu1();
   }
 
-  menu2() {
-    this.menu.enable(true, 'menu2');
+  menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  obtainID(){
+    localStorage.setItem('workerID', this.data);
   }
 
   addHolidayRequest() {   
