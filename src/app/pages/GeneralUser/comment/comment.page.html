@@ -3,14 +3,14 @@
     <ion-button color = "light" class = "button" [routerLink]="['/user-desk/'+ data]">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
+    <ion-title>Complaints & Suggestions</ion-title>
     <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Help us to improve</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="center">
+<ion-content>
   <form [formGroup]="commentForm" (ngSubmit)="submitComment()" novalidate>
 
     <ion-item lines="full">
@@ -23,9 +23,28 @@
 
     <ion-row>
       <ion-col class="center">
-        <ion-button type="submit" expand="block">Send comment</ion-button>
+        <ion-button type="submit" expand="block">Send</ion-button>
       </ion-col>
     </ion-row>
 
   </form>
+
+  <ion-card *ngFor="let comment of comments" >
+
+    <ion-card-content>
+
+      <div *ngIf = "comment.state == true" class = card>State: Resolved</div>
+      <div *ngIf = "comment.state == false" class = card1>State: Pending</div>
+    
+      <div>Content:</div>
+      <div>{{comment.content}}</div>
+  
+      <ion-footer class="center">
+        <ion-button size="small" expand="block" (click)="deleteComment(comment._id)" color="danger" class="button">Delete</ion-button>
+      </ion-footer>
+
+    </ion-card-content>
+   
+  </ion-card>
 </ion-content>
+

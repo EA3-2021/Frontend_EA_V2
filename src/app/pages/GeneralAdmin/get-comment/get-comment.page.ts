@@ -19,9 +19,15 @@ export class GetCommentPage implements OnInit {
     ) {this.data = this.route.snapshot.paramMap.get('companyName');}
 
     ngOnInit(): void {
-        this.commentService.getComments().subscribe (comments => {
+        this.commentService.getCommentsAdmin(this.data).subscribe (comments => {
           this.comments = comments;
         });
+    }
+
+    resolveComment(id:string){
+      this.commentService.resolveComment(id).subscribe (data => {
+        window.location.reload();
+      });
     }
 
 }

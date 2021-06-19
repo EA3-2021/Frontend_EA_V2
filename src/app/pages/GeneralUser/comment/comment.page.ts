@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Comment } from '../../../model/comment';
 import { MenuController } from '@ionic/angular';
 
 import { AlertService } from '../../../services/alert.service';
@@ -18,6 +19,8 @@ export class CommentPage implements OnInit {
   submitted = false;
   data:any;
 
+  comments: Comment[];
+
   constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
@@ -31,6 +34,9 @@ export class CommentPage implements OnInit {
           content: ['', Validators.required]
       });
 
+      this.commentService.getComments(this.data).subscribe (comments => {
+        this.comments = comments;
+      });
       this.menu1();
   }
 
@@ -47,24 +53,34 @@ export class CommentPage implements OnInit {
   return this.commentForm.controls;
   }
 
+  deleteComment(_id:string){
+    this.commentService.deleteComment(_id).subscribe (data => {
+      window.location.reload();
+    });
+  }
+
   submitComment() {
-      this.submitted = true;
 
-      // reset alerts on submit
-      this.alertService.clear();
+    this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.commentForm.invalid) {
-          return;
-      }
+    // reset alerts on submit
+    this.alertService.clear();
 
-      const content = this.commentForm.value.content;
-      let comment = {'content': content};
+    // stop here if form is invalid
+    if (this.commentForm.invalid) {
+        return;
+    }
 
-      this.commentService.newComment(comment)
-        .subscribe(() => {
-          this.router.navigateByUrl('/get-comment');
-        });
+    const company = this.commentForm.value.company;
+    const workerID = this.data;
+    const content = this.commentForm.value.content;
+
+    let comment = {'company': company, 'workerID': workerID, 'content': content};
+
+    this.commentService.newComment(comment).subscribe(() => {
+        this.router.navigateByUrl('/comment/' + this.data);
+        window.location.reload();
+    });
 
   }
 
