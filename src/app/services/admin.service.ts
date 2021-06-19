@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Location } from '../model/location';
 import { Tarea } from '../model/tarea';
 import { Request } from '../model/request';
+import { Clock } from '../model/clock';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AdminService {
 
   headers: HttpHeaders;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -68,5 +69,9 @@ export class AdminService {
 
   updateTask(_id: string, updateTarea: Tarea){
     return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
+  }
+
+  getClock(clockIn:string, company:string){
+    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn + '/' + company);
   }
 }

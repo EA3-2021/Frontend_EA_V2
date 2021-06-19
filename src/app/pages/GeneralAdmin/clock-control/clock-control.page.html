@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Users clock in and clock out</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class = "ion-padding-top">
+
+  <calendar [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  [showEventDetail] = "false"
+  (onRangeChanged)="reloadSource(startTime, endTime)"
+  (onEventSelected)="onEventSelected($event)"
+  (onTimeSelected)="onTimeSelected($event)"
+  step="30">
+  </calendar>
+
+</ion-content>
+
+<ion-content class = "ion-padding-bottom">
+
+  <ion-card *ngFor="let clock of clocks">
+
+    <ion-card-header>
+      <ion-card-title>Worker ID: {{ clock.workerID }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+
+      <div class="user-name">
+        clockIn: {{clock.clockIn}}
+      </div>
+
+      <div class="user-email">
+        clockOut: {{clock.clockOut}}
+      </div>
+
+    </ion-card-content>
+
+    <ion-footer class="center">
+
+    </ion-footer>
+  </ion-card>
+
+</ion-content>

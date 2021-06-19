@@ -169,6 +169,10 @@ const routes: Routes = [
     path: 'setting/:workerID',
     loadChildren: () => import('./pages/GeneralUser/setting/setting.module').then( m => m.SettingPageModule)
   },
+  {
+    path: 'clock-control/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/clock-control/clock-control.module').then( m => m.ClockControlPageModule)
+  },
 
 
 
