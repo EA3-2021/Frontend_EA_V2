@@ -94,7 +94,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
   {
-    path: 'faq-admin',
+    path: 'faq-admin/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/faq-admin/faq-admin.module').then( m => m.FaqAdminPageModule)
   },
   {
