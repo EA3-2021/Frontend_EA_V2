@@ -125,7 +125,7 @@ export class UserService {
   }
 
   clockOut(workerID: string){
-    return this.http.put(environment.apiURL + '/clock/clockOut',workerID);
+    return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID);
   }
   updateConfiguration(configuration: Configuration) {
     return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });
