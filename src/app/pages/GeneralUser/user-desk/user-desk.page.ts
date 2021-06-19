@@ -4,7 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user';
-import { ToastController } from '@ionic/angular';
+import { ToastController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-desk',
@@ -24,7 +24,8 @@ export class UserDeskPage implements OnInit {
     private route: ActivatedRoute,  
     private alertService: AlertService,
     private router: Router,
-    public toastController: ToastController) {
+    public toastController: ToastController,
+    public menu: MenuController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
     }
 
@@ -49,7 +50,13 @@ export class UserDeskPage implements OnInit {
       
     });
 
+    this.menu1();
+
    }
+
+   menu1() {
+    this.menu.enable(true, 'menu1');
+  }
 
    displayToast(name1: string) {
     this.toastController.create({
