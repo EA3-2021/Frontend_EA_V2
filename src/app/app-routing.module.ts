@@ -114,6 +114,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/comment/comment.module').then( m => m.CommentPageModule)
   },
   {
+    path: 'job-clock/:workerID',
+    loadChildren: () => import('./pages/GeneralUser/job-clock/job-clock.module').then( m => m.JobClockPageModule)
+  },
+  {
     path: 'get-comment/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/get-comment/get-comment.module').then( m => m.GetCommentPageModule)
   },

@@ -13,17 +13,27 @@ import { format } from "date-fns";
 export class JobClockPage implements OnInit {
 
   submitted = false;
+  data: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService
     ) {
+       this.data = this.route.snapshot.paramMap.get('workerID');
+
     }
 
   ngOnInit() {
 
-
+  }
+  clockIn(){
+        this.userService.clockIn(this.data).pipe(first()).subscribe(() => {
+                  this.router.navigate(['/user-desk/'+ this.data]);
+              });
+  }
+  clockOut(){
+     // this.router.navigateByUrl('/clockOut');
   }
 
 
