@@ -12,29 +12,39 @@
   <form [formGroup]="holidayRequestForm" (ngSubmit)="submitHolidayRequest()" novalidate>
     
     <ion-item>
-      <ion-label>Motivo</ion-label>
+      <ion-label>Reason</ion-label>
       <ion-select value="none" ok-text="Okay" (ionChange)="ionChanger($event)" cancel-text="Dismiss">
         <ion-select-option value="none">...</ion-select-option>
-        <ion-select-option value="Dia personal">Dia personal</ion-select-option>
-        <ion-select-option value="Vacaciones">Vacaciones</ion-select-option>
-        <ion-select-option value="Urgencia Familiar">Urgencia Familiar</ion-select-option>
+        <ion-select-option value="Dia personal">Personal day</ion-select-option>
+        <ion-select-option value="Vacaciones">Holidays</ion-select-option>
+        <ion-select-option value="Urgencia Familiar">Family Emergency</ion-select-option>
+        <ion-select-option value="Urgencia Familiar">Other reasons...</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Descripcion</ion-label>
-      <ion-input formControlName="descripcion" type="text" required></ion-input>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input disabled= "true" formControlName="descripcion" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.descripcion.errors?.required">
+      Description is required.
+    </span>
 
     <ion-item>
-      <ion-label>Fecha de inicio</ion-label>
-      <ion-datetime formControlName="fechaI" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
+      <ion-label>Start date</ion-label>
+      <ion-datetime disabled= "true" formControlName="fechaI" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.fechaI.errors?.required">
+      Start date is required.
+    </span>
 
     <ion-item>
-      <ion-label>Fecha de finalizacion</ion-label>
-      <ion-datetime formControlName="fechaF" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
+      <ion-label>Finish date</ion-label>
+      <ion-datetime disabled= "true" formControlName="fechaF" displayFormat="D-M-YYYY" pickerFormat="D M YYYY"></ion-datetime>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.fechaF.errors?.required">
+      Finish date is required.
+    </span>
 
     <ion-row>
       <ion-col>
