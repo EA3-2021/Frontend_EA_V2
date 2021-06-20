@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -34,10 +34,9 @@ export class AuthenticationService {
         return this.currentAdminSubject.value;
     }
 
-    loginUser(name, password) {
-        return this.http.post<any>(environment.apiURL+ '/auth/loginUser', { name, password })
+    loginUser(workerID, password) {
+        return this.http.post<any>(environment.apiURL+ '/auth/loginUser', {workerID, password })
             .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
@@ -47,16 +46,24 @@ export class AuthenticationService {
     loginAdmin(name, password) {
         return this.http.post<any>(environment.apiURL+ '/auth/login-admin', { name, password })
             .pipe(map(admin => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentAdmin', JSON.stringify(admin));
                 this.currentAdminSubject.next(admin);
                 return admin;
             }));
     }
 
-    logout() {
-        // remove user from local storage and set current user to null
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+    /*logout() {
+        const t = {"token": localStorage.getItem("ACCESS_TOKEN")};
+        return this.http.put(environment.apiURL + "/auth/signoutUser", t);
+    }*/
+
+    logout(): Observable<any> {
+        const t = {"token": localStorage.getItem("token")};
+        console.log(t);
+        return this.http.put(environment.apiURL + "/auth/signoutUser/" + t, t);
+    }
+    
+    addToken(token: string){
+    localStorage.setItem("ACCESS_TOKEN", token);
     }
 }

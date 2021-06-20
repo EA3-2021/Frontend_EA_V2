@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+    <ion-button color = "light" class = "button" [routerLink]="['/user-desk/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
     <ion-title>Calendar</ion-title>
   </ion-toolbar>
@@ -9,25 +12,85 @@
 
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-calendar [(ngModel)]="date"
-                  (onChange)="onChange($event)"
-                  [type]="type"
-                  [format]="'YYYY-MM-DD'">
-    </ion-calendar>
-  </div>
-
-  <ion-button (click)="addNewEvent()">Add New Event</ion-button>
+  <ion-button (click)="addHolidayRequest()" expand="block">Add Holiday Request</ion-button>
 
   <calendar [eventSource]="eventSource"
   [calendarMode]="calendar.mode"
   [currentDate]="calendar.currentDate"
-  (onCurrentDateChanged)="onCurrentDateChanged($event)"
+  [showEventDetail] = "false"
   (onRangeChanged)="reloadSource(startTime, endTime)"
   (onEventSelected)="onEventSelected($event)"
-  (onTitleChanged)="onViewTitleChanged($event)"
   (onTimeSelected)="onTimeSelected($event)"
-  step="30"> 
-</calendar>
-
+  step="30">
+  </calendar>
+  
 </ion-content>
+
+<ion-content class = "ion-padding-bottom">
+  <ion-card class = card1 *ngFor="let tarea of tareas">
+
+    <ion-card-header>
+      <ion-card-title>Task</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+
+      <div>
+        WorkerID: {{tarea.workerID}}
+      </div>
+
+      <div>
+        Title: {{tarea.titulo}}
+      </div>
+
+      <div>
+        Description: {{tarea.descripcion}}
+      </div>
+
+      <div>
+        Date: {{tarea.fecha}}
+      </div>
+
+      <div>
+        Start time:{{tarea.horaI}}
+      </div>
+
+      <div>
+        Ending time:{{tarea.horaF}}
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class = card2 *ngFor="let request of requests">
+
+    
+    <ion-card-header>
+      <ion-card-title>Day off</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+
+      <div>
+        WorkerID: {{request.workerID}}
+      </div>
+
+      <div>
+        Reason: {{request.motivo}}
+      </div>
+
+      <div>
+        Description: {{request.descripcion}}
+      </div>
+
+      <div>
+        Start date: {{request.fechaI}}
+      </div>
+
+      <div>
+        Ending date:{{request.fechaF}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

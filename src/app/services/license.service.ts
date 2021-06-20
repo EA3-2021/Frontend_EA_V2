@@ -1,13 +1,33 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LicenseService {
 
-  constructor(private http: HttpClient) { }
+  headers: HttpHeaders;
+
+  constructor(private http: HttpClient) { 
+
+    this.headers = new HttpHeaders();
+    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.headers.append('Accept', 'application/json');
+
+  }
+
+  getHeaders() : HttpHeaders{
+
+    if (!this.headers.has('Authorization')) {
+
+      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
+
+    }
+
+    return this.headers;
+
+  }
 
   useLicense(licenseCode: string) {
     return this.http.post(environment.apiURL + '/license/use', {"licenseCode": licenseCode});

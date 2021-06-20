@@ -1,23 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+    <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
     <ion-title>User Desk</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
+
   <div class = "center">
-    <ion-button [routerLink]="['/calendar']">Calendar</ion-button>
+    <ion-button [routerLink]="['/calendar/'+ data]">Calendar</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/contacts']">Contacts</ion-button>
+    <ion-button [routerLink]="['/contacts/'+data]">Contacts</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/faq-user']">FAQ</ion-button>
+    <ion-button [routerLink]="['/chat/' + data]">CHAT</ion-button>
   </div>
-  
+
+  <div class = "center">
+    <ion-button [routerLink]="['/job-clock/' +data]">clock-in or clock-out</ion-button>
+  </div>
+
+  <div class = "center">
+    <ion-button [routerLink]="['/faq-user/' + data ]">FAQ</ion-button>
+  </div>
+
+  <div class = "center">
+    <ion-button [routerLink]="['/comment/' + data]">Complaints & Suggestions</ion-button>
+  </div>
 </ion-list>

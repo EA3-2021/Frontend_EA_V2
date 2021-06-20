@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-button color = "light" class = "button" [routerLink]="['/users/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
     <ion-title>Register User</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,8 +14,8 @@
       <ion-label position="floating">Name</ion-label>
       <ion-input formControlName="name" type="name"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors.required">
-      Name is required.
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors?.required">
+      Complete Name is required.
     </span>
 
     <ion-item lines="full">

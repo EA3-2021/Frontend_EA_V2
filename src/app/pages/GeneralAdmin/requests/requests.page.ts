@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-requests',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsPage implements OnInit {
 
-  constructor() { }
+  data:any;
+  constructor(private route: ActivatedRoute,
+    public menu: MenuController) {this.data = this.route.snapshot.paramMap.get('companyName'); }
 
   ngOnInit() {
+    this.menu2();
+  }
+
+  menu2() {
+    this.menu.enable(true, 'menu2');
+  }
+
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
 
 }

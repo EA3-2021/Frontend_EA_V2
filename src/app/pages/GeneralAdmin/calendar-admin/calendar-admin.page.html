@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color = "light" class = "button" [routerLink]="['/admin-desk/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Users tasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card class = card>
+  <p style="font-size:20px" class="center">Add tasks to your workers using the "Users" option in your desk!</p>
+</ion-card>
+
+<ion-content class = "ion-padding-top">
+
+  <calendar [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  [showEventDetail] = "false"
+  (onRangeChanged)="reloadSource(startTime, endTime)"
+  (onEventSelected)="onEventSelected($event)"
+  (onTimeSelected)="onTimeSelected($event)"
+  step="30">
+  </calendar>
+
+</ion-content>
+
+<ion-content class = "ion-padding-bottom">
+
+  <ion-card *ngFor="let tarea of tareas">
+
+    <ion-card-header>
+      <ion-card-title>Worker ID: {{ tarea.workerID }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+
+      <div class="user-name">
+        Titulo: {{tarea.titulo}}
+      </div>
+
+      <div class="user-email">
+        Descripcion: {{tarea.descripcion}}
+      </div>
+
+      <div class="user-phone">
+        Fecha: {{tarea.fecha}}
+      </div>
+
+      <div class="user-password">
+        Hora de Inicio:{{tarea.horaI}}
+      </div>
+
+      <div class="user-password">
+        Hora de Finalizacion:{{tarea.horaF}}
+      </div>
+
+    </ion-card-content>
+
+    <ion-footer class="center">
+      <ion-button (click)="updateTarea(tarea._id)">Update</ion-button>
+      <ion-button (click)="deleteTarea(tarea._id)" color="danger">Delete</ion-button>
+    </ion-footer>
+  </ion-card>
+
+</ion-content>

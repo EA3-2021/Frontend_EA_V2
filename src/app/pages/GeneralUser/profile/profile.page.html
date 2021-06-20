@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color = "light" class = "button" [routerLink]="['/user-desk/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let user of users">
+    <ion-card-header>
+      <ion-card-title>{{ user.name }} Profile</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="user-name">
+        WorkerID: {{user.workerID}}
+      </div>
+
+      <div class="user-email">
+        Email: {{user.email}}
+      </div>
+
+      <div class="user-phone">
+        Phone: {{user.phone}}
+      </div>
+
+    </ion-card-content>
+
+    <ion-footer class="center">
+      <ion-button expand="block" (click)="updateUser(user.workerID)">Update</ion-button>
+    </ion-footer>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Insignias:</ion-card-title>
+      <!--<ion-list inset>
+        <ion-item *ngFor="let insig of insignias">
+          <p>{{insig}}</p>
+        </ion-item>
+      </ion-list>-->
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

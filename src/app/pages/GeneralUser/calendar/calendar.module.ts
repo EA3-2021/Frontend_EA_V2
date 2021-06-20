@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-
-// Calendar UI Module
-import { CalendarModule } from 'ion2-calendar';
 import { CalendarPageRoutingModule } from './calendar-routing.module';
 import { CalendarPage } from './calendar.page';
 import { NgCalendarModule  } from 'ionic2-calendar';
@@ -16,7 +13,6 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     CommonModule,
     FormsModule,
     IonicModule,
-    CalendarModule,
     RouterModule.forChild([
       {
         path: '',

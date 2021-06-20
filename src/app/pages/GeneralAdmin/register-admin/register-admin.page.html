@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-button color = "light" class = "button" [routerLink]="['/license']">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
     <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,41 +13,43 @@
       <ion-label position="floating">Business name</ion-label>
       <ion-input formControlName="name" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.name.errors?.required">
+      Business Name is required.
+    </span>
 
     <ion-item lines="full">
       <ion-label position="floating">CIF code</ion-label>
       <ion-input formControlName="cif" type="text" required></ion-input>
     </ion-item>
-
-    <!--<ion-item lines="full">
-      <ion-label position="floating">Business mail</ion-label>
-      <ion-input formControlName="email" type="text" required></ion-input>
-    </ion-item>-->
+    <span class="error ion-padding" *ngIf="submitted && formControls.cif.errors?.required">
+      CIF is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.cif.errors?.minlength">
+      Min 9 chars long.
+    </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Business mail</ion-label>
       <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors?.required">
       Email is required.
     </span>
-    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.pattern">
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors?.pattern">
       Enter valid email.
     </span>
 
-    <!--<ion-item lines="full">
-      <ion-label position="floating">Business phone</ion-label>
-      <ion-input formControlName="phone" type="text" required></ion-input>
-    </ion-item>-->
-
     <ion-item lines="full">
       <ion-label position="floating">Business phone</ion-label>
-      <ion-input maxlength="10" formControlName="phone" type="text" required></ion-input>
+      <ion-input formControlName="phone" type="text" required></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors?.required">
       Phone number is required.
     </span>
-    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.pattern">
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors?.minlength">
+      Min 9 chars long.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors?.pattern">
       Number values allowed.
     </span>
  
@@ -55,16 +57,28 @@
       <ion-label position="floating">Business address</ion-label>
       <ion-input formControlName="address" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.address.errors?.required">
+      Address is required.
+    </span>
      
     <ion-item lines="full">
       <ion-label position="floating">Postal code</ion-label>
       <ion-input formControlName="postalCode" type="text" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.address.errors?.required">
+      Postal Code is required.
+    </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
       <ion-input formControlName="password" type="password" required></ion-input>
     </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors?.required">
+      Password is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.password.errors?.minlength">
+      Min 6 chars long.
+    </span>
 
     <ion-row>
       <ion-col>

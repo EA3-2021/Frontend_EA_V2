@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Team } from '../../model/team'
 import { TeamService } from '../../services/team.service';
 
@@ -13,11 +13,14 @@ export class TeamFormComponent implements OnInit {
 
   teamForm: FormGroup;
   isSubmitted = false;
+  data:any;
 
   constructor(
   public teamService: TeamService,
   private router: Router,
-  private formBuilder: FormBuilder) { }
+  private formBuilder: FormBuilder, private route :ActivatedRoute) { 
+    this.data = this.route.snapshot.paramMap.get('companyName');
+  }
 
   ngOnInit(): void {
 
@@ -36,9 +39,12 @@ export class TeamFormComponent implements OnInit {
     if(this.teamForm.invalid){
       return;
     }
-    this.teamService.newTeam(this.teamForm.value)
+    
+    this.teamService.newTeam(this.teamForm.value, this.data)
     .subscribe((team: Team) => {
-      this.router.navigateByUrl('/teams');
+      this.router.navigateByUrl('/teams/'+ this.data).then(() => {
+        window.location.reload();
+      })
     });
   }
 }

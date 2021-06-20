@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../../../services/alert.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login-user',
@@ -21,14 +22,27 @@ export class LoginUserPage implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService
+      private alertService: AlertService,
+      private alertController: AlertController
   ) {}
 
   ngOnInit() {
       this.loginUserForm = this.formBuilder.group({
-          name: ['', Validators.required],
-          password: ['', Validators.required]
+          workerID: ['', [Validators.required, Validators.minLength(6)]],
+          password: ['', [Validators.required, Validators.minLength(6)]]
       });
+  }
+
+  async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Caution!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   // convenience getter for easy access to form fields
@@ -45,16 +59,21 @@ export class LoginUserPage implements OnInit {
           return;
       }
 
-      this.authenticationService.loginUser(this.formControls.name.value, this.formControls.password.value)
+      this.authenticationService.loginUser(this.formControls.workerID.value, this.formControls.password.value)
           .pipe(first())
           .subscribe(() =>  {
-                 this.router.navigateByUrl('/user-desk');
+                 this.router.navigateByUrl('/user-desk/'+ this.formControls.workerID.value);
               },
               error => {
                   this.alertService.error(error);
+                  this.presentAlert(error.error.message);
               });
   }
   user() {
     this.router.navigateByUrl('/user');
+  }
+
+  goPassword(){
+    this.router.navigateByUrl('/forgot-password-user');
   }
 }

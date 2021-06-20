@@ -1,8 +1,8 @@
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../model/user'
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,15 +12,16 @@ import { User } from '../../model/user'
 })
 export class UserFormComponent implements OnInit {
 
+  data: any;
   userForm: FormGroup;
   isSubmitted = false;
 
-  constructor(public userService: UserService, private router: Router,
-              private formBuilder: FormBuilder){ }
+  constructor(public userService: UserService, private router: Router,private route: ActivatedRoute,
+              private formBuilder: FormBuilder){this.data = this.route.snapshot.paramMap.get('companyName');}
   
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.nullValidator]],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.nullValidator]],
       phone: ['', [Validators.required, Validators.nullValidator]],
       password: ['', [Validators.required, Validators.nullValidator]]
@@ -36,16 +37,17 @@ export class UserFormComponent implements OnInit {
       return;
     }
     
+    const company = this.data;
     const name = this.userForm.value.name;
     const email = this.userForm.value.email;
     const phone = this.userForm.value.phone;
     const password = this.userForm.value.password;
-    const token = this.userForm.value.token;
-    let user = {'name': name, 'email': email, 'phone': phone, 'password': password, 'token': token};
+
+    let user = {'company': company, 'name': name, 'email': email, 'phone': phone, 'password': password, 'insignias': []};
 
     this.userService.newUser(user)
       .subscribe(() => {
-        this.router.navigateByUrl('/users');
+        this.router.navigateByUrl('/users/'+this.data);
       });
   }
   
