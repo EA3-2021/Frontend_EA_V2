@@ -32,7 +32,7 @@ export class UserService {
   }
 
   getUsers(companyName: string){
-    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName)
+    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName, { headers: this.getHeaders() })
   }
 
   getUser(workerID: String){
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   newUser(newUser: User){
-    return this.http.post(environment.apiURL + '/user/new', newUser);
+    return this.http.post(environment.apiURL + '/user/new', newUser, { headers: this.getHeaders() });
   }
 
   deleteUser(name: string){
@@ -48,7 +48,7 @@ export class UserService {
   }
 
   updateUser(_id: string, updateUser: User){
-    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
+    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser, { headers: this.getHeaders() });
   }
 
   /*registerTask(tarea:Tarea){
@@ -56,7 +56,7 @@ export class UserService {
   }*/
 
   getTareas(workerID:string, fecha:string){
-    return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + workerID +'/'+ fecha);
+    return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + workerID +'/'+ fecha, { headers: this.getHeaders() });
   }
 
   /*deleteTask(titulo: String) {

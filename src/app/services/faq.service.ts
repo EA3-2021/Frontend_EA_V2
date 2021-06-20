@@ -21,7 +21,7 @@ export class FaqService {
   }
 
   getFaq(){
-    return this.http.get<Faq[]>(environment.apiURL+'/faq/all')
+    return this.http.get<Faq[]>(environment.apiURL+'/faq/all', { headers: this.getHeaders() })
   }
 
   newFaq(newFaq: Faq){
