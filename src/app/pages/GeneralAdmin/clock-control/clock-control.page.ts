@@ -13,6 +13,7 @@ export class ClockControlPage implements OnInit {
 
   eventSource = [];
   public clockIn: string;
+  viewTitle: string;
 
   calendar = {
     mode: 'month',
@@ -63,6 +64,8 @@ export class ClockControlPage implements OnInit {
       window.location.reload();
     });
   }
-
+  onViewTitleChanged(title){
+    this.viewTitle=title;
+  }
 
 }

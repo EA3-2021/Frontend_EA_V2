@@ -12,11 +12,16 @@
 
   <ion-button (click)="generateCode()" expand="block" >Generate Code Today</ion-button>
 
+  <ion-col size="8" class="ion-text-center">
+    <h2>{{viewTitle}}</h2>
+  </ion-col>
+
   <calendar [eventSource]="eventSource"
   [calendarMode]="calendar.mode"
   [currentDate]="calendar.currentDate"
   [showEventDetail] = "false"
   (onRangeChanged)="reloadSource(startTime, endTime)"
+  (onTitleChanged)="onViewTitleChanged($event)"
   (onEventSelected)="onEventSelected($event)"
   (onTimeSelected)="onTimeSelected($event)"
   step="30">

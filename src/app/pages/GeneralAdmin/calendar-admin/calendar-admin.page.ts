@@ -13,6 +13,7 @@ export class CalendarAdminPage implements OnInit {
 
   eventSource = [];
   public fecha: string;
+  viewTitle: string;
 
   calendar = {
     mode: 'month',
@@ -72,6 +73,9 @@ export class CalendarAdminPage implements OnInit {
   updateTarea(_id: string) {
     localStorage.setItem("data", JSON.stringify(_id));
     this.router.navigateByUrl('/update-task-by-admin/' + this.data) 
+  }
+  onViewTitleChanged(title){
+    this.viewTitle=title;
   }
 
 }

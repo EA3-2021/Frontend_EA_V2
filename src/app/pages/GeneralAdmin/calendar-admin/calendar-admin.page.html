@@ -15,12 +15,17 @@
 </ion-card>
 
 <ion-content class = "ion-padding-top">
+ 
+  <ion-col size="8" class="ion-text-center">
+    <h2>{{viewTitle}}</h2>
+  </ion-col>
 
   <calendar [eventSource]="eventSource"
   [calendarMode]="calendar.mode"
   [currentDate]="calendar.currentDate"
   [showEventDetail] = "false"
   (onRangeChanged)="reloadSource(startTime, endTime)"
+  (onTitleChanged)="onViewTitleChanged($event)"
   (onEventSelected)="onEventSelected($event)"
   (onTimeSelected)="onTimeSelected($event)"
   step="30">

@@ -13,6 +13,9 @@
 
 <ion-content>
   <ion-button (click)="addHolidayRequest()" expand="block">Add Holiday Request</ion-button>
+  <ion-col size="8" class="ion-text-center">
+    <h2>{{viewTitle}}</h2>
+  </ion-col>
 
   <calendar [eventSource]="eventSource"
   [calendarMode]="calendar.mode"
@@ -20,6 +23,7 @@
   [showEventDetail] = "false"
   (onRangeChanged)="reloadSource(startTime, endTime)"
   (onEventSelected)="onEventSelected($event)"
+  (onTitleChanged)="onViewTitleChanged($event)"
   (onTimeSelected)="onTimeSelected($event)"
   step="30">
   </calendar>
