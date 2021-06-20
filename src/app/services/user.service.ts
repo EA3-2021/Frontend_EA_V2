@@ -5,7 +5,7 @@ import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
-import { Clock } from '../model/clock';
+
 import { Configuration } from '../model/configuration';
 
 
@@ -14,27 +14,16 @@ import { Configuration } from '../model/configuration';
 })
 export class UserService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) {
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
 
+    console.log(headers);
 
-    if (!this.headers.has('Authorization')) {
-
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-
-    }
-
-    return this.headers;
-
+    return headers;
   }
 
   registerUser(registerUser: User){
@@ -106,27 +95,27 @@ export class UserService {
   }
 
   acceptHoliday(id:string){
-    return this.http.put(environment.apiURL + '/user/acceptHoliday/'+id, id);
+    return this.http.put(environment.apiURL + '/user/acceptHoliday/'+id, id, {headers: this.getHeaders()});
   }
 
   refuseHoliday(id:string){
-    return this.http.delete<Request[]>(environment.apiURL+'/user/dropRequestHoliday/'+id);
+    return this.http.delete<Request[]>(environment.apiURL+'/user/dropRequestHoliday/'+id, {headers: this.getHeaders()});
   }
 
   getHolidays(workerID: string, fecha: string){
-    return this.http.get<Request[]>(environment.apiURL + '/user/holidayall/' + workerID +'/'+ fecha);
+    return this.http.get<Request[]>(environment.apiURL + '/user/holidayall/' + workerID +'/'+ fecha, {headers: this.getHeaders()});
   }
 
   updateUserProfile(workerID: string, user:User) {
-    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user);
+    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user, {headers: this.getHeaders()});
   }
 
   clockIn(workerID: string){
-    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID, workerID);
+    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID, workerID, {headers: this.getHeaders()});
   }
 
   clockOut(workerID: string){
-    return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID);
+    return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID, {headers: this.getHeaders()});
   }
   updateConfiguration(configuration: Configuration) {
     return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });

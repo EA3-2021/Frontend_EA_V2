@@ -9,21 +9,16 @@ import { Comment } from '../model/comment';
 })
 export class CommentService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) { 
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
-    if (!this.headers.has('Authorization')) {
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-    }
-    return this.headers;
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
+
+    console.log(headers);
+
+    return headers;
   }
 
   getComments(workerID: string){

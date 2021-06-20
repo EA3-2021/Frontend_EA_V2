@@ -7,26 +7,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LocationService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) { 
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
 
-    if (!this.headers.has('Authorization')) {
+    console.log(headers);
 
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-
-    }
-
-    return this.headers;
-
+    return headers;
   }
 
   getGeolocation(){
