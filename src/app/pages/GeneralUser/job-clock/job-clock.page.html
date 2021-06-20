@@ -10,6 +10,32 @@
   </ion-toolbar>
 </ion-header>
 
+<content>
+  <form [formGroup]="codeForm" (ngSubmit)="submitCode()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Code Pass</ion-label>
+      <ion-input formControlName="code" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.code.errors?.required">
+      License Code is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && formControls.code.errors?.minlength">
+      Min 12 chars long.
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="submitCode()" type="submit" color="danger" expand="block">Clock IN</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</content>
+
+
+
+
 
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
   <div class = "center">

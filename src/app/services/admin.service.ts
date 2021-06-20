@@ -7,6 +7,7 @@ import { Location } from '../model/location';
 import { Tarea } from '../model/tarea';
 import { Request } from '../model/request';
 import { Clock } from '../model/clock';
+import { Code } from '../model/code';
 
 @Injectable({
   providedIn: 'root'
@@ -77,4 +78,13 @@ export class AdminService {
   getAdmin(company: String){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })
   }
+
+  generateCode(companyName: String){
+    return this.http.post(environment.apiURL + '/admin/generate/code/' + companyName, companyName);
+  }
+
+  getCode(companyName: String, date: String){
+    return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date);
+  }
+  
 }

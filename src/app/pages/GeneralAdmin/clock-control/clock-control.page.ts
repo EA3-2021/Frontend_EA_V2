@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../../services/admin.service';
 import { Clock } from '../../../model/clock';
+import { Code } from '../../../model/code';
 
 @Component({
   selector: 'app-clock-control',
@@ -21,6 +22,8 @@ export class ClockControlPage implements OnInit {
   selectedDate = new Date();
 
   clocks: Clock[];
+
+  codes: Code[];
 
   data: any;
 
@@ -44,9 +47,21 @@ export class ClockControlPage implements OnInit {
       let dayNumber = end.getUTCDate();
       let clockIn = (dayNumber+'-'+month+'-'+year);
 
+      console.log(clockIn);
+
       this.adminService.getClock(clockIn).subscribe(clocks => {
         this.clocks = clocks;
       });
+
+      this.adminService.getCode(this.data, clockIn).subscribe (codes => {
+        this.codes = codes;
+      });
+  }
+
+  generateCode(){
+    this.adminService.generateCode(this.data).subscribe (data => {
+      window.location.reload();
+    });
   }
 
 
