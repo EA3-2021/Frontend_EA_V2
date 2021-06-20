@@ -26,6 +26,7 @@ export class UserService {
 
   getHeaders() : HttpHeaders{
 
+
     if (!this.headers.has('Authorization')) {
 
       this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);

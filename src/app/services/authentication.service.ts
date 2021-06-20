@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -52,15 +52,16 @@ export class AuthenticationService {
             }));
     }
 
-    logout() {
+    /*logout() {
         const t = {"token": localStorage.getItem("ACCESS_TOKEN")};
         return this.http.put(environment.apiURL + "/auth/signoutUser", t);
-    }
+    }*/
 
-    /*signout(): Observable<any> {
-        const t = {"token": localStorage.getItem("ACCESS_TOKEN")};
-        return this.http.put(this.ruta + "signout", t);
-      }*/
+    logout(): Observable<any> {
+        const t = {"token": localStorage.getItem("token")};
+        console.log(t);
+        return this.http.put(environment.apiURL + "/auth/signoutUser/" + t, t);
+    }
     
     addToken(token: string){
     localStorage.setItem("ACCESS_TOKEN", token);
