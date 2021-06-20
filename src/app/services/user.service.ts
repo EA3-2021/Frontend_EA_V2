@@ -21,8 +21,6 @@ export class UserService {
   getHeaders(): HttpHeaders {
     const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
 
-    console.log(headers);
-
     return headers;
   }
 

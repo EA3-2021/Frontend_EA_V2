@@ -34,6 +34,15 @@ export class AuthenticationService {
         return this.currentAdminSubject.value;
     }
 
+
+    getHeaders(): HttpHeaders {
+        const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
+
+        console.log(headers);
+
+        return headers;
+    }
+
     loginUser(workerID, password) {
         return this.http.post<any>(environment.apiURL+ '/auth/loginUser', {workerID, password })
             .pipe(map(user => {
@@ -57,13 +66,16 @@ export class AuthenticationService {
         return this.http.put(environment.apiURL + "/auth/signoutUser", t);
     }*/
 
-    logout(): Observable<any> {
-        const t = {"token": localStorage.getItem("token")};
-        console.log(t);
-        return this.http.put(environment.apiURL + "/auth/signoutUser/" + t, t);
+    logout() {
+        const t = JSON.parse(localStorage.getItem('currentUser'))["token"];
+
+        const ret = this.http.put(environment.apiURL + "/auth/signoutUser", {"token": t}, {headers: this.getHeaders()});
+
+        if (ret) {
+            localStorage.removeItem('currentUser');
+        }
+
+        return ret;
     }
     
-    addToken(token: string){
-    localStorage.setItem("ACCESS_TOKEN", token);
-    }
 }
