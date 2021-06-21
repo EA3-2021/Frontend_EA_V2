@@ -58,10 +58,11 @@ export class JobClockPage implements OnInit {
               });
   }
 
-  async presentAlert() {
+  async presentAlert(error: string) {
     const alert = await this.alertController.create({
       cssClass: 'basic-alert',
-      header: 'Incorrect code, try again!',
+      header: 'Try again!',
+      message: error,
       buttons: ['OK']
     });
 
@@ -83,6 +84,10 @@ export class JobClockPage implements OnInit {
 
     this.userService.clockIn(this.data, code).pipe(first()).subscribe(() => {
       this.router.navigate(['/user-desk/'+ this.data]);
+  },
+  error => {
+      this.alertService.error(error);
+      this.presentAlert(error.error.message);
   });
 
     /*this.userService.useLicense(code)

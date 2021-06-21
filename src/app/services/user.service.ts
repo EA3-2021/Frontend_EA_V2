@@ -109,7 +109,7 @@ export class UserService {
   }
 
   clockIn(workerID: string, code: string ){
-    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID + '/' + code, {headers: this.getHeaders()});
+    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID + '/' + code, workerID, {headers: this.getHeaders()});
   }
 
   clockOut(workerID: string){
