@@ -35,7 +35,7 @@ export class AppComponent {
   //Que haga funcion de deslog
   logout(){
     this.authenticationService.logout().subscribe(() => { 
-      this.router.navigateByUrl('/login-user');
+      this.router.navigateByUrl('/home');
     });
   }
 
