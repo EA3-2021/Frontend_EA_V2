@@ -47,34 +47,34 @@ export class AdminService {
   }
 
   registerTask(tarea:Tarea){
-    return this.http.post(environment.apiURL + '/admin/newtask', tarea);
+    return this.http.post(environment.apiURL + '/admin/newtask', tarea, { headers: this.getHeaders() });
   }
 
   getTareas(fecha:string, company:string){
-    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha + '/' + company);
+    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha + '/' + company, { headers: this.getHeaders() });
   }
 
   deleteTask(id: string) {
-    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + id);
+    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + id, { headers: this.getHeaders() });
   }
 
   updateTask(_id: string, updateTarea: Tarea){
-    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
+    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea, { headers: this.getHeaders() });
   }
 
   getClock(clockIn:string){
-    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn);
+    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn, { headers: this.getHeaders() });
   }
   getAdmin(company: String){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })
   }
 
   generateCode(companyName: String){
-    return this.http.post(environment.apiURL + '/admin/generate/code/' + companyName, companyName);
+    return this.http.post(environment.apiURL + '/admin/generate/code/' + companyName, companyName, { headers: this.getHeaders() });
   }
 
   getCode(companyName: String, date: String){
-    return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date);
+    return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date, { headers: this.getHeaders() });
   }
   
 }
