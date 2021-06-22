@@ -79,7 +79,7 @@ export class CommentPage implements OnInit {
 
     this.commentService.newComment(comment).subscribe(() => {
         this.router.navigateByUrl('/comment/' + this.data);
-        window.location.reload();
+        this.comments.push(comment);
     });
 
   }
