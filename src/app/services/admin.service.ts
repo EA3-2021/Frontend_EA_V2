@@ -36,7 +36,7 @@ export class AdminService {
   }
 
   getLocations(){
-    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations', { headers: this.getHeaders() });
+    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations');
   }
 
   getAdminName(){
@@ -64,18 +64,18 @@ export class AdminService {
   }
 
   getClock(clockIn:string){
-    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn, { headers: this.getHeaders() });
+    return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn);
   }
   getAdmin(company: String){
     return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })
   }
 
   generateCode(companyName: String){
-    return this.http.post(environment.apiURL + '/admin/generate/code/' + companyName, companyName, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/admin/generate/code/' + companyName, companyName);
   }
 
   getCode(companyName: String, date: String){
-    return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date, { headers: this.getHeaders() });
+    return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date);
   }
 
   updateAdminProfile(companyName: String, admin: Admin){

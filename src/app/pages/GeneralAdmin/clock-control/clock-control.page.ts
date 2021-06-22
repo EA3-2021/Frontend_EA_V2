@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../../services/admin.service';
 import { Clock } from '../../../model/clock';
 import { Code } from '../../../model/code';
+import { AlertController } from '@ionic/angular';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-clock-control',
@@ -30,14 +32,26 @@ export class ClockControlPage implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private adminService: AdminService) {
+    private adminService: AdminService,
+    private alertService: AlertService,
+    private alertController: AlertController) {
       this.data = this.route.snapshot.paramMap.get('companyName');
     }
 
   ngOnInit() {
   }
 
+  async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Caution!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
 
   onTimeSelected(ev) {
       this.selectedDate = ev.selectedTime;
@@ -62,6 +76,10 @@ export class ClockControlPage implements OnInit {
   generateCode(){
     this.adminService.generateCode(this.data).subscribe (data => {
       window.location.reload();
+    },
+    error => {
+        this.alertService.error(error);
+        this.presentAlert(error.error.message);
     });
   }
   onViewTitleChanged(title){
