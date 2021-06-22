@@ -95,5 +95,9 @@ export class AdminService {
   acceptRegisterRequest(workerID:string, email:string){
     return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.getHeaders() });
   }
+
+  newUser(newUser: User){
+    return this.http.post(environment.apiURL + '/admin/new', newUser, { headers: this.getHeaders() });
+  }
   
 }

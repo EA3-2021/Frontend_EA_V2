@@ -37,10 +37,6 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.getHeaders() })
   }
 
-  newUser(newUser: User){
-    return this.http.post(environment.apiURL + '/user/new', newUser, { headers: this.getHeaders() });
-  }
-
   deleteUser(name: string){
     return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name, { headers: this.getHeaders() })
   }
