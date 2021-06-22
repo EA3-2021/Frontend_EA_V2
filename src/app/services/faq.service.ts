@@ -21,19 +21,19 @@ export class FaqService {
   }
 
   getFaq(){
-    return this.http.get<Faq[]>(environment.apiURL+'/faq/all', { headers: this.getHeaders() })
+    return this.http.get<Faq[]>(environment.apiURL+'/faq/all')
   }
 
   newFaq(newFaq: Faq){
-    return this.http.post(environment.apiURL + '/faq/new', newFaq, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/faq/new', newFaq);
   }
 
   deleteFaq(title: string){
-    return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title, { headers: this.getHeaders() })
+    return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title)
   }
 
   updateFaq(title: string, content: string){
-    return this.http.put(environment.apiURL + '/faq/update/' + title, content, { headers: this.getHeaders() });
+    return this.http.put(environment.apiURL + '/faq/update/' + title, content);
   }
 
 }

@@ -17,7 +17,7 @@
       <ion-label position="floating">Title</ion-label>
       <ion-input formControlName="title" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.title.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.title.errors?.required">
       Title is required.
     </span>
 
@@ -25,7 +25,7 @@
       <ion-label position="floating">Content</ion-label>
       <ion-input formControlName="content" type="text"></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="submitted && formControls.content.errors.required">
+    <span class="error ion-padding" *ngIf="submitted && formControls.content.errors?.required">
       Content is required.
     </span>
 
