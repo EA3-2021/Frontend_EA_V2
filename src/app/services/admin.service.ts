@@ -8,6 +8,7 @@ import { Tarea } from '../model/tarea';
 import { Request } from '../model/request';
 import { Clock } from '../model/clock';
 import { Code } from '../model/code';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -81,5 +82,18 @@ export class AdminService {
     return this.http.put(environment.apiURL + '/admin/updateAdminProfile/' + companyName, admin);
   }
   //, { headers: this.getHeaders() }
+
+  getRegisterRequest(){
+    return this.http.get<User[]>(environment.apiURL + '/user/register/Requests', { headers: this.getHeaders() });
+  }
+
+  
+  refuseRegisterRequest(workerID:string, email1:string){
+    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1, { headers: this.getHeaders() });
+  }
+
+  acceptRegisterRequest(workerID:string, email:string){
+    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.getHeaders() });
+  }
   
 }
