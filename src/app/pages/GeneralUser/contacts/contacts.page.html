@@ -6,7 +6,7 @@
     <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Users</ion-title>
+    <ion-title>Contacts</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,7 +25,9 @@
 
     </ion-card-content>
 
-
+    <ion-footer class="center">
+      <ion-button (click)="addChat(user.workerID)">Add chat</ion-button>
+    </ion-footer>
   </ion-card>
 
 </ion-content>

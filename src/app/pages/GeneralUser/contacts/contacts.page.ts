@@ -29,12 +29,19 @@ export class ContactsPage implements OnInit {
         this.users = users;
       });
 
-      this.menu2();
+      this.menu1();
       console.log(this.data);
   }
 
-  menu2() {
-    this.menu.enable(true, 'menu2');
+  menu1() {
+    this.menu.enable(true, 'menu1');
+  }
+
+  addChat(workerID: string) {
+    this.router.navigateByUrl('/chat/'+workerID )    //+ this.data +'/'+ workerID
+    .then(() => {
+      window.location.reload();
+    });
   }
 
 }

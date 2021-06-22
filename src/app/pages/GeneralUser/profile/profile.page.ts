@@ -12,13 +12,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
- 
   data:any;
   users: User[];
 
-  constructor(private userService: UserService, 
+  constructor(private userService: UserService,
     private alertService: AlertService,
-    private route: ActivatedRoute,  
+    private route: ActivatedRoute,
     private router: Router,
     public menu: MenuController) {
     this.data = this.route.snapshot.paramMap.get('workerID');}
@@ -42,7 +41,7 @@ export class ProfilePage implements OnInit {
   }
 
   updateUser(workerID:string){
-    this.router.navigateByUrl('/update-profile/'+ workerID);  
-  } 
+    this.router.navigateByUrl('/update-profile/'+ workerID);
+  }
 
 }

@@ -19,6 +19,7 @@ export class SettingPage implements OnInit {
   data:any;
   configurations: Configuration[];
   
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
