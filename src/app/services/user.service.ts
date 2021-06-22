@@ -78,7 +78,7 @@ export class UserService {
   }
 
   getPasswordUser(email:string){
-    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email, { headers: this.getHeaders() });
+    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
   }
 
   holidayRequest(holidayRequest: Request){
