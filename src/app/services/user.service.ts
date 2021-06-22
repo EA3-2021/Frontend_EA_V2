@@ -80,6 +80,9 @@ export class UserService {
     return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID, {headers: this.getHeaders()});
   }
   updateConfiguration(configuration: Configuration) {
-    return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/user/configuration', configuration);
+  }
+  getlocationConfig(workerID: string){
+    return this.http.get<Configuration[]>(environment.apiURL + '/user/locationConfiguration/' + workerID, {headers: this.getHeaders()});
   }
 }

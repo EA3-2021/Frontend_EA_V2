@@ -33,6 +33,12 @@ export class SettingPage implements OnInit {
     localStorage.setItem('workerID', this.data);
   }
 
+  myChange(){
+    console.log(this.notification);
+    console.log(this.private);
+    console.log(this.authentication);
+    console.log(this.location);
+  }
 
   save(){
 

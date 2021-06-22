@@ -47,7 +47,7 @@ export class JobClockPage implements OnInit {
 
       let location = {'latitude': this.latitude, 'longitude': this.longitude}
 
-      console.log(location);;
+      console.log(location);
 
       this.userService.saveLocation(location).subscribe(() => {});
 

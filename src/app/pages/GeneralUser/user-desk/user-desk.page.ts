@@ -4,6 +4,8 @@ import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user';
 import { ToastController, MenuController } from '@ionic/angular';
+import { Configuration } from '../../../model/configuration';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-desk',
@@ -16,13 +18,15 @@ export class UserDeskPage implements OnInit {
   workerID: String;
   data:any;
   users: User[];
+  configurations: Configuration[];
 
    constructor(private userService: UserService,
     private route: ActivatedRoute,
     private alertService: AlertService,
     private router: Router,
     public toastController: ToastController,
-    public menu: MenuController) {
+    public menu: MenuController,
+    private alertController: AlertController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
     }
 
@@ -30,13 +34,22 @@ export class UserDeskPage implements OnInit {
 
     this.userService.getUser(this.data).subscribe (users => {
       this.users = users;
-
-      this.displayToast(this.users[0].name);
-
+    this.displayToast(this.users[0].name);
     });
     this.menu1();
-
    }
+
+   async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Caution!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
    menu1() {
     this.menu.enable(true, 'menu1');
@@ -44,6 +57,16 @@ export class UserDeskPage implements OnInit {
 
   obtainID(){
     localStorage.setItem('workerID', this.data);
+  }
+
+  goClock(){
+    this.userService.getlocationConfig(this.data).subscribe(() =>  {
+      this.router.navigateByUrl('/job-clock/'+ this.data);
+   },
+   error => {
+       this.alertService.error(error);
+       this.presentAlert(error.error.message);
+   });
   }
 
    displayToast(name1: string) {
