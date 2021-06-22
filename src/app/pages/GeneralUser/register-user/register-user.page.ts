@@ -21,6 +21,9 @@ export class RegisterUserPage implements OnInit {
   company: string;
   admins: Admin[]; 
 
+  email: String; 
+  
+
   constructor(
     private formBuilder: FormBuilder,
       private route: ActivatedRoute,
@@ -32,9 +35,10 @@ export class RegisterUserPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
       this.registerUserForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      email: [this.route.snapshot.paramMap.get('email'), [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(9)]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
+import { UserGoogle } from '../model/usergoogle';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
 
@@ -35,6 +36,10 @@ export class UserService {
 
   getUser(workerID: String){
     return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.getHeaders() })
+  }
+
+  checkUser(email: String){
+    return this.http.put<UserGoogle>(environment.apiURL+'/user/check/', { "email": email } )
   }
 
   deleteUser(name: string){
@@ -79,13 +84,19 @@ export class UserService {
   clockOut(workerID: string){
     return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID, {headers: this.getHeaders()});
   }
-  updateConfiguration(configuration: Configuration) {
-    return this.http.post(environment.apiURL + '/user/configuration', configuration);
+  createConfiguration(configuration: Configuration) {
+    return this.http.post(environment.apiURL + '/user/newConfiguration', configuration);
+  }
+  updateConfiguration(workerID: string, configuration: Configuration) {
+    return this.http.put(environment.apiURL + '/user/updateConfiguration/'+ workerID, configuration);
   }
   getlocationConfig(workerID: string){
     return this.http.get<Configuration[]>(environment.apiURL + '/user/locationConfiguration/' + workerID, {headers: this.getHeaders()});
   }
   getUsersforContacts(workerID: string){
     return this.http.get<User[]>(environment.apiURL+'/user/all/' + workerID, { headers: this.getHeaders() })
+  }
+  getCurrentConfiguration(workerID: string){
+    return this.http.get<Configuration[]>(environment.apiURL+'/user/currentConfig/' + workerID, { headers: this.getHeaders() })
   }
 }
