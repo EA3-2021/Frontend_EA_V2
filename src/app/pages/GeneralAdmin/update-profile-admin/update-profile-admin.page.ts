@@ -37,7 +37,7 @@ export class UpdateProfileAdminPage implements OnInit {
 
     const name = this.updateForm.value.name;
     const cif = this.updateForm.value.cif;
-    const mail = this.updateForm.value.mail;
+    const email = this.updateForm.value.email;
     const phone = this.updateForm.value.phone;
     const address = this.updateForm.value.address;
     const postalCode = this.updateForm.value.postalCode;
@@ -45,9 +45,9 @@ export class UpdateProfileAdminPage implements OnInit {
     const token = this.updateForm.value.token;
 
 
-    let admin = {'name':name, 'cif': cif, 'mail': mail, 'phone': phone, 'password': password, 'address':address, 'postalCode': postalCode, 'token':token};
+    let admin = {'name':name, 'cif': cif, 'mail': email, 'phone': phone, 'password': password, 'address':address, 'postalCode': postalCode, 'token':token};
 
-    this.adminService.updateAdmninProfile(this.data,admin).subscribe(() => { 
+    this.adminService.updateAdminProfile(this.data,admin).subscribe(() => { 
     this.router.navigateByUrl('/profile-admin/'+ this.data).then(() => {
     window.location.reload(); })
     });

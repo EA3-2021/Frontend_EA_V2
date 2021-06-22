@@ -23,15 +23,15 @@ export class TeamService {
   }
 
   getTeams(companyName: string){
-    return this.http.get<Team[]>(environment.apiURL + '/team/all/'+ companyName, { headers: this.getHeaders() });
+    return this.http.get<Team[]>(environment.apiURL + '/team/all/'+ companyName);
   }
 
   newTeam(newTeam: Team, companyName: string) {
-    return this.http.post(environment.apiURL + '/team/new/'+ companyName, newTeam, { headers: this.getHeaders()});
+    return this.http.post(environment.apiURL + '/team/new/'+ companyName, newTeam);
   }
 
   addUser( teamName: string, user: User) {
-    return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/team/user-to-team/' + teamName, user);
   }
 
   /*updateUser(_id: string, updateUser: User){
@@ -39,11 +39,11 @@ export class TeamService {
   }*/
 
   deleteTeam(teamName:string, companyName:string){
-    return this.http.delete<Team[]>(environment.apiURL + '/team/drop/' + teamName +'/' + companyName, { headers: this.getHeaders() })
+    return this.http.delete<Team[]>(environment.apiURL + '/team/drop/' + teamName +'/' + companyName)
   }
 
   deleteUser(teamName:string,id:string, companyName:string){
-    return this.http.delete<Team[]>(environment.apiURL + '/team/dropUser/' + teamName +'/' + companyName + '/'+ id, { headers: this.getHeaders() })
+    return this.http.delete<Team[]>(environment.apiURL + '/team/dropUser/' + teamName +'/' + companyName + '/'+ id)
   }
   
 }

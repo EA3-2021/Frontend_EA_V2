@@ -37,10 +37,6 @@ export class UserService {
     return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.getHeaders() })
   }
 
-  newUser(newUser: User){
-    return this.http.post(environment.apiURL + '/user/new', newUser, { headers: this.getHeaders() });
-  }
-
   deleteUser(name: string){
     return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name, { headers: this.getHeaders() })
   }
@@ -49,36 +45,16 @@ export class UserService {
     return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser, { headers: this.getHeaders() });
   }
 
-  /*registerTask(tarea:Tarea){
-    return this.http.post(environment.apiURL + '/user/newtask', tarea, { headers: this.headers });
-  }*/
-
   getTareas(workerID:string, fecha:string){
     return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + workerID +'/'+ fecha, { headers: this.getHeaders() });
   }
-
-  /*deleteTask(titulo: String) {
-    return this.http.delete<Tarea[]>(environment.apiURL + '/user/droptask/' + titulo, { headers: this.headers });
-  }*/
 
   saveLocation(location: Location){
     return this.http.post(environment.apiURL + '/user/newlocation', location, { headers: this.getHeaders() });
   }
 
-  getRegisterRequest(){
-    return this.http.get<User[]>(environment.apiURL + '/user/register/Requests', { headers: this.getHeaders() });
-  }
-
-  refuseRegisterRequest(workerID:string, email1:string){
-    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1, { headers: this.getHeaders() });
-  }
-
-  acceptRegisterRequest(workerID:string, email:string){
-    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.getHeaders() });
-  }
-
   getPasswordUser(email:string){
-    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email, { headers: this.getHeaders() });
+    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
   }
 
   holidayRequest(holidayRequest: Request){
@@ -105,7 +81,7 @@ export class UserService {
   }
 
   updateUserProfile(workerID: string, user:User) {
-    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user, {headers: this.getHeaders()});
+    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user);
   }
 
   clockIn(workerID: string, code: string ){
@@ -118,10 +94,4 @@ export class UserService {
   updateConfiguration(configuration: Configuration) {
     return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });
   }
-
-/*
-  updateUser(_id: string, updateUser: User){
-    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
-  }
-*/
 }

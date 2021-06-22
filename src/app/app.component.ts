@@ -25,6 +25,7 @@ export class AppComponent {
 
   profile(){
     this.router.navigateByUrl('/profile/' + this.id);
+    console.log(this.id);
   }
 
   //Cambiar ruta
@@ -36,6 +37,7 @@ export class AppComponent {
   logout(){
     this.authenticationService.logout().subscribe(() => { 
       this.router.navigateByUrl('/home');
+      localStorage.removeItem('workerID');
     });
   }
 
@@ -54,7 +56,8 @@ export class AppComponent {
   //Que haga funcion de deslog
   logout1(){
     this.authenticationService.logout().subscribe(() => { 
-      this.router.navigateByUrl('login-user');
+      this.router.navigateByUrl('/home');
     });
+    localStorage.removeItem('companyName');
   }
 }

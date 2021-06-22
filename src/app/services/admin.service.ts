@@ -8,6 +8,7 @@ import { Tarea } from '../model/tarea';
 import { Request } from '../model/request';
 import { Clock } from '../model/clock';
 import { Code } from '../model/code';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class AdminService {
   }
 
   getAdminName(){
-    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName', { headers: this.getHeaders() });
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName');
   }
 
   getPasswordAdmin(email:string){
@@ -47,7 +48,7 @@ export class AdminService {
   }
 
   registerTask(tarea:Tarea){
-    return this.http.post(environment.apiURL + '/admin/newtask', tarea, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/admin/newtask', tarea);
   }
 
   getTareas(fecha:string, company:string){
@@ -59,7 +60,7 @@ export class AdminService {
   }
 
   updateTask(_id: string, updateTarea: Tarea){
-    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea, { headers: this.getHeaders() });
+    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
   }
 
   getClock(clockIn:string){
@@ -77,9 +78,26 @@ export class AdminService {
     return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date, { headers: this.getHeaders() });
   }
 
-  updateAdmninProfile(companyName: String, admin: Admin){
+  updateAdminProfile(companyName: String, admin: Admin){
     return this.http.put(environment.apiURL + '/admin/updateAdminProfile/' + companyName, admin);
   }
   //, { headers: this.getHeaders() }
+
+  getRegisterRequest(){
+    return this.http.get<User[]>(environment.apiURL + '/user/register/Requests', { headers: this.getHeaders() });
+  }
+
+  
+  refuseRegisterRequest(workerID:string, email1:string){
+    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1, { headers: this.getHeaders() });
+  }
+
+  acceptRegisterRequest(workerID:string, email:string){
+    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.getHeaders() });
+  }
+
+  newUser(newUser: User){
+    return this.http.post(environment.apiURL + '/admin/new', newUser, { headers: this.getHeaders() });
+  }
   
 }
