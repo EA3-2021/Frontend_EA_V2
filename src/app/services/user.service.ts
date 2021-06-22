@@ -108,8 +108,8 @@ export class UserService {
     return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user, {headers: this.getHeaders()});
   }
 
-  clockIn(workerID: string){
-    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID, workerID, {headers: this.getHeaders()});
+  clockIn(workerID: string, code: string ){
+    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID + '/' + code, workerID, {headers: this.getHeaders()});
   }
 
   clockOut(workerID: string){

@@ -25,14 +25,15 @@ export class JobClockPage implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private alertController: AlertController,
-    public menu: MenuController,public formBuilder: FormBuilder) {
+    public menu: MenuController,
+    public formBuilder: FormBuilder) {
        this.data = this.route.snapshot.paramMap.get('workerID');
 
     }
 
   ngOnInit() {
     this.codeForm = this.formBuilder.group({
-      code: ['', [Validators.required, Validators.minLength(12)]],
+      code: ['', [Validators.required, Validators.minLength(12)]]
     });
 
     this.menu1();
@@ -46,29 +47,32 @@ export class JobClockPage implements OnInit {
     localStorage.setItem('workerID', this.data);
   }
 
-  clockIn(){
+  /*clockIn(){
         this.userService.clockIn(this.data).pipe(first()).subscribe(() => {
                   this.router.navigate(['/user-desk/'+ this.data]);
               });
-  }
+  }*/
   clockOut(){
         this.userService.clockOut(this.data).pipe(first()).subscribe(() => {
                   this.router.navigate(['/user-desk/'+ this.data]);
               });
   }
 
-  async presentAlert() {
+  async presentAlert(error: string) {
     const alert = await this.alertController.create({
       cssClass: 'basic-alert',
-      header: 'Incorrect code, try again!',
+      header: 'Try again!',
+      message: error,
       buttons: ['OK']
     });
 
     await alert.present();
   }
 
+  // convenience getter for easy access to form fields
+  get formControls() { return this.codeForm.controls; }
 
-  submitLicense(): void {
+  submitCode(): void {
 
     this.submitted = true;
 
@@ -76,7 +80,15 @@ export class JobClockPage implements OnInit {
       return;
     }
 
-    const code = this.codeForm.value.code;
+    let code = this.codeForm.value.code;
+
+    this.userService.clockIn(this.data, code).pipe(first()).subscribe(() => {
+      this.router.navigate(['/user-desk/'+ this.data]);
+  },
+  error => {
+      this.alertService.error(error);
+      this.presentAlert(error.error.message);
+  });
 
     /*this.userService.useLicense(code)
       .subscribe(() => {
