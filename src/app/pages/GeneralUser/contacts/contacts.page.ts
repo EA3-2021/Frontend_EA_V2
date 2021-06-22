@@ -40,7 +40,7 @@ export class ContactsPage implements OnInit {
   addChat(workerID: string) {
     this.router.navigateByUrl('/chat/'+workerID )    //+ this.data +'/'+ workerID
     .then(() => {
-      window.location.reload();
+      //window.location.reload(); el reload peta en docker
     });
   }
 
