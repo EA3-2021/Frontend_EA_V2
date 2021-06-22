@@ -25,6 +25,7 @@ export class AppComponent {
 
   profile(){
     this.router.navigateByUrl('/profile/' + this.id);
+    console.log(this.id);
   }
 
   //Cambiar ruta
@@ -36,6 +37,7 @@ export class AppComponent {
   logout(){
     this.authenticationService.logout().subscribe(() => { 
       this.router.navigateByUrl('/home');
+      localStorage.removeItem('workerID');
     });
   }
 
@@ -56,5 +58,6 @@ export class AppComponent {
     this.authenticationService.logout().subscribe(() => { 
       this.router.navigateByUrl('login-user');
     });
+    localStorage.removeItem('companyName');
   }
 }

@@ -54,6 +54,8 @@ export class AuthenticationService {
             localStorage.removeItem('currentUser');
         }
 
+        localStorage.removeItem('workerID');
+        
         return ret;
     }
     

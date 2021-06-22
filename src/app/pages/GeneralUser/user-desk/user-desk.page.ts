@@ -15,7 +15,6 @@ export class UserDeskPage implements OnInit {
   name: String;
   workerID: String;
   data:any;
-  data1:any;
   users: User[];
 
    constructor(private userService: UserService,
@@ -25,12 +24,9 @@ export class UserDeskPage implements OnInit {
     public toastController: ToastController,
     public menu: MenuController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
-
     }
 
    ngOnInit(): void {
-
-    console.log(this.data1);
 
     this.userService.getUser(this.data).subscribe (users => {
       this.users = users;
@@ -38,7 +34,6 @@ export class UserDeskPage implements OnInit {
       this.displayToast(this.users[0].name);
 
     });
-
     this.menu1();
 
    }
