@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Geolocation } from '@capacitor/geolocation';
 import { UserService } from '../../../services/user.service';
 import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,8 +12,6 @@ import { ToastController, MenuController } from '@ionic/angular';
 })
 export class UserDeskPage implements OnInit {
 
-  latitude: any = 0; //latitude
-  longitude: any = 0; //longitude*/
   name: String;
   workerID: String;
   data:any;
@@ -34,18 +31,6 @@ export class UserDeskPage implements OnInit {
    ngOnInit(): void {
 
     console.log(this.data1);
-
-    Geolocation.getCurrentPosition().then((resp) => {
-      this.latitude = resp.coords.latitude;
-      this.longitude = resp.coords.longitude;
-
-      let location = {'latitude': this.latitude, 'longitude': this.longitude}
-
-      this.userService.saveLocation(location).subscribe(() => {});
-
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
 
     this.userService.getUser(this.data).subscribe (users => {
       this.users = users;

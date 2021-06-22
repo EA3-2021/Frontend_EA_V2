@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { format } from "date-fns";
 import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-job-clock',
@@ -18,6 +19,8 @@ export class JobClockPage implements OnInit {
   codeForm: FormGroup;
   submitted = false;
   data: any;
+  latitude: any = 0; //latitude
+  longitude: any = 0; //longitude*/
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +40,21 @@ export class JobClockPage implements OnInit {
     });
 
     this.menu1();
+
+    Geolocation.getCurrentPosition().then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+
+      let location = {'latitude': this.latitude, 'longitude': this.longitude}
+
+      console.log(location);;
+
+      this.userService.saveLocation(location).subscribe(() => {});
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
   }
 
   menu1() {
