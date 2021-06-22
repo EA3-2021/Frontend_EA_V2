@@ -58,22 +58,10 @@ export class UserService {
   }
 
   holidayRequest(holidayRequest: Request){
-    return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest);
   }
   getWorkerID(companyName: string){
     return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName, { headers: this.getHeaders()});
-  }
-
-  getHolidayPending(companyName: string){
-    return this.http.get<Request[]>(environment.apiURL+'/user/getHolidayPending/'+ companyName, { headers: this.getHeaders() });
-  }
-
-  acceptHoliday(id:string){
-    return this.http.put(environment.apiURL + '/user/acceptHoliday/'+id, id, {headers: this.getHeaders()});
-  }
-
-  refuseHoliday(id:string){
-    return this.http.delete<Request[]>(environment.apiURL+'/user/dropRequestHoliday/'+id, {headers: this.getHeaders()});
   }
 
   getHolidays(workerID: string, fecha: string){

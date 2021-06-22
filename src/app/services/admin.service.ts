@@ -99,5 +99,17 @@ export class AdminService {
   newUser(newUser: User){
     return this.http.post(environment.apiURL + '/admin/new', newUser, { headers: this.getHeaders() });
   }
+
+  getHolidayPending(companyName: string){
+    return this.http.get<Request[]>(environment.apiURL+'/admin/getHolidayPending/'+ companyName);
+  }
+
+  acceptHoliday(id:string){
+    return this.http.put(environment.apiURL + '/admin/acceptHoliday/'+id, id);
+  }
+
+  refuseHoliday(id:string){
+    return this.http.delete<Request[]>(environment.apiURL+'/admin/dropRequestHoliday/'+id);
+  }
   
 }
