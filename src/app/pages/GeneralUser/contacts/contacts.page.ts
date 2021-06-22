@@ -38,7 +38,7 @@ export class ContactsPage implements OnInit {
   }
 
   addChat(workerID: string) {
-    this.router.navigateByUrl('/chat/new' )    //+ this.data +'/'+ workerID
+    this.router.navigateByUrl('/chat/'+workerID )    //+ this.data +'/'+ workerID
     .then(() => {
       window.location.reload();
     });

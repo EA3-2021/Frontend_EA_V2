@@ -26,7 +26,7 @@ export class FaqAdminPage implements OnInit {
     this.data = this.route.snapshot.paramMap.get('companyName');
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
       this.faqService.getFaq().subscribe (faqs => {
         this.faqs = faqs;
       });
@@ -72,7 +72,7 @@ export class FaqAdminPage implements OnInit {
         this.faqs.push(faq);
           //  window.location.reload();
         });
-          
+
   }
 
 }
