@@ -76,5 +76,10 @@ export class AdminService {
   getCode(companyName: String, date: String){
     return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date, { headers: this.getHeaders() });
   }
+
+  updateAdmninProfile(companyName: String, admin: Admin){
+    return this.http.put(environment.apiURL + '/admin/updateAdminProfile/' + companyName, admin);
+  }
+  //, { headers: this.getHeaders() }
   
 }
