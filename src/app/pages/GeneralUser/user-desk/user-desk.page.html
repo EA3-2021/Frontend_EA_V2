@@ -10,26 +10,33 @@
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
 
   <div class = "center">
-    <ion-button [routerLink]="['/calendar/'+ data]">Calendar</ion-button>
+    <ion-button expand="block" [routerLink]="['/calendar/'+ data]">
+      <ion-icon name="calendar-number-outline"></ion-icon>Calendar</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/contacts/'+data]">Contacts</ion-button>
+    <ion-button expand="block" [routerLink]="['/contacts/'+data]">
+      <ion-icon name="id-card-outline"></ion-icon>Contacts</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/chat/' + data]">CHAT</ion-button>
+    <ion-button expand="block" [routerLink]="['/chat/' + data]">
+      <ion-icon name="chatbox-ellipses-outline"></ion-icon>CHAT</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/job-clock/' +data]">clock-in or clock-out</ion-button>
+    <ion-button expand="block" [routerLink]="['/job-clock/' +data]">
+      <ion-icon name="time-outline"></ion-icon>clock-in or clock-out</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/faq-user/' + data ]">FAQ</ion-button>
+    <ion-button expand="block" [routerLink]="['/faq-user/' + data ]">
+      <ion-icon name="book-outline"></ion-icon>FAQ</ion-button>
   </div>
 
   <div class = "center">
-    <ion-button [routerLink]="['/comment/' + data]">Complaints & Suggestions</ion-button>
+    <ion-button expand="block" [routerLink]="['/comment/' + data]">
+      <ion-icon name="folder-outline"></ion-icon>Complaints & Suggestions</ion-button>
   </div>
+
 </ion-list>
