@@ -15,19 +15,18 @@ export class UserToTeamPage implements OnInit {
   teamName: string;
   data: any;
 
-  constructor(public teamService: TeamService, public userService: UserService, private router: Router, private route: ActivatedRoute) { 
+  constructor(public teamService: TeamService, public userService: UserService, private router: Router, private route: ActivatedRoute) {
       this.data = this.route.snapshot.paramMap.get('companyName');
       this.teamName = this.route.snapshot.paramMap.get('teamName');
     }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.userService.getUsers(this.data).subscribe (users => {
       this.users = users;
     });
   }
 
   newUser(user: User){
-
     this.teamService.addUser(this.teamName, user).subscribe((res: Response) => {
       this.router.navigateByUrl('/teams/'+ this.data).then(() => {
         window.location.reload();

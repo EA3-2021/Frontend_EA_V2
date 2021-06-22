@@ -3,24 +3,31 @@
     <ion-button color = "light" class = "button" [routerLink]="['/user-desk/'+ data]">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
-    <ion-buttons menu-id="menu1" slot="end" (click)="obtainID()">
+    <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>My Contacts</ion-title>
+    <ion-title>Users</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class = "ion-padding-bottom">
-  
+
+
+
   <ion-card *ngFor="let user of users">
-    <ion-card-content >
+
+
+    <ion-card-content>
+
       <div class="user-name">
-        User: {{user.name}}
+        Worker name: {{user.name}}
       </div>
 
-      <div class="user-email">
-        Email: {{user.email}}
-      </div>
     </ion-card-content>
+
+
   </ion-card>
+
 </ion-content>
+
+

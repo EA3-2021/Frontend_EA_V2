@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../model/user';
 import { MenuController } from '@ionic/angular';
+import { TeamService } from '../../../services/team.service';
 
 @Component({
   selector: 'app-contacts',
@@ -12,28 +13,35 @@ import { MenuController } from '@ionic/angular';
 export class ContactsPage implements OnInit {
 
   users: User[];
-  data:any;
+  usersID: User[];
+  data: any;
+
   constructor(
   public userService: UserService,
   private router: Router,
   private route: ActivatedRoute,
   public menu: MenuController) {
-    this.data = this.route.snapshot.paramMap.get('workerID');
+    this.data = this.route.snapshot.paramMap.get('companyName');
   }
 
-  ngOnInit(): void { 
-      /*this.userService.getUsers().subscribe (users => {
+  ngOnInit(): void {
+      let companyName = this.data;
+      this.userService.getUsers(companyName).subscribe (users => {
         this.users = users;
-      });*/
+      });
+      this.userService.getWorkerID(companyName).subscribe (usersID => {
+        this.usersID = usersID;
+      });
 
-      this.menu1();
+      this.menu2();
   }
 
-  menu1() {
-    this.menu.enable(true, 'menu1');
+  menu2() {
+    this.menu.enable(true, 'menu2');
   }
 
-  obtainID(){
-    localStorage.setItem('workerID', this.data);
+  obtainCompany(){
+    localStorage.setItem('companyName', this.data);
   }
+
 }
