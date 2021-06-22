@@ -30,7 +30,7 @@ export class UserService {
   }
 
   getUsers(companyName: string){
-    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName, { headers: this.getHeaders() })
+    return this.http.get<User[]>(environment.apiURL+'/admin/all/' + companyName, { headers: this.getHeaders() })
   }
 
   getUser(workerID: String){
@@ -61,7 +61,7 @@ export class UserService {
     return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest);
   }
   getWorkerID(companyName: string){
-    return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName, { headers: this.getHeaders()});
+    return this.http.get<User[]>(environment.apiURL+'/admin/getWorkerID/' + companyName, { headers: this.getHeaders()});
   }
 
   getHolidays(workerID: string, fecha: string){
@@ -84,5 +84,8 @@ export class UserService {
   }
   getlocationConfig(workerID: string){
     return this.http.get<Configuration[]>(environment.apiURL + '/user/locationConfiguration/' + workerID, {headers: this.getHeaders()});
+  }
+  getUsersforContacts(workerID: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/all/' + workerID, { headers: this.getHeaders() })
   }
 }

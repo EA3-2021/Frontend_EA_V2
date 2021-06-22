@@ -21,27 +21,20 @@ export class ContactsPage implements OnInit {
   private router: Router,
   private route: ActivatedRoute,
   public menu: MenuController) {
-    this.data = this.route.snapshot.paramMap.get('companyName');
+    this.data = this.route.snapshot.paramMap.get('workerID');
   }
 
   ngOnInit(): void {
-      let companyName = this.data;
-      this.userService.getUsers(companyName).subscribe (users => {
+      this.userService.getUsersforContacts(this.data).subscribe (users => {
         this.users = users;
-      });
-      this.userService.getWorkerID(companyName).subscribe (usersID => {
-        this.usersID = usersID;
       });
 
       this.menu2();
+      console.log(this.data);
   }
 
   menu2() {
     this.menu.enable(true, 'menu2');
-  }
-
-  obtainCompany(){
-    localStorage.setItem('companyName', this.data);
   }
 
 }
