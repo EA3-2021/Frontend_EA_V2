@@ -26,7 +26,7 @@ export class CommentService {
   }
 
   newComment(newComment: Comment){
-    return this.http.post(environment.apiURL + '/comment/new', newComment, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/comment/new', newComment);
   }
 
   deleteComment(id: string){
@@ -34,11 +34,11 @@ export class CommentService {
   }
 
   getCommentsAdmin(companyName: string){
-    return this.http.get<Comment[]>(environment.apiURL+'/comment/all/admin/'+ companyName, { headers: this.getHeaders() })
+    return this.http.get<Comment[]>(environment.apiURL+'/comment/all/admin/'+ companyName)
   }
 
   resolveComment(id:string){
-    return this.http.put(environment.apiURL + '/comment/resolve/'+ id, id, { headers: this.getHeaders() });
+    return this.http.put(environment.apiURL + '/comment/resolve/'+ id, id);
   }
 
 
