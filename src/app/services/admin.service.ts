@@ -48,7 +48,7 @@ export class AdminService {
   }
 
   registerTask(tarea:Tarea){
-    return this.http.post(environment.apiURL + '/admin/newtask', tarea, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/admin/newtask', tarea);
   }
 
   getTareas(fecha:string, company:string){

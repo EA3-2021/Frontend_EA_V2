@@ -50,6 +50,9 @@ export class UsersPage implements OnInit {
   }
 
   addTask(workerID: string) {
-    this.router.navigateByUrl('/tasks-by-admin/' + this.data +'/'+ workerID ) 
+    this.router.navigateByUrl('/tasks-by-admin/' + this.data +'/'+ workerID )
+    .then(() => {
+      window.location.reload();
+    });
   }
 }
