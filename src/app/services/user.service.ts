@@ -105,7 +105,7 @@ export class UserService {
   }
 
   updateUserProfile(workerID: string, user:User) {
-    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user, {headers: this.getHeaders()});
+    return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user);
   }
 
   clockIn(workerID: string, code: string ){
@@ -118,10 +118,4 @@ export class UserService {
   updateConfiguration(configuration: Configuration) {
     return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });
   }
-
-/*
-  updateUser(_id: string, updateUser: User){
-    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
-  }
-*/
 }

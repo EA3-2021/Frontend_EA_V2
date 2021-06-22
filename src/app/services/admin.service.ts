@@ -59,7 +59,7 @@ export class AdminService {
   }
 
   updateTask(_id: string, updateTarea: Tarea){
-    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea, { headers: this.getHeaders() });
+    return this.http.put(environment.apiURL + '/admin/updatetask/' + _id, updateTarea);
   }
 
   getClock(clockIn:string){
@@ -77,7 +77,7 @@ export class AdminService {
     return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date, { headers: this.getHeaders() });
   }
 
-  updateAdmninProfile(companyName: String, admin: Admin){
+  updateAdminProfile(companyName: String, admin: Admin){
     return this.http.put(environment.apiURL + '/admin/updateAdminProfile/' + companyName, admin);
   }
   //, { headers: this.getHeaders() }
