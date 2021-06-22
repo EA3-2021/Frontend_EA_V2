@@ -39,7 +39,7 @@ export class AdminService {
   }
 
   getAdminName(){
-    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName', { headers: this.getHeaders() });
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName');
   }
 
   getPasswordAdmin(email:string){
