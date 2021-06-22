@@ -69,7 +69,8 @@ export class FaqAdminPage implements OnInit {
      // let faq: Faq
       this.faqService.newFaq(faq)
         .subscribe (data => {
-          window.location.reload();
+        this.faqs.push(faq);
+          //  window.location.reload();
         });
           
   }
