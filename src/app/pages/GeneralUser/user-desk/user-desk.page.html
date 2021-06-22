@@ -25,10 +25,11 @@
   </div>
 
   <div class = "center">
-    <ion-button expand="block" [routerLink]="['/job-clock/' +data]">
-      <ion-icon name="time-outline"></ion-icon>clock-in or clock-out</ion-button>
+    <ion-button expand="block" (click)="goClock()"><ion-icon name="time-outline"></ion-icon>clock-in or clock-out</ion-button>
   </div>
 
+  
+  
   <div class = "center">
     <ion-button expand="block" [routerLink]="['/faq-user/' + data ]">
       <ion-icon name="book-outline"></ion-icon>FAQ</ion-button>
