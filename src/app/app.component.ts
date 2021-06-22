@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,10 @@ export class AppComponent {
   id: string;
   company: string;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute, public fireAuth: AngularFireAuth,
     private router: Router,
     private authenticationService: AuthenticationService) {
-    this.id = localStorage.getItem('workerID');
+    this.id = JSON.parse(localStorage.getItem('currentUser'))["workerID"]
     this.company = localStorage.getItem('companyName');
   }
 
@@ -37,7 +38,6 @@ export class AppComponent {
   logout(){
     this.authenticationService.logout().subscribe(() => { 
       this.router.navigateByUrl('/home');
-      localStorage.removeItem('workerID');
     });
   }
 
@@ -57,6 +57,7 @@ export class AppComponent {
   logout1(){
     this.authenticationService.logout().subscribe(() => { 
       this.router.navigateByUrl('/home');
+      this.fireAuth.signOut();
     });
     localStorage.removeItem('companyName');
   }

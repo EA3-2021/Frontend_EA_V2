@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
+import { UserGoogle } from '../model/usergoogle';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
 
@@ -35,6 +36,10 @@ export class UserService {
 
   getUser(workerID: String){
     return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.getHeaders() })
+  }
+
+  checkUser(email: String){
+    return this.http.put<UserGoogle>(environment.apiURL+'/user/check/', { "email": email } )
   }
 
   deleteUser(name: string){
