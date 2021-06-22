@@ -6,7 +6,6 @@ export interface Admin {
     address: string;
     postalCode: string;
     password: string;
-
     token: string;
 
 }
