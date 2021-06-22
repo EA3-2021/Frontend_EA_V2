@@ -15,7 +15,7 @@ export class SettingPage implements OnInit {
   public authentication:boolean = true;
   public location:boolean = true;
   data:any;
-  
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
@@ -41,7 +41,6 @@ export class SettingPage implements OnInit {
   }
 
   save(){
-
     let configuration = {'workerID': this.data, 'notification': this.notification, 'private': this.private, 'authentication': this.authentication, 'location': this.location}
     this.userService.updateConfiguration(configuration).subscribe(() => { this.router.navigateByUrl('/user-desk/'+this.data);});
   }
