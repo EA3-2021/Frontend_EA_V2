@@ -32,6 +32,14 @@ export class AuthenticationService {
             }));
     }
 
+    loginUserGoogle(workerID, password) {
+        return this.http.post<any>(environment.apiURL+ '/auth/loginUserGoogle', {workerID, password })
+            .pipe(map(user => {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                return user;
+            }));
+    }
+
     loginAdmin(name, password) {
         return this.http.post<any>(environment.apiURL+ '/auth/login-admin', { name, password })
             .pipe(map(admin => {
