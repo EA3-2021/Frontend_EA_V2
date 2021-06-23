@@ -56,7 +56,7 @@ export class AdminService {
   }
 
   deleteTask(id: string) {
-    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + id, { headers: this.getHeaders() });
+    return this.http.delete<Tarea[]>(environment.apiURL+'/admin/droptask/' + id);
   }
 
   updateTask(_id: string, updateTarea: Tarea){
@@ -67,7 +67,7 @@ export class AdminService {
     return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn);
   }
   getAdmin(company: String){
-    return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company)
   }
 
   generateCode(companyName: String){

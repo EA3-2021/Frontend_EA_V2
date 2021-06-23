@@ -73,7 +73,7 @@ export class MapcomponentComponent implements OnInit {
         let longitude = Number (property.longitude);
 
         L.marker([latitude, longitude]).addTo(this.map)
-        .bindPopup(property.latitude)
+        .bindPopup("Sumaya Benalí")
         .openPopup();
       }
         

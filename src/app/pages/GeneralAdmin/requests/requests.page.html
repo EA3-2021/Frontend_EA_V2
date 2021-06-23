@@ -11,14 +11,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  <ion-list class = "ion-wrap" class = ion-padding-top>
  
     <div class = "center">
-      <ion-button [routerLink]="['/registration-request/'+data]">Registration Requests</ion-button>
+      <ion-button expand="block" [routerLink]="['/registration-request/'+data]">Registration Requests</ion-button>
     </div>
   
+    <div><span class="divider line one-line">or</span></div>
+
     <div class = "center">
-      <ion-button [routerLink]="['/holiday-pending/'+ data]">Holiday Requests</ion-button>
+      <ion-button expand="block" [routerLink]="['/holiday-pending/'+ data]">Holiday Requests</ion-button>
     </div>
 
   </ion-list>

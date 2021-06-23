@@ -68,7 +68,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/GeneralUser/login-user/login-user.module').then( m => m.LoginUserPageModule)
   },
   {
-    path: 'register-user/:googleemail',
+    path: 'register-user',
     loadChildren: () => import('./pages/GeneralUser/register-user/register-user.module').then( m => m.RegisterUserPageModule)
   },
   {

@@ -43,7 +43,7 @@ export class UserService {
   }
 
   deleteUser(name: string){
-    return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name, { headers: this.getHeaders() })
+    return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name)
   }
 
   updateUser(_id: string, updateUser: User){
