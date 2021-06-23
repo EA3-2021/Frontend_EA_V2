@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../model/user';
 import { MenuController } from '@ionic/angular';
-import { TeamService } from '../../../services/team.service';
 
 @Component({
   selector: 'app-contacts',
