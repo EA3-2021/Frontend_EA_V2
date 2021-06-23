@@ -19,7 +19,7 @@
 
     <ion-row *ngFor="let message of messages">
 
-      <ion-col size="9" *ngIf="message.user !==  currentUser" class="message other-message">
+      <ion-col size="9" height="5" *ngIf="message.user !==  currentUser" class="message other-message">
         <b>{{ message.user }}</b><br>
         <span>{{ message.msg }}</span>
         <div class="time" text-right><br>{{ message.createdAt | date:'short' }}</div>

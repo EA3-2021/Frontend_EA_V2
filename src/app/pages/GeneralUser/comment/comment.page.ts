@@ -71,15 +71,15 @@ export class CommentPage implements OnInit {
         return;
     }
 
-    const company = this.commentForm.value.company;
+    //const company = this.commentForm.value.company;
     const workerID = this.data;
     const content = this.commentForm.value.content;
 
-    let comment = {'company': company, 'workerID': workerID, 'content': content};
+    let comment = {'workerID': workerID, 'content': content};
 
     this.commentService.newComment(comment).subscribe(() => {
         this.router.navigateByUrl('/comment/' + this.data);
-        window.location.reload();
+        this.comments.push(comment);
     });
 
   }

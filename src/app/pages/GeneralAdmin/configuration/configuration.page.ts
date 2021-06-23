@@ -12,10 +12,10 @@ import { MenuController } from '@ionic/angular';
 })
 export class ConfigurationPage implements OnInit {
 
-  public notification:boolean = true;
-  public private:boolean = true;
-  public authentication:boolean = true;
-  public location :boolean = true;
+  public notification:boolean = false;
+  public private:boolean = false;
+  public authentication:boolean = false;
+  public location :boolean = false;
   data:any;
 
   constructor(private adminService: AdminService, 

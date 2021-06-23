@@ -14,6 +14,7 @@ export class CalendarPage implements OnInit {
 
   eventSource = [];
   public fecha: string;
+  viewTitle: string;
 
   calendar = {
     mode: 'month',
@@ -49,7 +50,9 @@ export class CalendarPage implements OnInit {
   addHolidayRequest() {   
     this.router.navigateByUrl('/holiday-request/'+ this.data);
   }
-
+  onViewTitleChanged(title){
+    this.viewTitle=title;
+  }
   onTimeSelected(ev) {
       this.selectedDate = ev.selectedTime;
       let end = this.selectedDate;

@@ -3,34 +3,51 @@
     <ion-buttons menu-id="menu2" slot="end" (click)="obtainCompany()">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Admin Desk</ion-title>
+    <ion-title>Admin Desk Version 1</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-list class = "ion-wrap" class = "ion-padding-bottom">
+  
   <div class = "center">
-  <ion-button [routerLink]="['/users/' + data]">Users</ion-button>
+  <ion-button  expand="block" [routerLink]="['/users/' + data]">
+    <ion-icon name="person-outline"></ion-icon>Users</ion-button>
   </div>
+
+  <div class = "center" >
+  <ion-button expand="block" [routerLink]="['/teams/' + data]">
+    <ion-icon name="people-outline"></ion-icon>Teams</ion-button>
+  </div>
+
+  <div class = "center" >
+    <ion-button expand="block" [routerLink]="['/map/'+ data]">
+      <ion-icon name="location-outline"></ion-icon>Geolocalization</ion-button>
+  </div>
+
+  <div class = "center" >
+    <ion-button expand="block" [routerLink]="['/calendar-admin/' + data]">
+      <ion-icon name="clipboard-outline"></ion-icon>User tasks</ion-button>
+  </div>
+
+  <div class = "center" >
+    <ion-button expand="block" [routerLink]="['/requests/'+ data]">
+      <ion-icon name="documents-outline"></ion-icon>Pending requests</ion-button>
+  </div>
+
+  <div class = "center" >
+    <ion-button expand="block" [routerLink]="['/faq-admin/' + data]">
+      <ion-icon name="bookmark-outline"></ion-icon>Create Faq</ion-button>
+  </div>
+
+  <div class = "center"> 
+    <ion-button expand="block" [routerLink]="['/get-comment/' +data]">
+      <ion-icon name="document-text-outline"></ion-icon>Complaints & Suggestions</ion-button>
+  </div>
+
   <div class = "center">
-  <ion-button [routerLink]="['/teams/' + data]">Teams</ion-button>
+    <ion-button expand="block"[routerLink]="['/clock-control/' + data]">
+      <ion-icon name="alarm-outline"></ion-icon>Clock Control</ion-button>
   </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/map/'+ data]">Geolocalization</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/calendar-admin/' + data]">User tasks</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/requests/'+ data]">Pending requests</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/faq-admin/' + data]">Create Faq</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/get-comment/' +data]">Complaints & Suggestions</ion-button>
-  </div>
-  <div class = "center">
-    <ion-button [routerLink]="['/clock-control/' + data]">Clock Control</ion-button>
-  </div>
+
 </ion-list>

@@ -39,8 +39,8 @@ export class ProfileAdminPage implements OnInit {
     localStorage.setItem('companyName', this.data);
   }
 
-  /*updateAdmin(workerID:string){
-    this.router.navigateByUrl('/update-profile/'+ workerID);  
-  }*/
+  updateAdmin(companyName:string){
+    this.router.navigateByUrl('/update-profile-admin/'+ companyName);  
+  }
 
 }

@@ -177,6 +177,11 @@ const routes: Routes = [
     path: 'clock-control/:companyName',
     loadChildren: () => import('./pages/GeneralAdmin/clock-control/clock-control.module').then( m => m.ClockControlPageModule)
   },
+  {
+    path: 'update-profile-admin/:companyName',
+    loadChildren: () => import('./pages/GeneralAdmin/update-profile-admin/update-profile-admin.module').then( m => m.UpdateProfileAdminPageModule)
+  },
+
 
 
 

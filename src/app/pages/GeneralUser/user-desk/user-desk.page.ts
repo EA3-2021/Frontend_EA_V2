@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Geolocation } from '@capacitor/geolocation';
 import { UserService } from '../../../services/user.service';
 import { AlertService } from '../../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../model/user';
 import { ToastController, MenuController } from '@ionic/angular';
+import { Configuration } from '../../../model/configuration';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-desk',
@@ -13,50 +14,42 @@ import { ToastController, MenuController } from '@ionic/angular';
 })
 export class UserDeskPage implements OnInit {
 
-  latitude: any = 0; //latitude
-  longitude: any = 0; //longitude*/
   name: String;
   workerID: String;
   data:any;
-  data1:any;
   users: User[];
+  configurations: Configuration[];
 
    constructor(private userService: UserService,
     private route: ActivatedRoute,
     private alertService: AlertService,
     private router: Router,
     public toastController: ToastController,
-    public menu: MenuController) {
+    public menu: MenuController,
+    private alertController: AlertController) {
       this.data = this.route.snapshot.paramMap.get('workerID');
-
     }
 
    ngOnInit(): void {
 
-    console.log(this.data1);
-
-    Geolocation.getCurrentPosition().then((resp) => {
-      this.latitude = resp.coords.latitude;
-      this.longitude = resp.coords.longitude;
-
-      let location = {'latitude': this.latitude, 'longitude': this.longitude}
-
-      this.userService.saveLocation(location).subscribe(() => {});
-
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
-
     this.userService.getUser(this.data).subscribe (users => {
       this.users = users;
+    this.displayToast(this.users[0].name);
+    });
+    this.menu1();
+   }
 
-      this.displayToast(this.users[0].name);
-
+   async presentAlert(error: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Caution!',
+      //subHeader: 'Alert Subtitle',
+      message: error,
+      buttons: ['OK']
     });
 
-    this.menu1();
-
-   }
+    await alert.present();
+  }
 
    menu1() {
     this.menu.enable(true, 'menu1');
@@ -64,6 +57,16 @@ export class UserDeskPage implements OnInit {
 
   obtainID(){
     localStorage.setItem('workerID', this.data);
+  }
+
+  goClock(){
+    this.userService.getlocationConfig(this.data).subscribe(() =>  {
+      this.router.navigateByUrl('/job-clock/'+ this.data);
+   },
+   error => {
+       this.alertService.error(error);
+       this.presentAlert(error.error.message);
+   });
   }
 
    displayToast(name1: string) {

@@ -12,7 +12,9 @@ import { MenuController } from '@ionic/angular';
 export class ContactsPage implements OnInit {
 
   users: User[];
-  data:any;
+  usersID: User[];
+  data: any;
+
   constructor(
   public userService: UserService,
   private router: Router,
@@ -21,19 +23,24 @@ export class ContactsPage implements OnInit {
     this.data = this.route.snapshot.paramMap.get('workerID');
   }
 
-  ngOnInit(): void { 
-      /*this.userService.getUsers().subscribe (users => {
+  ngOnInit(): void {
+      this.userService.getUsersforContacts(this.data).subscribe (users => {
         this.users = users;
-      });*/
+      });
 
       this.menu1();
+      console.log(this.data);
   }
 
   menu1() {
     this.menu.enable(true, 'menu1');
   }
 
-  obtainID(){
-    localStorage.setItem('workerID', this.data);
+  addChat(workerID: string) {
+    this.router.navigateByUrl('/chat/'+workerID )    //+ this.data +'/'+ workerID
+    .then(() => {
+      //window.location.reload(); el reload peta en docker
+    });
   }
+
 }

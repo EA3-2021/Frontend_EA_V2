@@ -8,26 +8,16 @@ import { Faq } from '../model/faq';
 })
 export class FaqService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) { 
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
 
-    if (!this.headers.has('Authorization')) {
+    console.log(headers);
 
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-
-    }
-
-    return this.headers;
-
+    return headers;
   }
 
   getFaq(){
@@ -35,15 +25,15 @@ export class FaqService {
   }
 
   newFaq(newFaq: Faq){
-    return this.http.post(environment.apiURL + '/faq/new', newFaq, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/faq/new', newFaq);
   }
 
   deleteFaq(title: string){
-    return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title, { headers: this.getHeaders() })
+    return this.http.delete<Faq[]>(environment.apiURL+'/faq/drop/' + title)
   }
 
   updateFaq(title: string, content: string){
-    return this.http.put(environment.apiURL + '/faq/update/' + title, content, { headers: this.getHeaders() });
+    return this.http.put(environment.apiURL + '/faq/update/' + title, content);
   }
 
 }

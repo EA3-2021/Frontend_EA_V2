@@ -1,4 +1,4 @@
-import { UserService } from '../../services/user.service';
+import { AdminService } from '../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../model/user'
@@ -16,8 +16,10 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   isSubmitted = false;
 
-  constructor(public userService: UserService, private router: Router,private route: ActivatedRoute,
-              private formBuilder: FormBuilder){this.data = this.route.snapshot.paramMap.get('companyName');}
+  constructor(public adminService: AdminService, 
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder){this.data = this.route.snapshot.paramMap.get('companyName');}
   
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -45,7 +47,7 @@ export class UserFormComponent implements OnInit {
 
     let user = {'company': company, 'name': name, 'email': email, 'phone': phone, 'password': password, 'insignias': []};
 
-    this.userService.newUser(user)
+    this.adminService.newUser(user)
       .subscribe(() => {
         this.router.navigateByUrl('/users/'+this.data);
       });

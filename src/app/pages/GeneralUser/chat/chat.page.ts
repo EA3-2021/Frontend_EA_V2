@@ -15,7 +15,7 @@ export class ChatPage implements OnInit {
   messages = [];
   protected currentUser : string = '';
 
-  constructor(private socket: Socket, 
+  constructor(private socket: Socket,
     private toastCtrl: ToastController,
     private router: Router,
     private route: ActivatedRoute,
@@ -25,7 +25,7 @@ export class ChatPage implements OnInit {
   ngOnInit(): void {
        this.socket.connect();
 
-       let name = `User-${new Date().getTime()} `;
+       let name = this.data;        //`User-${new Date().getTime()} `;
        this.currentUser = name;
 
        this.socket.emit('set-name', name);
@@ -59,7 +59,7 @@ export class ChatPage implements OnInit {
   }
 
    sendMessage(){
-       this.socket.emit('send-message', {text: this.message});
+       this.socket.emit('send-message', {text: this.currentUser + ": " + this.message});
        this.message='';
    }
 

@@ -43,7 +43,7 @@ export class TeamFormComponent implements OnInit {
     this.teamService.newTeam(this.teamForm.value, this.data)
     .subscribe((team: Team) => {
       this.router.navigateByUrl('/teams/'+ this.data).then(() => {
-        window.location.reload();
+       // window.location.reload(); este reload peta en docker
       })
     });
   }

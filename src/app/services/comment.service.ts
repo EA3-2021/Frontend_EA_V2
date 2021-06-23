@@ -9,21 +9,16 @@ import { Comment } from '../model/comment';
 })
 export class CommentService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) { 
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
-    if (!this.headers.has('Authorization')) {
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-    }
-    return this.headers;
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
+
+    console.log(headers);
+
+    return headers;
   }
 
   getComments(workerID: string){
@@ -31,7 +26,7 @@ export class CommentService {
   }
 
   newComment(newComment: Comment){
-    return this.http.post(environment.apiURL + '/comment/new', newComment, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/comment/new', newComment);
   }
 
   deleteComment(id: string){
@@ -39,11 +34,11 @@ export class CommentService {
   }
 
   getCommentsAdmin(companyName: string){
-    return this.http.get<Comment[]>(environment.apiURL+'/comment/all/admin/'+ companyName, { headers: this.getHeaders() })
+    return this.http.get<Comment[]>(environment.apiURL+'/comment/all/admin/'+ companyName)
   }
 
   resolveComment(id:string){
-    return this.http.put(environment.apiURL + '/comment/resolve/'+ id, id, { headers: this.getHeaders() });
+    return this.http.put(environment.apiURL + '/comment/resolve/'+ id, id);
   }
 
 

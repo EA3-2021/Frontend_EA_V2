@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color = "light" class = "button" [routerLink]="['/profile-admin/'+ data]">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Update Profile Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="updateForm" (ngSubmit)="submitUpdate()" novalidate>
+    
+    <ion-item lines="full">
+      <ion-label position="floating">CIF</ion-label>
+      <ion-input formControlName="cif" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.email.errors.pattern">
+      Enter valid email.
+    </span>
+  
+    <ion-item lines="full">
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input maxlength="10" formControlName="phone" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && formControls.phone.errors.pattern">
+      Number values allowed.
+    </span>
+  
+    <ion-item lines="full">
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="address" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">PostalCode</ion-label>
+      <ion-input formControlName="postalCode" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+  
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+  </ion-content>
+  
+  

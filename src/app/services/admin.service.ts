@@ -8,32 +8,23 @@ import { Tarea } from '../model/tarea';
 import { Request } from '../model/request';
 import { Clock } from '../model/clock';
 import { Code } from '../model/code';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) {
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
 
-    if (!this.headers.has('Authorization')) {
+    console.log(headers);
 
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-
-    }
-
-    return this.headers;
-
+    return headers;
   }
 
   registerAdmin(admin: Admin) {
@@ -45,11 +36,11 @@ export class AdminService {
   }
 
   getLocations(){
-    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations', { headers: this.getHeaders() });
+    return this.http.get<Location[]>(environment.apiURL+'/location/getLocations');
   }
 
   getAdminName(){
-    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName', { headers: this.getHeaders() });
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/getAdminName');
   }
 
   getPasswordAdmin(email:string){
@@ -61,7 +52,7 @@ export class AdminService {
   }
 
   getTareas(fecha:string, company:string){
-    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha + '/' + company);
+    return this.http.get<Tarea[]>(environment.apiURL+'/admin/taskall/' + fecha + '/' + company, { headers: this.getHeaders() });
   }
 
   deleteTask(id: string) {
@@ -76,7 +67,7 @@ export class AdminService {
     return this.http.get<Clock[]>(environment.apiURL+'/clock/getClock/' + clockIn);
   }
   getAdmin(company: String){
-    return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company, { headers: this.getHeaders() })
+    return this.http.get<Admin[]>(environment.apiURL+'/admin/profile/' + company)
   }
 
   generateCode(companyName: String){
@@ -85,6 +76,40 @@ export class AdminService {
 
   getCode(companyName: String, date: String){
     return this.http.get<Code[]>(environment.apiURL+'/admin/getCode/' + companyName +'/'+ date);
+  }
+
+  updateAdminProfile(companyName: String, admin: Admin){
+    return this.http.put(environment.apiURL + '/admin/updateAdminProfile/' + companyName, admin);
+  }
+  //, { headers: this.getHeaders() }
+
+  getRegisterRequest(){
+    return this.http.get<User[]>(environment.apiURL + '/user/register/Requests', { headers: this.getHeaders() });
+  }
+
+  
+  refuseRegisterRequest(workerID:string, email1:string){
+    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1, { headers: this.getHeaders() });
+  }
+
+  acceptRegisterRequest(workerID:string, email:string){
+    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.getHeaders() });
+  }
+
+  newUser(newUser: User){
+    return this.http.post(environment.apiURL + '/admin/new', newUser);
+  }
+
+  getHolidayPending(companyName: string){
+    return this.http.get<Request[]>(environment.apiURL+'/admin/getHolidayPending/'+ companyName);
+  }
+
+  acceptHoliday(id:string){
+    return this.http.put(environment.apiURL + '/admin/acceptHoliday/'+id, id);
+  }
+
+  refuseHoliday(id:string){
+    return this.http.delete<Request[]>(environment.apiURL+'/admin/dropRequestHoliday/'+id);
   }
   
 }

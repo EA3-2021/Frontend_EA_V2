@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Tarea } from '../model/tarea';
 import { User } from '../model/user';
+import { UserGoogle } from '../model/usergoogle';
 import { Location } from '../model/location';
 import { Request } from '../model/request';
-import { Clock } from '../model/clock';
+
 import { Configuration } from '../model/configuration';
 
 
@@ -14,27 +15,14 @@ import { Configuration } from '../model/configuration';
 })
 export class UserService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) {
-
-    this.headers = new HttpHeaders();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.headers.append('Accept', 'application/json');
 
   }
 
-  getHeaders() : HttpHeaders{
+  getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders({"Content-Type": 'application/x-www-form-urlencoded', "Accept": 'application/json', "authorization": JSON.parse(localStorage.getItem('currentUser'))["token"]});
 
-
-    if (!this.headers.has('Authorization')) {
-
-      this.headers.append('Authorization', JSON.parse(localStorage.getItem('currentUser'))["token"]);
-
-    }
-
-    return this.headers;
-
+    return headers;
   }
 
   registerUser(registerUser: User){
@@ -43,98 +31,72 @@ export class UserService {
   }
 
   getUsers(companyName: string){
-    return this.http.get<User[]>(environment.apiURL+'/user/all/' + companyName)
+    return this.http.get<User[]>(environment.apiURL+'/admin/all/' + companyName, { headers: this.getHeaders() })
   }
 
   getUser(workerID: String){
     return this.http.get<User[]>(environment.apiURL+'/user/profile/' + workerID, { headers: this.getHeaders() })
   }
 
-  newUser(newUser: User){
-    return this.http.post(environment.apiURL + '/user/new', newUser);
+  checkUser(email: String){
+    return this.http.put<UserGoogle>(environment.apiURL+'/user/check/', { "email": email } )
   }
 
   deleteUser(name: string){
-    return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name, { headers: this.getHeaders() })
+    return this.http.delete<User[]>(environment.apiURL + '/user/drop/' + name)
   }
 
   updateUser(_id: string, updateUser: User){
-    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
+    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser, { headers: this.getHeaders() });
   }
-
-  /*registerTask(tarea:Tarea){
-    return this.http.post(environment.apiURL + '/user/newtask', tarea, { headers: this.headers });
-  }*/
 
   getTareas(workerID:string, fecha:string){
-    return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + workerID +'/'+ fecha);
+    return this.http.get<Tarea[]>(environment.apiURL + '/user/taskall/' + workerID +'/'+ fecha, { headers: this.getHeaders() });
   }
-
-  /*deleteTask(titulo: String) {
-    return this.http.delete<Tarea[]>(environment.apiURL + '/user/droptask/' + titulo, { headers: this.headers });
-  }*/
 
   saveLocation(location: Location){
     return this.http.post(environment.apiURL + '/user/newlocation', location, { headers: this.getHeaders() });
   }
 
-  getRegisterRequest(){
-    return this.http.get<User[]>(environment.apiURL + '/user/register/Requests', { headers: this.getHeaders() });
-  }
-
-  refuseRegisterRequest(workerID:string, email1:string){
-    return this.http.delete<User[]>(environment.apiURL+'/user/drop/registerRequest/' + workerID + '/' + email1, { headers: this.getHeaders() });
-  }
-
-  acceptRegisterRequest(workerID:string, email:string){
-    return this.http.put(environment.apiURL + '/user/accept/' + workerID + '/' + email, email, { headers: this.getHeaders() });
-  }
-
   getPasswordUser(email:string){
-    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email, { headers: this.getHeaders() });
+    return this.http.get<User[]>(environment.apiURL+'/user/getPasswordUser' +'/'+ email);
   }
 
   holidayRequest(holidayRequest: Request){
-    return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest, { headers: this.getHeaders() });
+    return this.http.post(environment.apiURL + '/user/holidayRequest', holidayRequest);
   }
   getWorkerID(companyName: string){
-    return this.http.get<User[]>(environment.apiURL+'/user/getWorkerID/' + companyName, { headers: this.getHeaders()});
-  }
-
-  getHolidayPending(companyName: string){
-    return this.http.get<Request[]>(environment.apiURL+'/user/getHolidayPending/'+ companyName, { headers: this.getHeaders() });
-  }
-
-  acceptHoliday(id:string){
-    return this.http.put(environment.apiURL + '/user/acceptHoliday/'+id, id);
-  }
-
-  refuseHoliday(id:string){
-    return this.http.delete<Request[]>(environment.apiURL+'/user/dropRequestHoliday/'+id);
+    return this.http.get<User[]>(environment.apiURL+'/admin/getWorkerID/' + companyName, { headers: this.getHeaders()});
   }
 
   getHolidays(workerID: string, fecha: string){
-    return this.http.get<Request[]>(environment.apiURL + '/user/holidayall/' + workerID +'/'+ fecha);
+    return this.http.get<Request[]>(environment.apiURL + '/user/holidayall/' + workerID +'/'+ fecha, {headers: this.getHeaders()});
   }
 
   updateUserProfile(workerID: string, user:User) {
     return this.http.put(environment.apiURL + '/user/updateProfile/' + workerID, user);
   }
 
-  clockIn(workerID: string){
-    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID, workerID);
+  clockIn(workerID: string, code: string ){
+    return this.http.post(environment.apiURL + '/clock/clockIn/' + workerID + '/' + code, workerID, {headers: this.getHeaders()});
   }
 
   clockOut(workerID: string){
-    return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID);
+    return this.http.put(environment.apiURL + '/clock/clockOut/' + workerID, workerID, {headers: this.getHeaders()});
   }
-  updateConfiguration(configuration: Configuration) {
-    return this.http.post(environment.apiURL + '/user/configuration', configuration, { headers: this.getHeaders() });
+  createConfiguration(configuration: Configuration) {
+    return this.http.post(environment.apiURL + '/user/newConfiguration', configuration);
   }
-
-/*
-  updateUser(_id: string, updateUser: User){
-    return this.http.put(environment.apiURL + '/user/update/' + _id, updateUser);
+  updateConfiguration(workerID: string, configuration: Configuration) {
+    return this.http.put(environment.apiURL + '/user/updateConfiguration/'+ workerID, configuration);
   }
-*/
+  getlocationConfig(workerID: string){
+    return this.http.get<Configuration[]>(environment.apiURL + '/user/locationConfiguration/' + workerID, {headers: this.getHeaders()});
+  }
+  getUsersforContacts(workerID: string){
+    return this.http.get<User[]>(environment.apiURL+'/user/all/' + workerID, { headers: this.getHeaders() })
+  }
+  getCurrentConfiguration(workerID: string){
+    return this.http.get<Configuration[]>(environment.apiURL+'/user/currentConfig/' + workerID, { headers: this.getHeaders() })
+  }
 }

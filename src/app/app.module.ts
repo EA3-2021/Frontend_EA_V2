@@ -11,7 +11,9 @@ import { CommonModule } from '@angular/common';
 import { TeamFormComponent } from './components/team-form/team-form.component';  
 import { UserFormComponent } from './components/user-form/user-form.component'; 
 import { environment } from 'src/environments/environment';
-
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 const config: SocketIoConfig = { url: environment.apiURL, options: {} };
 
@@ -28,11 +30,15 @@ const config: SocketIoConfig = { url: environment.apiURL, options: {} };
   HttpClientModule,
   FormsModule,
   ReactiveFormsModule,
-  CommonModule
+  CommonModule,
+  AngularFireModule.initializeApp(environment.firebaseConfig),
+  AngularFireAuthModule,
   ],
-  providers: [
+  providers: [AngularFirestoreModule,
   { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class AppModule {}
+
+
