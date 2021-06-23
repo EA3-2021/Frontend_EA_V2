@@ -5,6 +5,6 @@ export interface UserGoogle {
     phone: string;
     password: string;
     insignias: Array<String>;
-    //workerID: string;
+    workerID: string;
     //petition: boolean;
 }

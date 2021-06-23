@@ -25,7 +25,10 @@ export class AppComponent {
     private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserService) {
-    this.id = localStorage.getItem('workerID');
+
+  if (JSON.parse(localStorage.getItem('currentUser')) != null) {
+    this.id = JSON.parse(localStorage.getItem('currentUser'))["workerID"];
+  }
     this.company = localStorage.getItem('companyName');
   }
 

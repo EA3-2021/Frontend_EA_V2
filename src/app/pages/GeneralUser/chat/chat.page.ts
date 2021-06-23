@@ -59,7 +59,7 @@ export class ChatPage implements OnInit {
   }
 
    sendMessage(){
-       this.socket.emit('send-message', {text: this.message});
+       this.socket.emit('send-message', {text: this.currentUser + ": " + this.message});
        this.message='';
    }
 
